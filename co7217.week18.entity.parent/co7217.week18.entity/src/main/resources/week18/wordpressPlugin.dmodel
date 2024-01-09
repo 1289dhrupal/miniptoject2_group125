@@ -1,0 +1,29 @@
+Plugin {
+    name = "CouponAPI"
+    version = "1.0.0"
+    description = "This is an example plugin."
+    author = "Dhrupal Shah"
+    license = "MIT"
+    prefix = "capi"
+    textDomain = "capi-domain"
+    activate = "true"
+    deactivate = "true"
+    Widget {
+        widgetName = "ExampleWidget"
+        widgetDescription = "default settings for widget"
+
+        Setting {
+            settingName = "BackgroundColor"
+            settingType = "String"
+            defaultValue = "#FFFFFF"
+        }
+
+        Setting {
+            settingName = "Width"
+            settingType = "Integer"
+            defaultValue = "800"
+        }
+    }
+
+    
+}

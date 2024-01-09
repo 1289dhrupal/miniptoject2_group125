@@ -1,0 +1,62 @@
+grammar co7217.week18.entity.EntityDsl with org.eclipse.xtext.common.Terminals
+
+generate entityDsl "http://www.week18.co7217/entity/EntityDsl"
+
+
+Plugin:
+    'Plugin' '{'
+        'name' '=' name=STRING
+        'version' '=' version=STRING
+        'description' '=' description=STRING?
+        'author' '=' author=STRING?
+        'license' '=' license=STRING?
+        'prefix' '=' prefix=STRING?
+        'textDomain' '=' textDomain=STRING?
+        'activate' '=' activate=STRING? 
+        'deactivate' '=' deactivate=STRING? 
+        (widgets+=Widget)*
+        (shortcodes+=Shortcode)*
+        (customPostTypes+=CustomPostType)*
+        (settings+=Setting)*
+    '}'
+;
+
+Widget:
+    'Widget' '{'
+        'widgetName' '=' widgetName=STRING
+        'widgetDescription' '=' widgetDescription=STRING
+        (settings+=Setting)*
+    '}'
+;
+
+Shortcode:
+    'Shortcode' '{'
+        'shortcodeName' '=' shortcodeName=STRING
+        (settings+=Setting)*
+    '}'
+;
+
+CustomPostType:
+    'CustomPostType' '{'
+        'postTypeName' '=' postTypeName=STRING
+        'supports' '=' supports=STRING?
+        'taxonomies' '=' taxonomies=STRING?
+    '}'
+;
+
+Setting:
+    'Setting' '{'
+        'settingName' '=' settingName=STRING
+        'settingType' '=' settingType=STRING
+        'defaultValue' '=' defaultValue=STRING?
+    '}'
+;
+
+Hook:
+    'Hook' '{'
+        'hookName' '=' hookName=STRING
+        'callbackFunction' '=' callbackFunction=STRING
+        'addAction()' 
+        'addFilter()' 
+    '}'
+;

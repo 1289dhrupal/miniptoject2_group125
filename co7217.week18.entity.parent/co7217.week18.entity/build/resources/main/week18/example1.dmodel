@@ -1,0 +1,30 @@
+WebScrappingProject { 
+name = "ScrapExample"
+url = "www.example.com"
+
+
+Rule "scraptitles"{
+	extraction TextContent { Title "title products"}
+
+	}
+
+Rule {
+	extraction TextContent { Paragraph "paragraphName"} 
+	}
+
+Rule "ScrapList '{
+	extraction StructureData { List "listExapmle" } 
+	}
+
+Rule {
+	 extraction StructureData { Table "tableExample"}
+	 }
+
+Rule "scrapImages" {
+	extraction MediaFiles { Image "ImageProducts" } 
+	}
+
+Rule {
+	extraction MediaFiles { Video "VideoName" } 
+	}
+}
