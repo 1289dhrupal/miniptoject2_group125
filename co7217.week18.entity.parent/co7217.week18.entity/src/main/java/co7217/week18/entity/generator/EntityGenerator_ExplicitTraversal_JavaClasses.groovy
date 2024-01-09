@@ -32,6 +32,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         // Generate plugin main file
         generatePluginMainFile(model);
 
+        String pluginName = model.getName().toLowerCase().replace(" ", "-");
 		
         // Generate additional files for widgets, shortcodes, and custom post types
         for (Widget widget : model.getWidgets()) {
@@ -85,7 +86,9 @@ function ${getPluginPrefix(model)}_activate() {
 
 register_activation_hook(__FILE__, '${getPluginPrefix(model)}_activate');
 """;
-        writeFile(content, "activate.php");
+		String fileName = "activate.php";
+		writeFile(content, fileName);
+		include(fileName, model)
     }
 
     def static void generateDeactivationFile(Plugin model) {
@@ -96,7 +99,10 @@ function ${getPluginPrefix(model)}_deactivate() {
 
 register_deactivation_hook(__FILE__, '${getPluginPrefix(model)}_deactivate');
 """;
-        writeFile(content, "deactivate.php");
+		String fileName = "deactivate.php";
+		writeFile(content, fileName);
+		include(fileName, model)
+
     }
 
     def static void generateWidgetFile(Widget widget, Plugin model) {
@@ -152,7 +158,9 @@ class ${getPluginPrefix(model)}_${widgetName} extends WP_Widget {
 \$${getPluginPrefix(model)}_${widgetName} = new ${getPluginPrefix(model)}_${widgetName}();
 
 """;
-        writeFile(content, "widget-" + widgetName + ".php");
+		String fileName = "widget-" + widgetName + ".php";		
+        writeFile(content, fileName);
+		include(fileName, model)
     }
 
     def static void generateShortcodeFile(Shortcode shortcode, Plugin model) {
@@ -173,10 +181,10 @@ class ${getPluginPrefix(model)}_${widgetName} extends WP_Widget {
         writeFile(content, "custom-post-" + cptName + ".php");
     }
 
-    def static void writeFile(String content, String fileName) {
+    def static void writeFile(String content, String fileName, boolean append = false) {
         try {
             File file = new File("src/main/resources/week18/generated/" + fileName);
-            FileWriter writer = new FileWriter(file);
+            FileWriter writer = new FileWriter(file, append);
             writer.write(content);
             writer.close();
         } catch (IOException e) {
@@ -186,5 +194,12 @@ class ${getPluginPrefix(model)}_${widgetName} extends WP_Widget {
 	
 	def static String getPluginPrefix(Plugin model) {
 		return model.getPrefix();
+	}
+	
+	def static void include(String fileName, Plugin model) {
+        String pluginName = model.getName().toLowerCase().replace(" ", "-");
+		String content = """require_once ('${fileName}');
+"""
+		writeFile(content, pluginName + ".php", true);
 	}
 }

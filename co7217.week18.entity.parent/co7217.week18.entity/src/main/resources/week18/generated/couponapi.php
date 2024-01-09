@@ -7,3 +7,6 @@
 */
 
 // Plugin code here
+require_once ('widget-examplewidget.php');
+require_once ('activate.php');
+require_once ('deactivate.php');

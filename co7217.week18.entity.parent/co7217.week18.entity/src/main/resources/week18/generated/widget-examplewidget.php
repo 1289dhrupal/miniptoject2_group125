@@ -35,7 +35,8 @@ class capi_examplewidget extends WP_Widget {
 		$instance          = array();
 		
 		$instance['BackgroundColor'] = ( ! empty( $new_instance['BackgroundColor'] ) ) ? strip_tags( $new_instance['BackgroundColor'] ) : '#FFFFFF';
-		$instance['Width'] = ( ! empty( $new_instance['Width'] ) ) ? strip_tags( $new_instance['Width'] ) : '800';;
+		$instance['Width'] = ( ! empty( $new_instance['Width'] ) ) ? strip_tags( $new_instance['Width'] ) : '800';
+
 		return $instance;
 	}
 }
