@@ -25,7 +25,7 @@ Plugin:
 Widget:
     'Widget' '{'
         'widgetName' '=' widgetName=STRING
-        'widgetDescription' '=' widgetDescription=STRING
+        'widgetDescription' '=' widgetDescription=STRING?
         (settings+=Setting)*
     '}'
 ;
@@ -58,7 +58,7 @@ Hook:
     	'hookType' '=' hookType=STRING 
         'hookName' '=' hookName=STRING
         'callback' '=' callback=STRING
-        'priority' '=' priority=INT
-        'acceptedArgs' '=' acceptedArgs=INT
+        'priority' '=' priority=INT?
+        'acceptedArgs' '=' acceptedArgs=INT?
     '}'
 ;

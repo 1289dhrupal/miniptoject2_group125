@@ -14,248 +14,232 @@ import co7217.week18.entity.entityDsl.Setting
 import co7217.week18.entity.entityDsl.Shortcode
 import co7217.week18.entity.entityDsl.Widget
 
-
 class EntityGenerator_ExplicitTraversal_JavaClasses {
 
-	def static void main(String[] args) {
-		// Initialize the injector for the DSL
-		Injector injector = new EntityDslStandaloneSetup().createInjectorAndDoEMFRegistration();
+    def static void main(String[] args) {
+        // Initialize the injector for the DSL
+        Injector injector = new EntityDslStandaloneSetup().createInjectorAndDoEMFRegistration();
 
-		// Obtain a resource set from the injector
-		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
+        // Obtain a resource set from the injector
+        XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 
-	 // Load a resource by URI, in this case from the file system
-		Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin.dmodel"), true);
+        // Load a resource by URI, in this case from the file system
+        Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin.dmodel"), true);
 
-		// Get the root object of the model
-		Plugin model = (Plugin) resource.getContents().get(0);
+        // Get the root object of the model
+        Plugin model = (Plugin) resource.getContents().get(0);
 
-		// Generate plugin main file
-		generatePluginMainFile(model);
+        // Generate plugin main file
+        generatePluginMainFile(model);
 
-		String pluginName = model.getName().toLowerCase().replace(" ", "-");
-		
-		// Generate additional files for widgets, shortcodes, and custom post types
-		for (Widget widget : model.getWidgets()) {
-			generateWidgetFile(widget, model);
-		}
+        String pluginName = model.getName().toLowerCase().replace(" ", "-");
 
-		for (Shortcode shortcode : model.getShortcodes()) {
-			generateShortcodeFile(shortcode, model);
-		}
+        // Generate activation and deactivation files
+        if (model.getActivate().toLowerCase().equals("true")) {
+            generateActivationFile(model);
+        }
 
-		for (CustomPostType cpt : model.getCustomPostTypes()) {
-			generateCustomPostTypeFile(cpt, model);
-		}
+        if (model.getDeactivate().toLowerCase().equals("true")) {
+            generateDeactivationFile(model);
+        }
 
-		// Generate activation and deactivation files
-		if(model.getActivate().toLowerCase().equals("true")) {
-			generateActivationFile(model);
-		}
+        // Generate additional files for widgets, shortcodes, and custom post types
+        for (Widget widget: model.getWidgets()) {
+            generateWidgetFile(widget, model);
+        }
 
-		if(model.getDeactivate().toLowerCase().equals("true")) {
-			generateDeactivationFile(model);
-		}
-		
-		// Add Hooks to the plugin file
-		for (Hook hook : model.getHooks()) {
-			generateHooks(hook, model);
-		}
-	}
+        for (Shortcode shortcode: model.getShortcodes()) {
+            generateShortcodeFile(shortcode, model);
+        }
 
-	def static void generatePluginMainFile(Plugin model) {
-		def pluginName = model.getName();
-		def pluginDescription = model.getDescription();
-		def pluginVersion = model.getVersion();
-		def pluginAuthor = model.getAuthor();
-		
-		def content = """<?php
-/*
-		Plugin Name: $pluginName
-		Description: $pluginDescription
-		Version: $pluginVersion
-		Author: $pluginAuthor
-*/
+        for (CustomPostType cpt: model.getCustomPostTypes()) {
+            generateCustomPostTypeFile(cpt, model);
+        }
 
-// Plugin code here
-""";
+        // Add Hooks to the plugin file
+        for (Hook hook: model.getHooks()) {
+            generateHooks(hook, model);
+        }
+    }
 
-		pluginName = pluginName.toLowerCase().replace(" ", "-");
-		writeFile(content, pluginName + ".php");
-	}
+    def static void generatePluginMainFile(Plugin model) {
+        String pluginName = model.getName();
+        String pluginDescription = model.getDescription();
+        String pluginVersion = model.getVersion();
+        String pluginAuthor = model.getAuthor();
 
-	def static void generateActivationFile(Plugin model) {
-		String content = """<?php
-function ${getPluginPrefix(model)}_activate() {
-	// Activation code here
-}
+        String content = """<?php\n"""
+        content += """/*\n"""
+        content += """        Plugin Name: $pluginName\n"""
+        content += """        Description: $pluginDescription\n"""
+        content += """        Version: $pluginVersion\n"""
+        content += """        Author: $pluginAuthor\n"""
+        content += """*/\n\n"""
+        content += """// Plugin code here\n"""
 
-register_activation_hook(__FILE__, '${getPluginPrefix(model)}_activate');
-""";
-		String fileName = "activate.php";
-		writeFile(content, fileName);
-		include(fileName, model)
-	}
+        pluginName = pluginName.toLowerCase().replace(" ", "-");
+        writeFile(content, pluginName + ".php");
+    }
 
-	def static void generateDeactivationFile(Plugin model) {
-		String content = """<?php
-function ${getPluginPrefix(model)}_deactivate() {
-	// Deactivation code here
-}
+    def static void generateActivationFile(Plugin model) {
+        String content = """<?php\n\n"""
+        content += """function ${getPluginPrefix(model)}_activate() {\n"""
+        content += """    // Activation code here\n"""
+        content += """}\n\n"""
+        content += """register_activation_hook(__FILE__, '${getPluginPrefix(model)}_activate');\n"""
 
-register_deactivation_hook(__FILE__, '${getPluginPrefix(model)}_deactivate');
-""";
-		String fileName = "deactivate.php";
-		writeFile(content, fileName);
-		include(fileName, model)
+        String fileName = "activate.php";
+        writeFile(content, fileName);
+        include(fileName, model)
+    }
 
-	}
+    def static void generateDeactivationFile(Plugin model) {
+        String content = """<?php\n\n"""
+        content += """function ${getPluginPrefix(model)}_deactivate() {\n"""
+        content += """    // Deactivation code here\n"""
+        content += """}\n\n"""
+        content += """register_deactivation_hook(__FILE__, '${getPluginPrefix(model)}_deactivate');\n"""
 
-	def static void generateWidgetFile(Widget widget, Plugin model) {
-		String widgetName = widget.getWidgetName().toLowerCase().replace(" ", "_");
-		String widgetDescription = widget.getWidgetDescription();
-		String updateSettings = ''
-		widget.getSettings().forEach({Setting it ->
-			updateSettings += """
-		\$instance['${it.getSettingName()}'] = ( ! empty( \$new_instance['${it.getSettingName()}'] ) ) ? strip_tags( \$new_instance['${it.getSettingName()}'] ) : '${it.getDefaultValue()}';"""			
-		});
+        String fileName = "deactivate.php";
+        writeFile(content, fileName);
+        include(fileName, model)
 
-		String content = """<?php
-// Widget code for $widgetName here
+    }
 
-class ${getPluginPrefix(model)}_${widgetName}_widget extends WP_Widget {
-	public function __construct() {
-		// actual widget processes
+    def static void generateWidgetFile(Widget widget, Plugin model) {
+        String widgetName = widget.getWidgetName().toLowerCase().replace(" ", "_");
+        String widgetDescription = widget.getWidgetDescription();
+        String updateSettings = ''
+        widget.getSettings().forEach({
+            Setting it ->
+            updateSettings += """\n        \$instance['${it.getSettingName()}'] = ( ! empty( \$new_instance['${it.getSettingName()}'] ) ) ? strip_tags( \$new_instance['${it.getSettingName()}'] ) : '${it.getDefaultValue()}';"""
+        });
 
-		parent::__construct(
-			'${widgetName}', // Base ID
-			'${widget.getWidgetName()}', // Name
-			array( 'description' => __( '${widget.getWidgetDescription()}', '${getPluginPrefix(model)}' ) ) // Args
-		);
+        String content = """<?php\n"""
+        content += """// Widget code for $widgetName here\n\n"""
+        content += """class ${getPluginPrefix(model)}_${widgetName}_widget extends WP_Widget {\n"""
+        content += """    public function __construct() {\n"""
+        content += """        // actual widget processes\n\n"""
+        content += """        parent::__construct(\n"""
+        content += """            '${widgetName}', // Base ID\n"""
+        content += """            '${widget.getWidgetName()}', // Name\n"""
+        content += """            array( 'description' => __( '${widget.getWidgetDescription()}', '${getPluginPrefix(model)}' ) ) // Args\n"""
+        content += """        );\n\n"""
+        content += """        add_action( 'widgets_init',  function() {\n"""
+        content += """            register_widget( '${getPluginPrefix(model)}_${widgetName}_widget' );\n"""
+        content += """        });\n"""
+        content += """    }\n\n"""
+        content += """    public \$args = array(\n"""
+        content += """        'before_title'  => '',\n"""
+        content += """        'after_title'   => '',\n"""
+        content += """        'before_widget' => '',\n"""
+        content += """        'after_widget'  => '',\n"""
+        content += """    );\n\n"""
+        content += """    public function widget( \$args, \$instance ) {\n"""
+        content += """        // outputs the content of the widget\n"""
+        content += """    }\n\n"""
+        content += """    public function form ( \$instance ) {\n"""
+        content += """        // outputs the options form in the admin\n"""
+        content += """    }\n\n"""
+        content += """    public function update ( \$new_instance, \$old_instance ) {\n"""
+        content += """        \$instance          = array();\n"""
+        content += """        ${updateSettings}\n\n"""
+        content += """        return \$instance;\n"""
+        content += """    }\n"""
+        content += """}\n\n"""
+        content += """\$${getPluginPrefix(model)}_${widgetName} = new ${getPluginPrefix(model)}_${widgetName}();\n""";
 
-		add_action( 'widgets_init',  function() {
-			register_widget( '${getPluginPrefix(model)}_${widgetName}_widget' );
-		});
-	}
+        widgetName = widgetName.replace("_", "-");
+        String fileName = "widget-" + widgetName + ".php";
+        writeFile(content, fileName);
+        include(fileName, model)
+    }
 
-	public \$args = array(
-		'before_title'  => '',
-		'after_title'   => '',
-		'before_widget' => '',
-		'after_widget'  => '',
-	);
+    def static void generateShortcodeFile(Shortcode shortcode, Plugin model) {
+        String shortcodeName = shortcode.getShortcodeName().toLowerCase().replace(" ", "_");
+        String extractSettings = ''
+        String defaultSettings = ''
+        shortcode.getSettings().forEach({
+            Setting it ->
+            extractSettings += """\n        '${it.getSettingName()}' => ( ! empty( \$atts['${it.getSettingName()}'] ) ) ? strip_tags( \$atts['${it.getSettingName()}'] ) : '${it.getDefaultValue()}',"""
+            defaultSettings += """ ${it.getSettingName()}=\"${it.getDefaultValue()}\""""
+        });
 
-	public function widget( \$args, \$instance ) {
-		// outputs the content of the widget
-	}
+        String content = """<?php\n"""
+        content += """// Shortcode code for $shortcodeName here\n\n"""
+        content += """// [${getPluginPrefix(model)}_${shortcodeName}${defaultSettings}]\n"""
+        content += """function ${getPluginPrefix(model)}_${shortcodeName}_shortcode ( \$atts = [], \$content = null) {\n\n"""
+        content += """    // extract attributes\n"""
+        content += """    \$a = shortcode_atts( array(${extractSettings}\n"""
+        content += """    ), \$atts );\n\n"""
+        content += """    // always return something\n"""
+        content += """    return '';\n"""
+        content += """}\n\n"""
+        content += """add_shortcode('${getPluginPrefix(model)}_${shortcodeName}', '${getPluginPrefix(model)}_${shortcodeName}_shortcode');\n"""
 
-	public function form ( \$instance ) {
-		// outputs the options form in the admin
-	}
+        shortcodeName = shortcodeName.replace("_", "-");
+        String fileName = "shortcode-" + shortcodeName + ".php";
+        writeFile(content, fileName);
+        include(fileName, model)
 
-	public function update ( \$new_instance, \$old_instance ) {
-		\$instance          = array();
-		${updateSettings}
+    }
 
-		return \$instance;
-	}
-}
+    def static void generateCustomPostTypeFile(CustomPostType cpt, Plugin model) {
+        String cptName = cpt.getPostTypeName().toLowerCase().replace(" ", "-");
 
-\$${getPluginPrefix(model)}_${widgetName} = new ${getPluginPrefix(model)}_${widgetName}();
+        String content = """<?php"""
+        content += """\n// Custom post type code for $cptName here\n""";
+        cptName = cpt.toLowerCase().replace(" ", "-");
 
-""";
-		widgetName = widgetName.replace("_", "-");		
-		String fileName = "widget-" + widgetName + ".php";
-		writeFile(content, fileName);
-		include(fileName, model)
-	}
+        writeFile(content, "custom-post-" + cptName + ".php");
+    }
 
-	def static void generateShortcodeFile(Shortcode shortcode, Plugin model) {
-		String shortcodeName = shortcode.getShortcodeName().toLowerCase().replace(" ", "_");
-		String extractSettings = ''
-		String defaultSettings = ''
-		shortcode.getSettings().forEach({Setting it ->
-			extractSettings += """
-		'${it.getSettingName()}' => ( ! empty( \$atts['${it.getSettingName()}'] ) ) ? strip_tags( \$atts['${it.getSettingName()}'] ) : '${it.getDefaultValue()}',"""
-			defaultSettings += " ${it.getSettingName()}=\"${it.getDefaultValue()}\""
-		});
+    def static void generateHooks(Hook hook, Plugin model) {
+        String hookType = hook.getHookType();
+        String hookName = hook.getHookName();
+        String callback = hook.getCallback().toLowerCase().replace(" ", "_");
+        String priority = hook.getPriority() ? """, ${hook.getPriority()}""" : "";
+        String acceptedArgs = hook.getAcceptedArgs() ? """, ${hook.getAcceptedArgs()}""" : "";
 
-		String content = """<?php
-// Shortcode code for $shortcodeName here
+        if (hook.getAcceptedArgs() && !hook.getPriority()) {
+            priority = """, 10""";
+        }
 
-// [${getPluginPrefix(model)}_${shortcodeName}${defaultSettings}]
-function ${getPluginPrefix(model)}_${shortcodeName}_shortcode ( \$atts = [], \$content = null) {
+        String variables = """\$val0""";
+        for (int i = 1; i < hook.getAcceptedArgs(); i++) {
+            variables += """, \$val${i}"""
+        }
 
-	// extract attributes
-	\$a = shortcode_atts( array(${extractSettings}
-	), \$atts );
+        String content = """\n"""
+        content += """function ${getPluginPrefix(model)}_${callback} ( ${variables} ) {\n"""
+        content += """    // Logic for ${callback} goes here\n"""
+        content += """}\n"""
+        content += """${hookType}('${hookName}', '${getPluginPrefix(model)}_${callback}'${priority}${acceptedArgs});\n"""
 
-    // always return
-    return '';
-}
+        String pluginName = model.getName().toLowerCase().replace(" ", "-");
+        writeFile(content, pluginName + ".php", true);
+    }
 
-add_shortcode('${getPluginPrefix(model)}_${shortcodeName}', '${getPluginPrefix(model)}_${shortcodeName}_shortcode');
-""";
-		shortcodeName = shortcodeName.replace("_", "-");		
-		String fileName = "shortcode-" + shortcodeName + ".php";
-		writeFile(content, fileName);
-		include(fileName, model)
+    def static void writeFile(String content, String fileName, boolean append = false) {
+        try {
+            File file = new File("src/main/resources/week18/generated/" + fileName);
+            FileWriter writer = new FileWriter(file, append);
+            writer.write(content);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	}
+    def static String getPluginPrefix(Plugin model) {
+        return model.getPrefix();
+    }
 
-	def static void generateCustomPostTypeFile(CustomPostType cpt, Plugin model) {
-		String cptName = cpt.getPostTypeName().toLowerCase().replace(" ", "-");
-		String content = """<?php
-// Custom post type code for $cptName here
-""";
-		cptName = cpt.toLowerCase().replace(" ", "-");
-		writeFile(content, "custom-post-" + cptName + ".php");
-	}
+    def static void include(String fileName, Plugin model) {
+        String pluginName = model.getName().toLowerCase().replace(" ", "-");
 
-	def static void generateHooks(Hook hook, Plugin model) {
-		String hookType = hook.getHookType();
-		String hookName = hook.getHookName();
-		String callback = hook.getCallback().toLowerCase().replace(" ", "_");
-		String priority = hook.getPriority() ? """, ${hook.getPriority()}""" : "";
-		String acceptedArgs = hook.getAcceptedArgs() ? """, ${hook.getAcceptedArgs()}""" : "";
+        String content = """require_once ('${fileName}');\n"""
 
-		if (hook.getAcceptedArgs() && !hook.getPriority()) {
-			priority = """, 10""";
-		}
-
-		String variables = """\$val0""";
-		for (int i=1; i<hook.getAcceptedArgs(); i++) {
-			variables += """, \$val${i}"""
-		}
-		String content = """
-function ${getPluginPrefix(model)}_${callback} ( ${variables} ) {
-	// Logic for ${callback} goes here
-}
-${hookType}('${hookName}', '${getPluginPrefix(model)}_${callback}'${priority}${acceptedArgs});
-"""
-		String pluginName = model.getName().toLowerCase().replace(" ", "-");
-		writeFile(content, pluginName + ".php", true);
-	}
-
-	def static void writeFile(String content, String fileName, boolean append = false) {
-		try {
-			File file = new File("src/main/resources/week18/generated/" + fileName);
-			FileWriter writer = new FileWriter(file, append);
-			writer.write(content);
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	def static String getPluginPrefix(Plugin model) {
-		return model.getPrefix();
-	}
-	
-	def static void include(String fileName, Plugin model) {
-		String pluginName = model.getName().toLowerCase().replace(" ", "-");
-		String content = """require_once ('${fileName}');
-"""
-		writeFile(content, pluginName + ".php", true);
-	}
+        writeFile(content, pluginName + ".php", true);
+    }
 }
