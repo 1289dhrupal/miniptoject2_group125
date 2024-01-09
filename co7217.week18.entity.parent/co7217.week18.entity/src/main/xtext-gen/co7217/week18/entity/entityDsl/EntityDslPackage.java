@@ -185,13 +185,22 @@ public interface EntityDslPackage extends EPackage
   int PLUGIN__SETTINGS = 12;
 
   /**
+   * The feature id for the '<em><b>Hooks</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUGIN__HOOKS = 13;
+
+  /**
    * The number of structural features of the '<em>Plugin</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PLUGIN_FEATURE_COUNT = 13;
+  int PLUGIN_FEATURE_COUNT = 14;
 
   /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.WidgetImpl <em>Widget</em>}' class.
@@ -240,6 +249,89 @@ public interface EntityDslPackage extends EPackage
   int WIDGET_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.ShortcodeImpl <em>Shortcode</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.week18.entity.entityDsl.impl.ShortcodeImpl
+   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getShortcode()
+   * @generated
+   */
+  int SHORTCODE = 2;
+
+  /**
+   * The feature id for the '<em><b>Shortcode Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SHORTCODE__SHORTCODE_NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Settings</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SHORTCODE__SETTINGS = 1;
+
+  /**
+   * The number of structural features of the '<em>Shortcode</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SHORTCODE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl <em>Custom Post Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl
+   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getCustomPostType()
+   * @generated
+   */
+  int CUSTOM_POST_TYPE = 3;
+
+  /**
+   * The feature id for the '<em><b>Post Type Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_POST_TYPE__POST_TYPE_NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Supports</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_POST_TYPE__SUPPORTS = 1;
+
+  /**
+   * The feature id for the '<em><b>Taxonomies</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_POST_TYPE__TAXONOMIES = 2;
+
+  /**
+   * The number of structural features of the '<em>Custom Post Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_POST_TYPE_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.SettingImpl <em>Setting</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -247,7 +339,7 @@ public interface EntityDslPackage extends EPackage
    * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getSetting()
    * @generated
    */
-  int SETTING = 2;
+  int SETTING = 4;
 
   /**
    * The feature id for the '<em><b>Setting Name</b></em>' attribute.
@@ -286,98 +378,6 @@ public interface EntityDslPackage extends EPackage
   int SETTING_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.ShortcodeImpl <em>Shortcode</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see co7217.week18.entity.entityDsl.impl.ShortcodeImpl
-   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getShortcode()
-   * @generated
-   */
-  int SHORTCODE = 3;
-
-  /**
-   * The feature id for the '<em><b>Shortcode Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SHORTCODE__SHORTCODE_NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Hooks</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SHORTCODE__HOOKS = 1;
-
-  /**
-   * The number of structural features of the '<em>Shortcode</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SHORTCODE_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl <em>Custom Post Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl
-   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getCustomPostType()
-   * @generated
-   */
-  int CUSTOM_POST_TYPE = 4;
-
-  /**
-   * The feature id for the '<em><b>Post Type Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_POST_TYPE__POST_TYPE_NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Supports</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_POST_TYPE__SUPPORTS = 1;
-
-  /**
-   * The feature id for the '<em><b>Taxonomies</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_POST_TYPE__TAXONOMIES = 2;
-
-  /**
-   * The feature id for the '<em><b>Hooks</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_POST_TYPE__HOOKS = 3;
-
-  /**
-   * The number of structural features of the '<em>Custom Post Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_POST_TYPE_FEATURE_COUNT = 4;
-
-  /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.HookImpl <em>Hook</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -388,22 +388,49 @@ public interface EntityDslPackage extends EPackage
   int HOOK = 5;
 
   /**
+   * The feature id for the '<em><b>Hook Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOOK__HOOK_TYPE = 0;
+
+  /**
    * The feature id for the '<em><b>Hook Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int HOOK__HOOK_NAME = 0;
+  int HOOK__HOOK_NAME = 1;
 
   /**
-   * The feature id for the '<em><b>Callback Function</b></em>' attribute.
+   * The feature id for the '<em><b>Callback</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int HOOK__CALLBACK_FUNCTION = 1;
+  int HOOK__CALLBACK = 2;
+
+  /**
+   * The feature id for the '<em><b>Priority</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOOK__PRIORITY = 3;
+
+  /**
+   * The feature id for the '<em><b>Accepted Args</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int HOOK__ACCEPTED_ARGS = 4;
 
   /**
    * The number of structural features of the '<em>Hook</em>' class.
@@ -412,7 +439,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int HOOK_FEATURE_COUNT = 2;
+  int HOOK_FEATURE_COUNT = 5;
 
 
   /**
@@ -569,6 +596,17 @@ public interface EntityDslPackage extends EPackage
   EReference getPlugin_Settings();
 
   /**
+   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.Plugin#getHooks <em>Hooks</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Hooks</em>'.
+   * @see co7217.week18.entity.entityDsl.Plugin#getHooks()
+   * @see #getPlugin()
+   * @generated
+   */
+  EReference getPlugin_Hooks();
+
+  /**
    * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Widget <em>Widget</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -612,49 +650,6 @@ public interface EntityDslPackage extends EPackage
   EReference getWidget_Settings();
 
   /**
-   * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Setting <em>Setting</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Setting</em>'.
-   * @see co7217.week18.entity.entityDsl.Setting
-   * @generated
-   */
-  EClass getSetting();
-
-  /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Setting#getSettingName <em>Setting Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Setting Name</em>'.
-   * @see co7217.week18.entity.entityDsl.Setting#getSettingName()
-   * @see #getSetting()
-   * @generated
-   */
-  EAttribute getSetting_SettingName();
-
-  /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Setting#getSettingType <em>Setting Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Setting Type</em>'.
-   * @see co7217.week18.entity.entityDsl.Setting#getSettingType()
-   * @see #getSetting()
-   * @generated
-   */
-  EAttribute getSetting_SettingType();
-
-  /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Setting#getDefaultValue <em>Default Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Default Value</em>'.
-   * @see co7217.week18.entity.entityDsl.Setting#getDefaultValue()
-   * @see #getSetting()
-   * @generated
-   */
-  EAttribute getSetting_DefaultValue();
-
-  /**
    * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Shortcode <em>Shortcode</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -676,15 +671,15 @@ public interface EntityDslPackage extends EPackage
   EAttribute getShortcode_ShortcodeName();
 
   /**
-   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.Shortcode#getHooks <em>Hooks</em>}'.
+   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.Shortcode#getSettings <em>Settings</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Hooks</em>'.
-   * @see co7217.week18.entity.entityDsl.Shortcode#getHooks()
+   * @return the meta object for the containment reference list '<em>Settings</em>'.
+   * @see co7217.week18.entity.entityDsl.Shortcode#getSettings()
    * @see #getShortcode()
    * @generated
    */
-  EReference getShortcode_Hooks();
+  EReference getShortcode_Settings();
 
   /**
    * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.CustomPostType <em>Custom Post Type</em>}'.
@@ -730,15 +725,47 @@ public interface EntityDslPackage extends EPackage
   EAttribute getCustomPostType_Taxonomies();
 
   /**
-   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.CustomPostType#getHooks <em>Hooks</em>}'.
+   * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Setting <em>Setting</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Hooks</em>'.
-   * @see co7217.week18.entity.entityDsl.CustomPostType#getHooks()
-   * @see #getCustomPostType()
+   * @return the meta object for class '<em>Setting</em>'.
+   * @see co7217.week18.entity.entityDsl.Setting
    * @generated
    */
-  EReference getCustomPostType_Hooks();
+  EClass getSetting();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Setting#getSettingName <em>Setting Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Setting Name</em>'.
+   * @see co7217.week18.entity.entityDsl.Setting#getSettingName()
+   * @see #getSetting()
+   * @generated
+   */
+  EAttribute getSetting_SettingName();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Setting#getSettingType <em>Setting Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Setting Type</em>'.
+   * @see co7217.week18.entity.entityDsl.Setting#getSettingType()
+   * @see #getSetting()
+   * @generated
+   */
+  EAttribute getSetting_SettingType();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Setting#getDefaultValue <em>Default Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Default Value</em>'.
+   * @see co7217.week18.entity.entityDsl.Setting#getDefaultValue()
+   * @see #getSetting()
+   * @generated
+   */
+  EAttribute getSetting_DefaultValue();
 
   /**
    * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Hook <em>Hook</em>}'.
@@ -749,6 +776,17 @@ public interface EntityDslPackage extends EPackage
    * @generated
    */
   EClass getHook();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Hook#getHookType <em>Hook Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Hook Type</em>'.
+   * @see co7217.week18.entity.entityDsl.Hook#getHookType()
+   * @see #getHook()
+   * @generated
+   */
+  EAttribute getHook_HookType();
 
   /**
    * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Hook#getHookName <em>Hook Name</em>}'.
@@ -762,15 +800,37 @@ public interface EntityDslPackage extends EPackage
   EAttribute getHook_HookName();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Hook#getCallbackFunction <em>Callback Function</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Hook#getCallback <em>Callback</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Callback Function</em>'.
-   * @see co7217.week18.entity.entityDsl.Hook#getCallbackFunction()
+   * @return the meta object for the attribute '<em>Callback</em>'.
+   * @see co7217.week18.entity.entityDsl.Hook#getCallback()
    * @see #getHook()
    * @generated
    */
-  EAttribute getHook_CallbackFunction();
+  EAttribute getHook_Callback();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Hook#getPriority <em>Priority</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Priority</em>'.
+   * @see co7217.week18.entity.entityDsl.Hook#getPriority()
+   * @see #getHook()
+   * @generated
+   */
+  EAttribute getHook_Priority();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Hook#getAcceptedArgs <em>Accepted Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Accepted Args</em>'.
+   * @see co7217.week18.entity.entityDsl.Hook#getAcceptedArgs()
+   * @see #getHook()
+   * @generated
+   */
+  EAttribute getHook_AcceptedArgs();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -910,6 +970,14 @@ public interface EntityDslPackage extends EPackage
     EReference PLUGIN__SETTINGS = eINSTANCE.getPlugin_Settings();
 
     /**
+     * The meta object literal for the '<em><b>Hooks</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PLUGIN__HOOKS = eINSTANCE.getPlugin_Hooks();
+
+    /**
      * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.WidgetImpl <em>Widget</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -944,40 +1012,6 @@ public interface EntityDslPackage extends EPackage
     EReference WIDGET__SETTINGS = eINSTANCE.getWidget_Settings();
 
     /**
-     * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.SettingImpl <em>Setting</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see co7217.week18.entity.entityDsl.impl.SettingImpl
-     * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getSetting()
-     * @generated
-     */
-    EClass SETTING = eINSTANCE.getSetting();
-
-    /**
-     * The meta object literal for the '<em><b>Setting Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SETTING__SETTING_NAME = eINSTANCE.getSetting_SettingName();
-
-    /**
-     * The meta object literal for the '<em><b>Setting Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SETTING__SETTING_TYPE = eINSTANCE.getSetting_SettingType();
-
-    /**
-     * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SETTING__DEFAULT_VALUE = eINSTANCE.getSetting_DefaultValue();
-
-    /**
      * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.ShortcodeImpl <em>Shortcode</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -996,12 +1030,12 @@ public interface EntityDslPackage extends EPackage
     EAttribute SHORTCODE__SHORTCODE_NAME = eINSTANCE.getShortcode_ShortcodeName();
 
     /**
-     * The meta object literal for the '<em><b>Hooks</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Settings</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SHORTCODE__HOOKS = eINSTANCE.getShortcode_Hooks();
+    EReference SHORTCODE__SETTINGS = eINSTANCE.getShortcode_Settings();
 
     /**
      * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl <em>Custom Post Type</em>}' class.
@@ -1038,12 +1072,38 @@ public interface EntityDslPackage extends EPackage
     EAttribute CUSTOM_POST_TYPE__TAXONOMIES = eINSTANCE.getCustomPostType_Taxonomies();
 
     /**
-     * The meta object literal for the '<em><b>Hooks</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.SettingImpl <em>Setting</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.week18.entity.entityDsl.impl.SettingImpl
+     * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getSetting()
+     * @generated
+     */
+    EClass SETTING = eINSTANCE.getSetting();
+
+    /**
+     * The meta object literal for the '<em><b>Setting Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CUSTOM_POST_TYPE__HOOKS = eINSTANCE.getCustomPostType_Hooks();
+    EAttribute SETTING__SETTING_NAME = eINSTANCE.getSetting_SettingName();
+
+    /**
+     * The meta object literal for the '<em><b>Setting Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SETTING__SETTING_TYPE = eINSTANCE.getSetting_SettingType();
+
+    /**
+     * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SETTING__DEFAULT_VALUE = eINSTANCE.getSetting_DefaultValue();
 
     /**
      * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.HookImpl <em>Hook</em>}' class.
@@ -1056,6 +1116,14 @@ public interface EntityDslPackage extends EPackage
     EClass HOOK = eINSTANCE.getHook();
 
     /**
+     * The meta object literal for the '<em><b>Hook Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HOOK__HOOK_TYPE = eINSTANCE.getHook_HookType();
+
+    /**
      * The meta object literal for the '<em><b>Hook Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1064,12 +1132,28 @@ public interface EntityDslPackage extends EPackage
     EAttribute HOOK__HOOK_NAME = eINSTANCE.getHook_HookName();
 
     /**
-     * The meta object literal for the '<em><b>Callback Function</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Callback</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute HOOK__CALLBACK_FUNCTION = eINSTANCE.getHook_CallbackFunction();
+    EAttribute HOOK__CALLBACK = eINSTANCE.getHook_Callback();
+
+    /**
+     * The meta object literal for the '<em><b>Priority</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HOOK__PRIORITY = eINSTANCE.getHook_Priority();
+
+    /**
+     * The meta object literal for the '<em><b>Accepted Args</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute HOOK__ACCEPTED_ARGS = eINSTANCE.getHook_AcceptedArgs();
 
   }
 

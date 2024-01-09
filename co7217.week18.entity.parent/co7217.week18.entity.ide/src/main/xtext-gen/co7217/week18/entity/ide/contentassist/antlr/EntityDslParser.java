@@ -33,9 +33,9 @@ public class EntityDslParser extends AbstractContentAssistParser {
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, EntityDslGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getPluginAccess().getGroup(), "rule__Plugin__Group__0");
 			builder.put(grammarAccess.getWidgetAccess().getGroup(), "rule__Widget__Group__0");
-			builder.put(grammarAccess.getSettingAccess().getGroup(), "rule__Setting__Group__0");
 			builder.put(grammarAccess.getShortcodeAccess().getGroup(), "rule__Shortcode__Group__0");
 			builder.put(grammarAccess.getCustomPostTypeAccess().getGroup(), "rule__CustomPostType__Group__0");
+			builder.put(grammarAccess.getSettingAccess().getGroup(), "rule__Setting__Group__0");
 			builder.put(grammarAccess.getHookAccess().getGroup(), "rule__Hook__Group__0");
 			builder.put(grammarAccess.getPluginAccess().getNameAssignment_4(), "rule__Plugin__NameAssignment_4");
 			builder.put(grammarAccess.getPluginAccess().getVersionAssignment_7(), "rule__Plugin__VersionAssignment_7");
@@ -50,20 +50,23 @@ public class EntityDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPluginAccess().getShortcodesAssignment_30(), "rule__Plugin__ShortcodesAssignment_30");
 			builder.put(grammarAccess.getPluginAccess().getCustomPostTypesAssignment_31(), "rule__Plugin__CustomPostTypesAssignment_31");
 			builder.put(grammarAccess.getPluginAccess().getSettingsAssignment_32(), "rule__Plugin__SettingsAssignment_32");
+			builder.put(grammarAccess.getPluginAccess().getHooksAssignment_33(), "rule__Plugin__HooksAssignment_33");
 			builder.put(grammarAccess.getWidgetAccess().getWidgetNameAssignment_4(), "rule__Widget__WidgetNameAssignment_4");
 			builder.put(grammarAccess.getWidgetAccess().getWidgetDescriptionAssignment_7(), "rule__Widget__WidgetDescriptionAssignment_7");
 			builder.put(grammarAccess.getWidgetAccess().getSettingsAssignment_8(), "rule__Widget__SettingsAssignment_8");
-			builder.put(grammarAccess.getSettingAccess().getSettingNameAssignment_4(), "rule__Setting__SettingNameAssignment_4");
-			builder.put(grammarAccess.getSettingAccess().getSettingTypeAssignment_7(), "rule__Setting__SettingTypeAssignment_7");
-			builder.put(grammarAccess.getSettingAccess().getDefaultValueAssignment_10(), "rule__Setting__DefaultValueAssignment_10");
 			builder.put(grammarAccess.getShortcodeAccess().getShortcodeNameAssignment_4(), "rule__Shortcode__ShortcodeNameAssignment_4");
-			builder.put(grammarAccess.getShortcodeAccess().getHooksAssignment_7(), "rule__Shortcode__HooksAssignment_7");
+			builder.put(grammarAccess.getShortcodeAccess().getSettingsAssignment_5(), "rule__Shortcode__SettingsAssignment_5");
 			builder.put(grammarAccess.getCustomPostTypeAccess().getPostTypeNameAssignment_4(), "rule__CustomPostType__PostTypeNameAssignment_4");
 			builder.put(grammarAccess.getCustomPostTypeAccess().getSupportsAssignment_7(), "rule__CustomPostType__SupportsAssignment_7");
 			builder.put(grammarAccess.getCustomPostTypeAccess().getTaxonomiesAssignment_10(), "rule__CustomPostType__TaxonomiesAssignment_10");
-			builder.put(grammarAccess.getCustomPostTypeAccess().getHooksAssignment_13(), "rule__CustomPostType__HooksAssignment_13");
-			builder.put(grammarAccess.getHookAccess().getHookNameAssignment_4(), "rule__Hook__HookNameAssignment_4");
-			builder.put(grammarAccess.getHookAccess().getCallbackFunctionAssignment_7(), "rule__Hook__CallbackFunctionAssignment_7");
+			builder.put(grammarAccess.getSettingAccess().getSettingNameAssignment_4(), "rule__Setting__SettingNameAssignment_4");
+			builder.put(grammarAccess.getSettingAccess().getSettingTypeAssignment_7(), "rule__Setting__SettingTypeAssignment_7");
+			builder.put(grammarAccess.getSettingAccess().getDefaultValueAssignment_10(), "rule__Setting__DefaultValueAssignment_10");
+			builder.put(grammarAccess.getHookAccess().getHookTypeAssignment_4(), "rule__Hook__HookTypeAssignment_4");
+			builder.put(grammarAccess.getHookAccess().getHookNameAssignment_7(), "rule__Hook__HookNameAssignment_7");
+			builder.put(grammarAccess.getHookAccess().getCallbackAssignment_10(), "rule__Hook__CallbackAssignment_10");
+			builder.put(grammarAccess.getHookAccess().getPriorityAssignment_13(), "rule__Hook__PriorityAssignment_13");
+			builder.put(grammarAccess.getHookAccess().getAcceptedArgsAssignment_16(), "rule__Hook__AcceptedArgsAssignment_16");
 		}
 	}
 	

@@ -18,6 +18,7 @@ Plugin:
         (shortcodes+=Shortcode)*
         (customPostTypes+=CustomPostType)*
         (settings+=Setting)*
+        (hooks+=Hook)*
     '}'
 ;
 
@@ -54,9 +55,10 @@ Setting:
 
 Hook:
     'Hook' '{'
+    	'hookType' '=' hookType=STRING 
         'hookName' '=' hookName=STRING
-        'callbackFunction' '=' callbackFunction=STRING
-        'addAction()' 
-        'addFilter()' 
+        'callback' '=' callback=STRING
+        'priority' '=' priority=INT
+        'acceptedArgs' '=' acceptedArgs=INT
     '}'
 ;

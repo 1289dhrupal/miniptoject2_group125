@@ -1,18 +1,18 @@
 <?php
-// Widget code for examplewidget here
+// Widget code for example_1 here
 
-class capi_examplewidget extends WP_Widget {
+class capi_example_1_widget extends WP_Widget {
 	public function __construct() {
 		// actual widget processes
 
 		parent::__construct(
-			'examplewidget', // Base ID
-			'ExampleWidget', // Name
-			array( 'description' => __( 'default settings for widget', 'capi' ) ) // Args
+			'example_1', // Base ID
+			'Example 1', // Name
+			array( 'description' => __( 'This is a sample widget', 'capi' ) ) // Args
 		);
 
 		add_action( 'widgets_init',  function() {
-			register_widget( 'capi_examplewidget' );
+			register_widget( 'capi_example_1_widget' );
 		});
 	}
 
@@ -41,5 +41,5 @@ class capi_examplewidget extends WP_Widget {
 	}
 }
 
-$capi_examplewidget = new capi_examplewidget();
+$capi_example_1 = new capi_example_1();
 

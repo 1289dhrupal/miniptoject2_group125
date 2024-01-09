@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getShortcodes <em>Shortcodes</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getCustomPostTypes <em>Custom Post Types</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getSettings <em>Settings</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getHooks <em>Hooks</em>}</li>
  * </ul>
  *
  * @see co7217.week18.entity.entityDsl.EntityDslPackage#getPlugin()
@@ -282,5 +283,17 @@ public interface Plugin extends EObject
    * @generated
    */
   EList<Setting> getSettings();
+
+  /**
+   * Returns the value of the '<em><b>Hooks</b></em>' containment reference list.
+   * The list contents are of type {@link co7217.week18.entity.entityDsl.Hook}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Hooks</em>' containment reference list.
+   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getPlugin_Hooks()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Hook> getHooks();
 
 } // Plugin

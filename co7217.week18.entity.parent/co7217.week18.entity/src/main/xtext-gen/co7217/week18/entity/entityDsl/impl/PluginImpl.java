@@ -5,6 +5,7 @@ package co7217.week18.entity.entityDsl.impl;
 
 import co7217.week18.entity.entityDsl.CustomPostType;
 import co7217.week18.entity.entityDsl.EntityDslPackage;
+import co7217.week18.entity.entityDsl.Hook;
 import co7217.week18.entity.entityDsl.Plugin;
 import co7217.week18.entity.entityDsl.Setting;
 import co7217.week18.entity.entityDsl.Shortcode;
@@ -47,6 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getShortcodes <em>Shortcodes</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getCustomPostTypes <em>Custom Post Types</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getSettings <em>Settings</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getHooks <em>Hooks</em>}</li>
  * </ul>
  *
  * @generated
@@ -272,6 +274,16 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
    * @ordered
    */
   protected EList<Setting> settings;
+
+  /**
+   * The cached value of the '{@link #getHooks() <em>Hooks</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHooks()
+   * @generated
+   * @ordered
+   */
+  protected EList<Hook> hooks;
 
   /**
    * <!-- begin-user-doc -->
@@ -585,6 +597,21 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
    * @generated
    */
   @Override
+  public EList<Hook> getHooks()
+  {
+    if (hooks == null)
+    {
+      hooks = new EObjectContainmentEList<Hook>(Hook.class, this, EntityDslPackage.PLUGIN__HOOKS);
+    }
+    return hooks;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -597,6 +624,8 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
         return ((InternalEList<?>)getCustomPostTypes()).basicRemove(otherEnd, msgs);
       case EntityDslPackage.PLUGIN__SETTINGS:
         return ((InternalEList<?>)getSettings()).basicRemove(otherEnd, msgs);
+      case EntityDslPackage.PLUGIN__HOOKS:
+        return ((InternalEList<?>)getHooks()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -637,6 +666,8 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
         return getCustomPostTypes();
       case EntityDslPackage.PLUGIN__SETTINGS:
         return getSettings();
+      case EntityDslPackage.PLUGIN__HOOKS:
+        return getHooks();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -695,6 +726,10 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
         getSettings().clear();
         getSettings().addAll((Collection<? extends Setting>)newValue);
         return;
+      case EntityDslPackage.PLUGIN__HOOKS:
+        getHooks().clear();
+        getHooks().addAll((Collection<? extends Hook>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -748,6 +783,9 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
       case EntityDslPackage.PLUGIN__SETTINGS:
         getSettings().clear();
         return;
+      case EntityDslPackage.PLUGIN__HOOKS:
+        getHooks().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -788,6 +826,8 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
         return customPostTypes != null && !customPostTypes.isEmpty();
       case EntityDslPackage.PLUGIN__SETTINGS:
         return settings != null && !settings.isEmpty();
+      case EntityDslPackage.PLUGIN__HOOKS:
+        return hooks != null && !hooks.isEmpty();
     }
     return super.eIsSet(featureID);
   }

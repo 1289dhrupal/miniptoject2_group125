@@ -87,13 +87,6 @@ public class EntityDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case EntityDslPackage.SETTING:
-      {
-        Setting setting = (Setting)theEObject;
-        T result = caseSetting(setting);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case EntityDslPackage.SHORTCODE:
       {
         Shortcode shortcode = (Shortcode)theEObject;
@@ -105,6 +98,13 @@ public class EntityDslSwitch<T> extends Switch<T>
       {
         CustomPostType customPostType = (CustomPostType)theEObject;
         T result = caseCustomPostType(customPostType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EntityDslPackage.SETTING:
+      {
+        Setting setting = (Setting)theEObject;
+        T result = caseSetting(setting);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -152,22 +152,6 @@ public class EntityDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Setting</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Setting</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSetting(Setting object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Shortcode</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -195,6 +179,22 @@ public class EntityDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCustomPostType(CustomPostType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Setting</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Setting</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSetting(Setting object)
   {
     return null;
   }

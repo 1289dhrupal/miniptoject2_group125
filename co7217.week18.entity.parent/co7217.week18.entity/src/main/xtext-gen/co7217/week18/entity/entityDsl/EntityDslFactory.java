@@ -42,15 +42,6 @@ public interface EntityDslFactory extends EFactory
   Widget createWidget();
 
   /**
-   * Returns a new object of class '<em>Setting</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Setting</em>'.
-   * @generated
-   */
-  Setting createSetting();
-
-  /**
    * Returns a new object of class '<em>Shortcode</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,6 +58,15 @@ public interface EntityDslFactory extends EFactory
    * @generated
    */
   CustomPostType createCustomPostType();
+
+  /**
+   * Returns a new object of class '<em>Setting</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Setting</em>'.
+   * @generated
+   */
+  Setting createSetting();
 
   /**
    * Returns a new object of class '<em>Hook</em>'.

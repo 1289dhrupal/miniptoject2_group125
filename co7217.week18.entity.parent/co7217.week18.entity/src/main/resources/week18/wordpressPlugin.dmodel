@@ -9,8 +9,8 @@ Plugin {
     activate = "true"
     deactivate = "true"
     Widget {
-        widgetName = "ExampleWidget"
-        widgetDescription = "default settings for widget"
+        widgetName = "Example 1"
+        widgetDescription = "This is a sample widget"
 
         Setting {
             settingName = "BackgroundColor"
@@ -24,6 +24,22 @@ Plugin {
             defaultValue = "800"
         }
     }
-
     
+    Shortcode {
+        shortcodeName = "Example 2"
+
+        Setting {
+            settingName = "Width"
+            settingType = "Integer"
+            defaultValue = "800"
+        }
+    }
+
+    Hook {
+    	hookType = "add_action"
+        hookName = "init"
+        callback = "fetch_settings"
+	    priority = 15
+	    acceptedArgs = 2
+    }
 }

@@ -20,30 +20,33 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/shortcodes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/customPostTypes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/settings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/hooks"/>
     </genClasses>
     <genClasses ecoreClass="EntityDsl.ecore#//Widget">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Widget/widgetName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Widget/widgetDescription"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Widget/settings"/>
     </genClasses>
-    <genClasses ecoreClass="EntityDsl.ecore#//Setting">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Setting/settingName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Setting/settingType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Setting/defaultValue"/>
-    </genClasses>
     <genClasses ecoreClass="EntityDsl.ecore#//Shortcode">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Shortcode/shortcodeName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Shortcode/hooks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Shortcode/settings"/>
     </genClasses>
     <genClasses ecoreClass="EntityDsl.ecore#//CustomPostType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//CustomPostType/postTypeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//CustomPostType/supports"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//CustomPostType/taxonomies"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//CustomPostType/hooks"/>
+    </genClasses>
+    <genClasses ecoreClass="EntityDsl.ecore#//Setting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Setting/settingName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Setting/settingType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Setting/defaultValue"/>
     </genClasses>
     <genClasses ecoreClass="EntityDsl.ecore#//Hook">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Hook/hookType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Hook/hookName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Hook/callbackFunction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Hook/callback"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Hook/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Hook/acceptedArgs"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

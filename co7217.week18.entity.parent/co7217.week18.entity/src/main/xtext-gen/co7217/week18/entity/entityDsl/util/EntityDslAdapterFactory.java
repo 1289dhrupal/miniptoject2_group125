@@ -86,11 +86,6 @@ public class EntityDslAdapterFactory extends AdapterFactoryImpl
         return createWidgetAdapter();
       }
       @Override
-      public Adapter caseSetting(Setting object)
-      {
-        return createSettingAdapter();
-      }
-      @Override
       public Adapter caseShortcode(Shortcode object)
       {
         return createShortcodeAdapter();
@@ -99,6 +94,11 @@ public class EntityDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCustomPostType(CustomPostType object)
       {
         return createCustomPostTypeAdapter();
+      }
+      @Override
+      public Adapter caseSetting(Setting object)
+      {
+        return createSettingAdapter();
       }
       @Override
       public Adapter caseHook(Hook object)
@@ -158,21 +158,6 @@ public class EntityDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link co7217.week18.entity.entityDsl.Setting <em>Setting</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see co7217.week18.entity.entityDsl.Setting
-   * @generated
-   */
-  public Adapter createSettingAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link co7217.week18.entity.entityDsl.Shortcode <em>Shortcode</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -198,6 +183,21 @@ public class EntityDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCustomPostTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.week18.entity.entityDsl.Setting <em>Setting</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.week18.entity.entityDsl.Setting
+   * @generated
+   */
+  public Adapter createSettingAdapter()
   {
     return null;
   }

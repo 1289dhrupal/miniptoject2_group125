@@ -67,9 +67,9 @@ public class EntityDslFactoryImpl extends EFactoryImpl implements EntityDslFacto
     {
       case EntityDslPackage.PLUGIN: return createPlugin();
       case EntityDslPackage.WIDGET: return createWidget();
-      case EntityDslPackage.SETTING: return createSetting();
       case EntityDslPackage.SHORTCODE: return createShortcode();
       case EntityDslPackage.CUSTOM_POST_TYPE: return createCustomPostType();
+      case EntityDslPackage.SETTING: return createSetting();
       case EntityDslPackage.HOOK: return createHook();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -106,18 +106,6 @@ public class EntityDslFactoryImpl extends EFactoryImpl implements EntityDslFacto
    * @generated
    */
   @Override
-  public Setting createSetting()
-  {
-    SettingImpl setting = new SettingImpl();
-    return setting;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Shortcode createShortcode()
   {
     ShortcodeImpl shortcode = new ShortcodeImpl();
@@ -134,6 +122,18 @@ public class EntityDslFactoryImpl extends EFactoryImpl implements EntityDslFacto
   {
     CustomPostTypeImpl customPostType = new CustomPostTypeImpl();
     return customPostType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Setting createSetting()
+  {
+    SettingImpl setting = new SettingImpl();
+    return setting;
   }
 
   /**

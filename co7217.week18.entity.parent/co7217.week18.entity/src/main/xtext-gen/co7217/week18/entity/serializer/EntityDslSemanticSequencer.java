@@ -66,7 +66,7 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     CustomPostType returns CustomPostType
 	 *
 	 * Constraint:
-	 *     (postTypeName=STRING supports=STRING? taxonomies=STRING? hooks+=Hook*)
+	 *     (postTypeName=STRING supports=STRING? taxonomies=STRING?)
 	 * </pre>
 	 */
 	protected void sequence_CustomPostType(ISerializationContext context, CustomPostType semanticObject) {
@@ -80,19 +80,28 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     Hook returns Hook
 	 *
 	 * Constraint:
-	 *     (hookName=STRING callbackFunction=STRING)
+	 *     (hookType=STRING hookName=STRING callback=STRING priority=INT acceptedArgs=INT)
 	 * </pre>
 	 */
 	protected void sequence_Hook(ISerializationContext context, Hook semanticObject) {
 		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__HOOK_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__HOOK_TYPE));
 			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__HOOK_NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__HOOK_NAME));
-			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__CALLBACK_FUNCTION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__CALLBACK_FUNCTION));
+			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__CALLBACK) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__CALLBACK));
+			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__PRIORITY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__PRIORITY));
+			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__ACCEPTED_ARGS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__ACCEPTED_ARGS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getHookAccess().getHookNameSTRINGTerminalRuleCall_4_0(), semanticObject.getHookName());
-		feeder.accept(grammarAccess.getHookAccess().getCallbackFunctionSTRINGTerminalRuleCall_7_0(), semanticObject.getCallbackFunction());
+		feeder.accept(grammarAccess.getHookAccess().getHookTypeSTRINGTerminalRuleCall_4_0(), semanticObject.getHookType());
+		feeder.accept(grammarAccess.getHookAccess().getHookNameSTRINGTerminalRuleCall_7_0(), semanticObject.getHookName());
+		feeder.accept(grammarAccess.getHookAccess().getCallbackSTRINGTerminalRuleCall_10_0(), semanticObject.getCallback());
+		feeder.accept(grammarAccess.getHookAccess().getPriorityINTTerminalRuleCall_13_0(), semanticObject.getPriority());
+		feeder.accept(grammarAccess.getHookAccess().getAcceptedArgsINTTerminalRuleCall_16_0(), semanticObject.getAcceptedArgs());
 		feeder.finish();
 	}
 	
@@ -116,7 +125,8 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *         widgets+=Widget* 
 	 *         shortcodes+=Shortcode* 
 	 *         customPostTypes+=CustomPostType* 
-	 *         settings+=Setting*
+	 *         settings+=Setting* 
+	 *         hooks+=Hook*
 	 *     )
 	 * </pre>
 	 */
@@ -145,7 +155,7 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     Shortcode returns Shortcode
 	 *
 	 * Constraint:
-	 *     (shortcodeName=STRING hooks+=Hook*)
+	 *     (shortcodeName=STRING settings+=Setting*)
 	 * </pre>
 	 */
 	protected void sequence_Shortcode(ISerializationContext context, Shortcode semanticObject) {

@@ -21,14 +21,37 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.HookImpl#getHookType <em>Hook Type</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.HookImpl#getHookName <em>Hook Name</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.HookImpl#getCallbackFunction <em>Callback Function</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.HookImpl#getCallback <em>Callback</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.HookImpl#getPriority <em>Priority</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.HookImpl#getAcceptedArgs <em>Accepted Args</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class HookImpl extends MinimalEObjectImpl.Container implements Hook
 {
+  /**
+   * The default value of the '{@link #getHookType() <em>Hook Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHookType()
+   * @generated
+   * @ordered
+   */
+  protected static final String HOOK_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getHookType() <em>Hook Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHookType()
+   * @generated
+   * @ordered
+   */
+  protected String hookType = HOOK_TYPE_EDEFAULT;
+
   /**
    * The default value of the '{@link #getHookName() <em>Hook Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -50,24 +73,64 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
   protected String hookName = HOOK_NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getCallbackFunction() <em>Callback Function</em>}' attribute.
+   * The default value of the '{@link #getCallback() <em>Callback</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCallbackFunction()
+   * @see #getCallback()
    * @generated
    * @ordered
    */
-  protected static final String CALLBACK_FUNCTION_EDEFAULT = null;
+  protected static final String CALLBACK_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getCallbackFunction() <em>Callback Function</em>}' attribute.
+   * The cached value of the '{@link #getCallback() <em>Callback</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCallbackFunction()
+   * @see #getCallback()
    * @generated
    * @ordered
    */
-  protected String callbackFunction = CALLBACK_FUNCTION_EDEFAULT;
+  protected String callback = CALLBACK_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPriority()
+   * @generated
+   * @ordered
+   */
+  protected static final int PRIORITY_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPriority()
+   * @generated
+   * @ordered
+   */
+  protected int priority = PRIORITY_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getAcceptedArgs() <em>Accepted Args</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAcceptedArgs()
+   * @generated
+   * @ordered
+   */
+  protected static final int ACCEPTED_ARGS_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getAcceptedArgs() <em>Accepted Args</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAcceptedArgs()
+   * @generated
+   * @ordered
+   */
+  protected int acceptedArgs = ACCEPTED_ARGS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,6 +151,31 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
   protected EClass eStaticClass()
   {
     return EntityDslPackage.Literals.HOOK;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getHookType()
+  {
+    return hookType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setHookType(String newHookType)
+  {
+    String oldHookType = hookType;
+    hookType = newHookType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.HOOK__HOOK_TYPE, oldHookType, hookType));
   }
 
   /**
@@ -121,9 +209,9 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
    * @generated
    */
   @Override
-  public String getCallbackFunction()
+  public String getCallback()
   {
-    return callbackFunction;
+    return callback;
   }
 
   /**
@@ -132,12 +220,62 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
    * @generated
    */
   @Override
-  public void setCallbackFunction(String newCallbackFunction)
+  public void setCallback(String newCallback)
   {
-    String oldCallbackFunction = callbackFunction;
-    callbackFunction = newCallbackFunction;
+    String oldCallback = callback;
+    callback = newCallback;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.HOOK__CALLBACK_FUNCTION, oldCallbackFunction, callbackFunction));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.HOOK__CALLBACK, oldCallback, callback));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int getPriority()
+  {
+    return priority;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPriority(int newPriority)
+  {
+    int oldPriority = priority;
+    priority = newPriority;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.HOOK__PRIORITY, oldPriority, priority));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int getAcceptedArgs()
+  {
+    return acceptedArgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setAcceptedArgs(int newAcceptedArgs)
+  {
+    int oldAcceptedArgs = acceptedArgs;
+    acceptedArgs = newAcceptedArgs;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.HOOK__ACCEPTED_ARGS, oldAcceptedArgs, acceptedArgs));
   }
 
   /**
@@ -150,10 +288,16 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
   {
     switch (featureID)
     {
+      case EntityDslPackage.HOOK__HOOK_TYPE:
+        return getHookType();
       case EntityDslPackage.HOOK__HOOK_NAME:
         return getHookName();
-      case EntityDslPackage.HOOK__CALLBACK_FUNCTION:
-        return getCallbackFunction();
+      case EntityDslPackage.HOOK__CALLBACK:
+        return getCallback();
+      case EntityDslPackage.HOOK__PRIORITY:
+        return getPriority();
+      case EntityDslPackage.HOOK__ACCEPTED_ARGS:
+        return getAcceptedArgs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -168,11 +312,20 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
   {
     switch (featureID)
     {
+      case EntityDslPackage.HOOK__HOOK_TYPE:
+        setHookType((String)newValue);
+        return;
       case EntityDslPackage.HOOK__HOOK_NAME:
         setHookName((String)newValue);
         return;
-      case EntityDslPackage.HOOK__CALLBACK_FUNCTION:
-        setCallbackFunction((String)newValue);
+      case EntityDslPackage.HOOK__CALLBACK:
+        setCallback((String)newValue);
+        return;
+      case EntityDslPackage.HOOK__PRIORITY:
+        setPriority((Integer)newValue);
+        return;
+      case EntityDslPackage.HOOK__ACCEPTED_ARGS:
+        setAcceptedArgs((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -188,11 +341,20 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
   {
     switch (featureID)
     {
+      case EntityDslPackage.HOOK__HOOK_TYPE:
+        setHookType(HOOK_TYPE_EDEFAULT);
+        return;
       case EntityDslPackage.HOOK__HOOK_NAME:
         setHookName(HOOK_NAME_EDEFAULT);
         return;
-      case EntityDslPackage.HOOK__CALLBACK_FUNCTION:
-        setCallbackFunction(CALLBACK_FUNCTION_EDEFAULT);
+      case EntityDslPackage.HOOK__CALLBACK:
+        setCallback(CALLBACK_EDEFAULT);
+        return;
+      case EntityDslPackage.HOOK__PRIORITY:
+        setPriority(PRIORITY_EDEFAULT);
+        return;
+      case EntityDslPackage.HOOK__ACCEPTED_ARGS:
+        setAcceptedArgs(ACCEPTED_ARGS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -208,10 +370,16 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
   {
     switch (featureID)
     {
+      case EntityDslPackage.HOOK__HOOK_TYPE:
+        return HOOK_TYPE_EDEFAULT == null ? hookType != null : !HOOK_TYPE_EDEFAULT.equals(hookType);
       case EntityDslPackage.HOOK__HOOK_NAME:
         return HOOK_NAME_EDEFAULT == null ? hookName != null : !HOOK_NAME_EDEFAULT.equals(hookName);
-      case EntityDslPackage.HOOK__CALLBACK_FUNCTION:
-        return CALLBACK_FUNCTION_EDEFAULT == null ? callbackFunction != null : !CALLBACK_FUNCTION_EDEFAULT.equals(callbackFunction);
+      case EntityDslPackage.HOOK__CALLBACK:
+        return CALLBACK_EDEFAULT == null ? callback != null : !CALLBACK_EDEFAULT.equals(callback);
+      case EntityDslPackage.HOOK__PRIORITY:
+        return priority != PRIORITY_EDEFAULT;
+      case EntityDslPackage.HOOK__ACCEPTED_ARGS:
+        return acceptedArgs != ACCEPTED_ARGS_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -227,10 +395,16 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (hookName: ");
+    result.append(" (hookType: ");
+    result.append(hookType);
+    result.append(", hookName: ");
     result.append(hookName);
-    result.append(", callbackFunction: ");
-    result.append(callbackFunction);
+    result.append(", callback: ");
+    result.append(callback);
+    result.append(", priority: ");
+    result.append(priority);
+    result.append(", acceptedArgs: ");
+    result.append(acceptedArgs);
     result.append(')');
     return result.toString();
   }

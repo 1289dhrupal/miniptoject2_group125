@@ -4,7 +4,7 @@
 package co7217.week18.entity.entityDsl.impl;
 
 import co7217.week18.entity.entityDsl.EntityDslPackage;
-import co7217.week18.entity.entityDsl.Hook;
+import co7217.week18.entity.entityDsl.Setting;
 import co7217.week18.entity.entityDsl.Shortcode;
 
 import java.util.Collection;
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.ShortcodeImpl#getShortcodeName <em>Shortcode Name</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.ShortcodeImpl#getHooks <em>Hooks</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.ShortcodeImpl#getSettings <em>Settings</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,14 +60,14 @@ public class ShortcodeImpl extends MinimalEObjectImpl.Container implements Short
   protected String shortcodeName = SHORTCODE_NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getHooks() <em>Hooks</em>}' containment reference list.
+   * The cached value of the '{@link #getSettings() <em>Settings</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getHooks()
+   * @see #getSettings()
    * @generated
    * @ordered
    */
-  protected EList<Hook> hooks;
+  protected EList<Setting> settings;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,13 +121,13 @@ public class ShortcodeImpl extends MinimalEObjectImpl.Container implements Short
    * @generated
    */
   @Override
-  public EList<Hook> getHooks()
+  public EList<Setting> getSettings()
   {
-    if (hooks == null)
+    if (settings == null)
     {
-      hooks = new EObjectContainmentEList<Hook>(Hook.class, this, EntityDslPackage.SHORTCODE__HOOKS);
+      settings = new EObjectContainmentEList<Setting>(Setting.class, this, EntityDslPackage.SHORTCODE__SETTINGS);
     }
-    return hooks;
+    return settings;
   }
 
   /**
@@ -140,8 +140,8 @@ public class ShortcodeImpl extends MinimalEObjectImpl.Container implements Short
   {
     switch (featureID)
     {
-      case EntityDslPackage.SHORTCODE__HOOKS:
-        return ((InternalEList<?>)getHooks()).basicRemove(otherEnd, msgs);
+      case EntityDslPackage.SHORTCODE__SETTINGS:
+        return ((InternalEList<?>)getSettings()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -158,8 +158,8 @@ public class ShortcodeImpl extends MinimalEObjectImpl.Container implements Short
     {
       case EntityDslPackage.SHORTCODE__SHORTCODE_NAME:
         return getShortcodeName();
-      case EntityDslPackage.SHORTCODE__HOOKS:
-        return getHooks();
+      case EntityDslPackage.SHORTCODE__SETTINGS:
+        return getSettings();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -178,9 +178,9 @@ public class ShortcodeImpl extends MinimalEObjectImpl.Container implements Short
       case EntityDslPackage.SHORTCODE__SHORTCODE_NAME:
         setShortcodeName((String)newValue);
         return;
-      case EntityDslPackage.SHORTCODE__HOOKS:
-        getHooks().clear();
-        getHooks().addAll((Collection<? extends Hook>)newValue);
+      case EntityDslPackage.SHORTCODE__SETTINGS:
+        getSettings().clear();
+        getSettings().addAll((Collection<? extends Setting>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -199,8 +199,8 @@ public class ShortcodeImpl extends MinimalEObjectImpl.Container implements Short
       case EntityDslPackage.SHORTCODE__SHORTCODE_NAME:
         setShortcodeName(SHORTCODE_NAME_EDEFAULT);
         return;
-      case EntityDslPackage.SHORTCODE__HOOKS:
-        getHooks().clear();
+      case EntityDslPackage.SHORTCODE__SETTINGS:
+        getSettings().clear();
         return;
     }
     super.eUnset(featureID);
@@ -218,8 +218,8 @@ public class ShortcodeImpl extends MinimalEObjectImpl.Container implements Short
     {
       case EntityDslPackage.SHORTCODE__SHORTCODE_NAME:
         return SHORTCODE_NAME_EDEFAULT == null ? shortcodeName != null : !SHORTCODE_NAME_EDEFAULT.equals(shortcodeName);
-      case EntityDslPackage.SHORTCODE__HOOKS:
-        return hooks != null && !hooks.isEmpty();
+      case EntityDslPackage.SHORTCODE__SETTINGS:
+        return settings != null && !settings.isEmpty();
     }
     return super.eIsSet(featureID);
   }

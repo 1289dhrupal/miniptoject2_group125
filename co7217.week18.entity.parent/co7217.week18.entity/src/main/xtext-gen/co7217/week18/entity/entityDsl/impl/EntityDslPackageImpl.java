@@ -46,13 +46,6 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass settingEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass shortcodeEClass = null;
 
   /**
@@ -61,6 +54,13 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   private EClass customPostTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass settingEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -292,6 +292,17 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
+  public EReference getPlugin_Hooks()
+  {
+    return (EReference)pluginEClass.getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getWidget()
   {
     return widgetEClass;
@@ -336,50 +347,6 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EClass getSetting()
-  {
-    return settingEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getSetting_SettingName()
-  {
-    return (EAttribute)settingEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getSetting_SettingType()
-  {
-    return (EAttribute)settingEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getSetting_DefaultValue()
-  {
-    return (EAttribute)settingEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getShortcode()
   {
     return shortcodeEClass;
@@ -402,7 +369,7 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getShortcode_Hooks()
+  public EReference getShortcode_Settings()
   {
     return (EReference)shortcodeEClass.getEStructuralFeatures().get(1);
   }
@@ -457,9 +424,42 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getCustomPostType_Hooks()
+  public EClass getSetting()
   {
-    return (EReference)customPostTypeEClass.getEStructuralFeatures().get(3);
+    return settingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSetting_SettingName()
+  {
+    return (EAttribute)settingEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSetting_SettingType()
+  {
+    return (EAttribute)settingEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSetting_DefaultValue()
+  {
+    return (EAttribute)settingEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -479,7 +479,7 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getHook_HookName()
+  public EAttribute getHook_HookType()
   {
     return (EAttribute)hookEClass.getEStructuralFeatures().get(0);
   }
@@ -490,9 +490,42 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getHook_CallbackFunction()
+  public EAttribute getHook_HookName()
   {
     return (EAttribute)hookEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHook_Callback()
+  {
+    return (EAttribute)hookEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHook_Priority()
+  {
+    return (EAttribute)hookEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHook_AcceptedArgs()
+  {
+    return (EAttribute)hookEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -540,30 +573,33 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     createEReference(pluginEClass, PLUGIN__SHORTCODES);
     createEReference(pluginEClass, PLUGIN__CUSTOM_POST_TYPES);
     createEReference(pluginEClass, PLUGIN__SETTINGS);
+    createEReference(pluginEClass, PLUGIN__HOOKS);
 
     widgetEClass = createEClass(WIDGET);
     createEAttribute(widgetEClass, WIDGET__WIDGET_NAME);
     createEAttribute(widgetEClass, WIDGET__WIDGET_DESCRIPTION);
     createEReference(widgetEClass, WIDGET__SETTINGS);
 
-    settingEClass = createEClass(SETTING);
-    createEAttribute(settingEClass, SETTING__SETTING_NAME);
-    createEAttribute(settingEClass, SETTING__SETTING_TYPE);
-    createEAttribute(settingEClass, SETTING__DEFAULT_VALUE);
-
     shortcodeEClass = createEClass(SHORTCODE);
     createEAttribute(shortcodeEClass, SHORTCODE__SHORTCODE_NAME);
-    createEReference(shortcodeEClass, SHORTCODE__HOOKS);
+    createEReference(shortcodeEClass, SHORTCODE__SETTINGS);
 
     customPostTypeEClass = createEClass(CUSTOM_POST_TYPE);
     createEAttribute(customPostTypeEClass, CUSTOM_POST_TYPE__POST_TYPE_NAME);
     createEAttribute(customPostTypeEClass, CUSTOM_POST_TYPE__SUPPORTS);
     createEAttribute(customPostTypeEClass, CUSTOM_POST_TYPE__TAXONOMIES);
-    createEReference(customPostTypeEClass, CUSTOM_POST_TYPE__HOOKS);
+
+    settingEClass = createEClass(SETTING);
+    createEAttribute(settingEClass, SETTING__SETTING_NAME);
+    createEAttribute(settingEClass, SETTING__SETTING_TYPE);
+    createEAttribute(settingEClass, SETTING__DEFAULT_VALUE);
 
     hookEClass = createEClass(HOOK);
+    createEAttribute(hookEClass, HOOK__HOOK_TYPE);
     createEAttribute(hookEClass, HOOK__HOOK_NAME);
-    createEAttribute(hookEClass, HOOK__CALLBACK_FUNCTION);
+    createEAttribute(hookEClass, HOOK__CALLBACK);
+    createEAttribute(hookEClass, HOOK__PRIORITY);
+    createEAttribute(hookEClass, HOOK__ACCEPTED_ARGS);
   }
 
   /**
@@ -611,30 +647,33 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     initEReference(getPlugin_Shortcodes(), this.getShortcode(), null, "shortcodes", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPlugin_CustomPostTypes(), this.getCustomPostType(), null, "customPostTypes", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPlugin_Settings(), this.getSetting(), null, "settings", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPlugin_Hooks(), this.getHook(), null, "hooks", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(widgetEClass, Widget.class, "Widget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWidget_WidgetName(), ecorePackage.getEString(), "widgetName", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWidget_WidgetDescription(), ecorePackage.getEString(), "widgetDescription", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getWidget_Settings(), this.getSetting(), null, "settings", null, 0, -1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(settingEClass, Setting.class, "Setting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSetting_SettingName(), ecorePackage.getEString(), "settingName", null, 0, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSetting_SettingType(), ecorePackage.getEString(), "settingType", null, 0, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSetting_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(shortcodeEClass, Shortcode.class, "Shortcode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getShortcode_ShortcodeName(), ecorePackage.getEString(), "shortcodeName", null, 0, 1, Shortcode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getShortcode_Hooks(), this.getHook(), null, "hooks", null, 0, -1, Shortcode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getShortcode_Settings(), this.getSetting(), null, "settings", null, 0, -1, Shortcode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(customPostTypeEClass, CustomPostType.class, "CustomPostType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCustomPostType_PostTypeName(), ecorePackage.getEString(), "postTypeName", null, 0, 1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCustomPostType_Supports(), ecorePackage.getEString(), "supports", null, 0, 1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCustomPostType_Taxonomies(), ecorePackage.getEString(), "taxonomies", null, 0, 1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCustomPostType_Hooks(), this.getHook(), null, "hooks", null, 0, -1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(settingEClass, Setting.class, "Setting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSetting_SettingName(), ecorePackage.getEString(), "settingName", null, 0, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSetting_SettingType(), ecorePackage.getEString(), "settingType", null, 0, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSetting_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(hookEClass, Hook.class, "Hook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getHook_HookType(), ecorePackage.getEString(), "hookType", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHook_HookName(), ecorePackage.getEString(), "hookName", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getHook_CallbackFunction(), ecorePackage.getEString(), "callbackFunction", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHook_Callback(), ecorePackage.getEString(), "callback", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHook_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHook_AcceptedArgs(), ecorePackage.getEInt(), "acceptedArgs", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

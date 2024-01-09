@@ -3,8 +3,6 @@
  */
 package co7217.week18.entity.entityDsl;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -19,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getPostTypeName <em>Post Type Name</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getSupports <em>Supports</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getTaxonomies <em>Taxonomies</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getHooks <em>Hooks</em>}</li>
  * </ul>
  *
  * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType()
@@ -93,17 +90,5 @@ public interface CustomPostType extends EObject
    * @generated
    */
   void setTaxonomies(String value);
-
-  /**
-   * Returns the value of the '<em><b>Hooks</b></em>' containment reference list.
-   * The list contents are of type {@link co7217.week18.entity.entityDsl.Hook}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Hooks</em>' containment reference list.
-   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType_Hooks()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Hook> getHooks();
 
 } // CustomPostType

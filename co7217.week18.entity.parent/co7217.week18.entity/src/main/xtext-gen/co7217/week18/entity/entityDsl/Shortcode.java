@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link co7217.week18.entity.entityDsl.Shortcode#getShortcodeName <em>Shortcode Name</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.Shortcode#getHooks <em>Hooks</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.Shortcode#getSettings <em>Settings</em>}</li>
  * </ul>
  *
  * @see co7217.week18.entity.entityDsl.EntityDslPackage#getShortcode()
@@ -49,15 +49,15 @@ public interface Shortcode extends EObject
   void setShortcodeName(String value);
 
   /**
-   * Returns the value of the '<em><b>Hooks</b></em>' containment reference list.
-   * The list contents are of type {@link co7217.week18.entity.entityDsl.Hook}.
+   * Returns the value of the '<em><b>Settings</b></em>' containment reference list.
+   * The list contents are of type {@link co7217.week18.entity.entityDsl.Setting}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Hooks</em>' containment reference list.
-   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getShortcode_Hooks()
+   * @return the value of the '<em>Settings</em>' containment reference list.
+   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getShortcode_Settings()
    * @model containment="true"
    * @generated
    */
-  EList<Hook> getHooks();
+  EList<Setting> getSettings();
 
 } // Shortcode

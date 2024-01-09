@@ -5,23 +5,13 @@ package co7217.week18.entity.entityDsl.impl;
 
 import co7217.week18.entity.entityDsl.CustomPostType;
 import co7217.week18.entity.entityDsl.EntityDslPackage;
-import co7217.week18.entity.entityDsl.Hook;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +24,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getPostTypeName <em>Post Type Name</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getSupports <em>Supports</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getTaxonomies <em>Taxonomies</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getHooks <em>Hooks</em>}</li>
  * </ul>
  *
  * @generated
@@ -100,16 +89,6 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * @ordered
    */
   protected String taxonomies = TAXONOMIES_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getHooks() <em>Hooks</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHooks()
-   * @generated
-   * @ordered
-   */
-  protected EList<Hook> hooks;
 
   /**
    * <!-- begin-user-doc -->
@@ -213,37 +192,6 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public EList<Hook> getHooks()
-  {
-    if (hooks == null)
-    {
-      hooks = new EObjectContainmentEList<Hook>(Hook.class, this, EntityDslPackage.CUSTOM_POST_TYPE__HOOKS);
-    }
-    return hooks;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case EntityDslPackage.CUSTOM_POST_TYPE__HOOKS:
-        return ((InternalEList<?>)getHooks()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -254,8 +202,6 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
         return getSupports();
       case EntityDslPackage.CUSTOM_POST_TYPE__TAXONOMIES:
         return getTaxonomies();
-      case EntityDslPackage.CUSTOM_POST_TYPE__HOOKS:
-        return getHooks();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -265,7 +211,6 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -279,10 +224,6 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
         return;
       case EntityDslPackage.CUSTOM_POST_TYPE__TAXONOMIES:
         setTaxonomies((String)newValue);
-        return;
-      case EntityDslPackage.CUSTOM_POST_TYPE__HOOKS:
-        getHooks().clear();
-        getHooks().addAll((Collection<? extends Hook>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -307,9 +248,6 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
       case EntityDslPackage.CUSTOM_POST_TYPE__TAXONOMIES:
         setTaxonomies(TAXONOMIES_EDEFAULT);
         return;
-      case EntityDslPackage.CUSTOM_POST_TYPE__HOOKS:
-        getHooks().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -330,8 +268,6 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
         return SUPPORTS_EDEFAULT == null ? supports != null : !SUPPORTS_EDEFAULT.equals(supports);
       case EntityDslPackage.CUSTOM_POST_TYPE__TAXONOMIES:
         return TAXONOMIES_EDEFAULT == null ? taxonomies != null : !TAXONOMIES_EDEFAULT.equals(taxonomies);
-      case EntityDslPackage.CUSTOM_POST_TYPE__HOOKS:
-        return hooks != null && !hooks.isEmpty();
     }
     return super.eIsSet(featureID);
   }
