@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getTextDomain <em>Text Domain</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getActivate <em>Activate</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getDeactivate <em>Deactivate</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getUninstall <em>Uninstall</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getWidgets <em>Widgets</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getShortcodes <em>Shortcodes</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.Plugin#getCustomPostTypes <em>Custom Post Types</em>}</li>
@@ -235,6 +236,28 @@ public interface Plugin extends EObject
    * @generated
    */
   void setDeactivate(String value);
+
+  /**
+   * Returns the value of the '<em><b>Uninstall</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Uninstall</em>' attribute.
+   * @see #setUninstall(String)
+   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getPlugin_Uninstall()
+   * @model
+   * @generated
+   */
+  String getUninstall();
+
+  /**
+   * Sets the value of the '{@link co7217.week18.entity.entityDsl.Plugin#getUninstall <em>Uninstall</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Uninstall</em>' attribute.
+   * @see #getUninstall()
+   * @generated
+   */
+  void setUninstall(String value);
 
   /**
    * Returns the value of the '<em><b>Widgets</b></em>' containment reference list.

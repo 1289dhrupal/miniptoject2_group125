@@ -6,6 +6,10 @@
     complianceLevel="11.0" copyrightFields="false" runtimeVersion="2.29">
   <genPackages prefix="EntityDsl" basePackage="co7217.week18.entity" disposableProviderFactory="true"
       fileExtensions="dmodel" ecorePackage="EntityDsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="EntityDsl.ecore#//HookType">
+      <genEnumLiterals ecoreEnumLiteral="EntityDsl.ecore#//HookType/FILTER"/>
+      <genEnumLiterals ecoreEnumLiteral="EntityDsl.ecore#//HookType/ACTION"/>
+    </genEnums>
     <genClasses ecoreClass="EntityDsl.ecore#//Plugin">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/version"/>
@@ -16,6 +20,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/textDomain"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/activate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/deactivate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/uninstall"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/widgets"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/shortcodes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/customPostTypes"/>

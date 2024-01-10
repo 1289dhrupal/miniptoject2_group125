@@ -7,6 +7,7 @@ import co7217.week18.entity.entityDsl.CustomPostType;
 import co7217.week18.entity.entityDsl.EntityDslFactory;
 import co7217.week18.entity.entityDsl.EntityDslPackage;
 import co7217.week18.entity.entityDsl.Hook;
+import co7217.week18.entity.entityDsl.HookType;
 import co7217.week18.entity.entityDsl.Plugin;
 import co7217.week18.entity.entityDsl.Setting;
 import co7217.week18.entity.entityDsl.Shortcode;
@@ -14,6 +15,7 @@ import co7217.week18.entity.entityDsl.Widget;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -68,6 +70,13 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   private EClass hookEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum hookTypeEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -248,9 +257,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getPlugin_Widgets()
+  public EAttribute getPlugin_Uninstall()
   {
-    return (EReference)pluginEClass.getEStructuralFeatures().get(9);
+    return (EAttribute)pluginEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -259,7 +268,7 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getPlugin_Shortcodes()
+  public EReference getPlugin_Widgets()
   {
     return (EReference)pluginEClass.getEStructuralFeatures().get(10);
   }
@@ -270,7 +279,7 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getPlugin_CustomPostTypes()
+  public EReference getPlugin_Shortcodes()
   {
     return (EReference)pluginEClass.getEStructuralFeatures().get(11);
   }
@@ -281,7 +290,7 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getPlugin_Settings()
+  public EReference getPlugin_CustomPostTypes()
   {
     return (EReference)pluginEClass.getEStructuralFeatures().get(12);
   }
@@ -292,9 +301,20 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getPlugin_Hooks()
+  public EReference getPlugin_Settings()
   {
     return (EReference)pluginEClass.getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPlugin_Hooks()
+  {
+    return (EReference)pluginEClass.getEStructuralFeatures().get(14);
   }
 
   /**
@@ -534,6 +554,17 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
+  public EEnum getHookType()
+  {
+    return hookTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EntityDslFactory getEntityDslFactory()
   {
     return (EntityDslFactory)getEFactoryInstance();
@@ -569,6 +600,7 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     createEAttribute(pluginEClass, PLUGIN__TEXT_DOMAIN);
     createEAttribute(pluginEClass, PLUGIN__ACTIVATE);
     createEAttribute(pluginEClass, PLUGIN__DEACTIVATE);
+    createEAttribute(pluginEClass, PLUGIN__UNINSTALL);
     createEReference(pluginEClass, PLUGIN__WIDGETS);
     createEReference(pluginEClass, PLUGIN__SHORTCODES);
     createEReference(pluginEClass, PLUGIN__CUSTOM_POST_TYPES);
@@ -600,6 +632,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     createEAttribute(hookEClass, HOOK__CALLBACK);
     createEAttribute(hookEClass, HOOK__PRIORITY);
     createEAttribute(hookEClass, HOOK__ACCEPTED_ARGS);
+
+    // Create enums
+    hookTypeEEnum = createEEnum(HOOK_TYPE);
   }
 
   /**
@@ -643,6 +678,7 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     initEAttribute(getPlugin_TextDomain(), ecorePackage.getEString(), "textDomain", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPlugin_Activate(), ecorePackage.getEString(), "activate", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPlugin_Deactivate(), ecorePackage.getEString(), "deactivate", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPlugin_Uninstall(), ecorePackage.getEString(), "uninstall", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPlugin_Widgets(), this.getWidget(), null, "widgets", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPlugin_Shortcodes(), this.getShortcode(), null, "shortcodes", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPlugin_CustomPostTypes(), this.getCustomPostType(), null, "customPostTypes", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -669,11 +705,16 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     initEAttribute(getSetting_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(hookEClass, Hook.class, "Hook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getHook_HookType(), ecorePackage.getEString(), "hookType", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHook_HookType(), this.getHookType(), "hookType", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHook_HookName(), ecorePackage.getEString(), "hookName", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHook_Callback(), ecorePackage.getEString(), "callback", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHook_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHook_AcceptedArgs(), ecorePackage.getEInt(), "acceptedArgs", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(hookTypeEEnum, HookType.class, "HookType");
+    addEEnumLiteral(hookTypeEEnum, HookType.FILTER);
+    addEEnumLiteral(hookTypeEEnum, HookType.ACTION);
 
     // Create resource
     createResource(eNS_URI);

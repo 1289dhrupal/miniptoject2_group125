@@ -31,6 +31,7 @@ public class EntityDslParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, EntityDslGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getHookTypeAccess().getAlternatives(), "rule__HookType__Alternatives");
 			builder.put(grammarAccess.getPluginAccess().getGroup(), "rule__Plugin__Group__0");
 			builder.put(grammarAccess.getWidgetAccess().getGroup(), "rule__Widget__Group__0");
 			builder.put(grammarAccess.getShortcodeAccess().getGroup(), "rule__Shortcode__Group__0");
@@ -46,11 +47,12 @@ public class EntityDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPluginAccess().getTextDomainAssignment_22(), "rule__Plugin__TextDomainAssignment_22");
 			builder.put(grammarAccess.getPluginAccess().getActivateAssignment_25(), "rule__Plugin__ActivateAssignment_25");
 			builder.put(grammarAccess.getPluginAccess().getDeactivateAssignment_28(), "rule__Plugin__DeactivateAssignment_28");
-			builder.put(grammarAccess.getPluginAccess().getWidgetsAssignment_29(), "rule__Plugin__WidgetsAssignment_29");
-			builder.put(grammarAccess.getPluginAccess().getShortcodesAssignment_30(), "rule__Plugin__ShortcodesAssignment_30");
-			builder.put(grammarAccess.getPluginAccess().getCustomPostTypesAssignment_31(), "rule__Plugin__CustomPostTypesAssignment_31");
-			builder.put(grammarAccess.getPluginAccess().getSettingsAssignment_32(), "rule__Plugin__SettingsAssignment_32");
-			builder.put(grammarAccess.getPluginAccess().getHooksAssignment_33(), "rule__Plugin__HooksAssignment_33");
+			builder.put(grammarAccess.getPluginAccess().getUninstallAssignment_31(), "rule__Plugin__UninstallAssignment_31");
+			builder.put(grammarAccess.getPluginAccess().getWidgetsAssignment_32(), "rule__Plugin__WidgetsAssignment_32");
+			builder.put(grammarAccess.getPluginAccess().getShortcodesAssignment_33(), "rule__Plugin__ShortcodesAssignment_33");
+			builder.put(grammarAccess.getPluginAccess().getCustomPostTypesAssignment_34(), "rule__Plugin__CustomPostTypesAssignment_34");
+			builder.put(grammarAccess.getPluginAccess().getSettingsAssignment_35(), "rule__Plugin__SettingsAssignment_35");
+			builder.put(grammarAccess.getPluginAccess().getHooksAssignment_36(), "rule__Plugin__HooksAssignment_36");
 			builder.put(grammarAccess.getWidgetAccess().getWidgetNameAssignment_4(), "rule__Widget__WidgetNameAssignment_4");
 			builder.put(grammarAccess.getWidgetAccess().getWidgetDescriptionAssignment_7(), "rule__Widget__WidgetDescriptionAssignment_7");
 			builder.put(grammarAccess.getWidgetAccess().getSettingsAssignment_8(), "rule__Widget__SettingsAssignment_8");

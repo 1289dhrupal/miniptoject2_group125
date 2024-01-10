@@ -23,6 +23,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -318,12 +319,38 @@ rulePlugin returns [EObject current=null]
 				}
 			)
 		)?
+		otherlv_29='uninstall'
+		{
+			newLeafNode(otherlv_29, grammarAccess.getPluginAccess().getUninstallKeyword_29());
+		}
+		otherlv_30='='
+		{
+			newLeafNode(otherlv_30, grammarAccess.getPluginAccess().getEqualsSignKeyword_30());
+		}
+		(
+			(
+				lv_uninstall_31_0=RULE_STRING
+				{
+					newLeafNode(lv_uninstall_31_0, grammarAccess.getPluginAccess().getUninstallSTRINGTerminalRuleCall_31_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getPluginRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"uninstall",
+						lv_uninstall_31_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)?
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPluginAccess().getWidgetsWidgetParserRuleCall_29_0());
+					newCompositeNode(grammarAccess.getPluginAccess().getWidgetsWidgetParserRuleCall_32_0());
 				}
-				lv_widgets_29_0=ruleWidget
+				lv_widgets_32_0=ruleWidget
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPluginRule());
@@ -331,7 +358,7 @@ rulePlugin returns [EObject current=null]
 					add(
 						$current,
 						"widgets",
-						lv_widgets_29_0,
+						lv_widgets_32_0,
 						"co7217.week18.entity.EntityDsl.Widget");
 					afterParserOrEnumRuleCall();
 				}
@@ -340,9 +367,9 @@ rulePlugin returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPluginAccess().getShortcodesShortcodeParserRuleCall_30_0());
+					newCompositeNode(grammarAccess.getPluginAccess().getShortcodesShortcodeParserRuleCall_33_0());
 				}
-				lv_shortcodes_30_0=ruleShortcode
+				lv_shortcodes_33_0=ruleShortcode
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPluginRule());
@@ -350,7 +377,7 @@ rulePlugin returns [EObject current=null]
 					add(
 						$current,
 						"shortcodes",
-						lv_shortcodes_30_0,
+						lv_shortcodes_33_0,
 						"co7217.week18.entity.EntityDsl.Shortcode");
 					afterParserOrEnumRuleCall();
 				}
@@ -359,9 +386,9 @@ rulePlugin returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPluginAccess().getCustomPostTypesCustomPostTypeParserRuleCall_31_0());
+					newCompositeNode(grammarAccess.getPluginAccess().getCustomPostTypesCustomPostTypeParserRuleCall_34_0());
 				}
-				lv_customPostTypes_31_0=ruleCustomPostType
+				lv_customPostTypes_34_0=ruleCustomPostType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPluginRule());
@@ -369,7 +396,7 @@ rulePlugin returns [EObject current=null]
 					add(
 						$current,
 						"customPostTypes",
-						lv_customPostTypes_31_0,
+						lv_customPostTypes_34_0,
 						"co7217.week18.entity.EntityDsl.CustomPostType");
 					afterParserOrEnumRuleCall();
 				}
@@ -378,9 +405,9 @@ rulePlugin returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPluginAccess().getSettingsSettingParserRuleCall_32_0());
+					newCompositeNode(grammarAccess.getPluginAccess().getSettingsSettingParserRuleCall_35_0());
 				}
-				lv_settings_32_0=ruleSetting
+				lv_settings_35_0=ruleSetting
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPluginRule());
@@ -388,7 +415,7 @@ rulePlugin returns [EObject current=null]
 					add(
 						$current,
 						"settings",
-						lv_settings_32_0,
+						lv_settings_35_0,
 						"co7217.week18.entity.EntityDsl.Setting");
 					afterParserOrEnumRuleCall();
 				}
@@ -397,9 +424,9 @@ rulePlugin returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPluginAccess().getHooksHookParserRuleCall_33_0());
+					newCompositeNode(grammarAccess.getPluginAccess().getHooksHookParserRuleCall_36_0());
 				}
-				lv_hooks_33_0=ruleHook
+				lv_hooks_36_0=ruleHook
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPluginRule());
@@ -407,15 +434,15 @@ rulePlugin returns [EObject current=null]
 					add(
 						$current,
 						"hooks",
-						lv_hooks_33_0,
+						lv_hooks_36_0,
 						"co7217.week18.entity.EntityDsl.Hook");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		otherlv_34='}'
+		otherlv_37='}'
 		{
-			newLeafNode(otherlv_34, grammarAccess.getPluginAccess().getRightCurlyBracketKeyword_34());
+			newLeafNode(otherlv_37, grammarAccess.getPluginAccess().getRightCurlyBracketKeyword_37());
 		}
 	)
 ;
@@ -495,7 +522,7 @@ ruleWidget returns [EObject current=null]
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
-		)
+		)?
 		(
 			(
 				{
@@ -850,19 +877,20 @@ ruleHook returns [EObject current=null]
 		}
 		(
 			(
-				lv_hookType_4_0=RULE_STRING
 				{
-					newLeafNode(lv_hookType_4_0, grammarAccess.getHookAccess().getHookTypeSTRINGTerminalRuleCall_4_0());
+					newCompositeNode(grammarAccess.getHookAccess().getHookTypeHookTypeEnumRuleCall_4_0());
 				}
+				lv_hookType_4_0=ruleHookType
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getHookRule());
+						$current = createModelElementForParent(grammarAccess.getHookRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"hookType",
 						lv_hookType_4_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"co7217.week18.entity.EntityDsl.HookType");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -943,7 +971,7 @@ ruleHook returns [EObject current=null]
 						"org.eclipse.xtext.common.Terminals.INT");
 				}
 			)
-		)
+		)?
 		otherlv_14='acceptedArgs'
 		{
 			newLeafNode(otherlv_14, grammarAccess.getHookAccess().getAcceptedArgsKeyword_14());
@@ -969,11 +997,38 @@ ruleHook returns [EObject current=null]
 						"org.eclipse.xtext.common.Terminals.INT");
 				}
 			)
-		)
+		)?
 		otherlv_17='}'
 		{
 			newLeafNode(otherlv_17, grammarAccess.getHookAccess().getRightCurlyBracketKeyword_17());
 		}
+	)
+;
+
+// Rule HookType
+ruleHookType returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='filter'
+			{
+				$current = grammarAccess.getHookTypeAccess().getFILTEREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getHookTypeAccess().getFILTEREnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='action'
+			{
+				$current = grammarAccess.getHookTypeAccess().getACTIONEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getHookTypeAccess().getACTIONEnumLiteralDeclaration_1());
+			}
+		)
 	)
 ;
 

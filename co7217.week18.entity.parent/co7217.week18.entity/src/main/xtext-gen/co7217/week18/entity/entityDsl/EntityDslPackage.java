@@ -5,6 +5,7 @@ package co7217.week18.entity.entityDsl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -149,13 +150,22 @@ public interface EntityDslPackage extends EPackage
   int PLUGIN__DEACTIVATE = 8;
 
   /**
+   * The feature id for the '<em><b>Uninstall</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUGIN__UNINSTALL = 9;
+
+  /**
    * The feature id for the '<em><b>Widgets</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PLUGIN__WIDGETS = 9;
+  int PLUGIN__WIDGETS = 10;
 
   /**
    * The feature id for the '<em><b>Shortcodes</b></em>' containment reference list.
@@ -164,7 +174,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__SHORTCODES = 10;
+  int PLUGIN__SHORTCODES = 11;
 
   /**
    * The feature id for the '<em><b>Custom Post Types</b></em>' containment reference list.
@@ -173,7 +183,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__CUSTOM_POST_TYPES = 11;
+  int PLUGIN__CUSTOM_POST_TYPES = 12;
 
   /**
    * The feature id for the '<em><b>Settings</b></em>' containment reference list.
@@ -182,7 +192,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__SETTINGS = 12;
+  int PLUGIN__SETTINGS = 13;
 
   /**
    * The feature id for the '<em><b>Hooks</b></em>' containment reference list.
@@ -191,7 +201,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__HOOKS = 13;
+  int PLUGIN__HOOKS = 14;
 
   /**
    * The number of structural features of the '<em>Plugin</em>' class.
@@ -200,7 +210,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN_FEATURE_COUNT = 14;
+  int PLUGIN_FEATURE_COUNT = 15;
 
   /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.WidgetImpl <em>Widget</em>}' class.
@@ -441,6 +451,16 @@ public interface EntityDslPackage extends EPackage
    */
   int HOOK_FEATURE_COUNT = 5;
 
+  /**
+   * The meta object id for the '{@link co7217.week18.entity.entityDsl.HookType <em>Hook Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.week18.entity.entityDsl.HookType
+   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getHookType()
+   * @generated
+   */
+  int HOOK_TYPE = 6;
+
 
   /**
    * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Plugin <em>Plugin</em>}'.
@@ -550,6 +570,17 @@ public interface EntityDslPackage extends EPackage
    * @generated
    */
   EAttribute getPlugin_Deactivate();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getUninstall <em>Uninstall</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Uninstall</em>'.
+   * @see co7217.week18.entity.entityDsl.Plugin#getUninstall()
+   * @see #getPlugin()
+   * @generated
+   */
+  EAttribute getPlugin_Uninstall();
 
   /**
    * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.Plugin#getWidgets <em>Widgets</em>}'.
@@ -833,6 +864,16 @@ public interface EntityDslPackage extends EPackage
   EAttribute getHook_AcceptedArgs();
 
   /**
+   * Returns the meta object for enum '{@link co7217.week18.entity.entityDsl.HookType <em>Hook Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Hook Type</em>'.
+   * @see co7217.week18.entity.entityDsl.HookType
+   * @generated
+   */
+  EEnum getHookType();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -936,6 +977,14 @@ public interface EntityDslPackage extends EPackage
      * @generated
      */
     EAttribute PLUGIN__DEACTIVATE = eINSTANCE.getPlugin_Deactivate();
+
+    /**
+     * The meta object literal for the '<em><b>Uninstall</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PLUGIN__UNINSTALL = eINSTANCE.getPlugin_Uninstall();
 
     /**
      * The meta object literal for the '<em><b>Widgets</b></em>' containment reference list feature.
@@ -1154,6 +1203,16 @@ public interface EntityDslPackage extends EPackage
      * @generated
      */
     EAttribute HOOK__ACCEPTED_ARGS = eINSTANCE.getHook_AcceptedArgs();
+
+    /**
+     * The meta object literal for the '{@link co7217.week18.entity.entityDsl.HookType <em>Hook Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.week18.entity.entityDsl.HookType
+     * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getHookType()
+     * @generated
+     */
+    EEnum HOOK_TYPE = eINSTANCE.getHookType();
 
   }
 

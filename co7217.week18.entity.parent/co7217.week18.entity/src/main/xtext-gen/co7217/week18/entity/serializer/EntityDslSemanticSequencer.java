@@ -19,9 +19,7 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
-import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
 @SuppressWarnings("all")
 public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -80,29 +78,11 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     Hook returns Hook
 	 *
 	 * Constraint:
-	 *     (hookType=STRING hookName=STRING callback=STRING priority=INT acceptedArgs=INT)
+	 *     (hookType=HookType hookName=STRING callback=STRING priority=INT? acceptedArgs=INT?)
 	 * </pre>
 	 */
 	protected void sequence_Hook(ISerializationContext context, Hook semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__HOOK_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__HOOK_TYPE));
-			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__HOOK_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__HOOK_NAME));
-			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__CALLBACK) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__CALLBACK));
-			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__PRIORITY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__PRIORITY));
-			if (transientValues.isValueTransient(semanticObject, EntityDslPackage.Literals.HOOK__ACCEPTED_ARGS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityDslPackage.Literals.HOOK__ACCEPTED_ARGS));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getHookAccess().getHookTypeSTRINGTerminalRuleCall_4_0(), semanticObject.getHookType());
-		feeder.accept(grammarAccess.getHookAccess().getHookNameSTRINGTerminalRuleCall_7_0(), semanticObject.getHookName());
-		feeder.accept(grammarAccess.getHookAccess().getCallbackSTRINGTerminalRuleCall_10_0(), semanticObject.getCallback());
-		feeder.accept(grammarAccess.getHookAccess().getPriorityINTTerminalRuleCall_13_0(), semanticObject.getPriority());
-		feeder.accept(grammarAccess.getHookAccess().getAcceptedArgsINTTerminalRuleCall_16_0(), semanticObject.getAcceptedArgs());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -122,6 +102,7 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *         textDomain=STRING? 
 	 *         activate=STRING? 
 	 *         deactivate=STRING? 
+	 *         uninstall=STRING? 
 	 *         widgets+=Widget* 
 	 *         shortcodes+=Shortcode* 
 	 *         customPostTypes+=CustomPostType* 
@@ -169,7 +150,7 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     Widget returns Widget
 	 *
 	 * Constraint:
-	 *     (widgetName=STRING widgetDescription=STRING settings+=Setting*)
+	 *     (widgetName=STRING widgetDescription=STRING? settings+=Setting*)
 	 * </pre>
 	 */
 	protected void sequence_Widget(ISerializationContext context, Widget semanticObject) {

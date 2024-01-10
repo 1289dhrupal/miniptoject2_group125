@@ -29,25 +29,28 @@ public interface Hook extends EObject
 {
   /**
    * Returns the value of the '<em><b>Hook Type</b></em>' attribute.
+   * The literals are from the enumeration {@link co7217.week18.entity.entityDsl.HookType}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Hook Type</em>' attribute.
-   * @see #setHookType(String)
+   * @see co7217.week18.entity.entityDsl.HookType
+   * @see #setHookType(HookType)
    * @see co7217.week18.entity.entityDsl.EntityDslPackage#getHook_HookType()
    * @model
    * @generated
    */
-  String getHookType();
+  HookType getHookType();
 
   /**
    * Sets the value of the '{@link co7217.week18.entity.entityDsl.Hook#getHookType <em>Hook Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Hook Type</em>' attribute.
+   * @see co7217.week18.entity.entityDsl.HookType
    * @see #getHookType()
    * @generated
    */
-  void setHookType(String value);
+  void setHookType(HookType value);
 
   /**
    * Returns the value of the '<em><b>Hook Name</b></em>' attribute.

@@ -8,11 +8,13 @@ Plugin {
     textDomain = "capi-domain"
     activate = "true"
     deactivate = "true"
+    uninstall = "true"
+
     Widget {
         widgetName = "Example 1"
         widgetDescription = "This is a sample widget"
 
-        Setting {
+    	Setting {
             settingName = "BackgroundColor"
             settingType = "String"
             defaultValue = "#FFFFFF"
@@ -24,7 +26,7 @@ Plugin {
             defaultValue = "800"
         }
     }
-    
+
     Shortcode {
         shortcodeName = "Example 2"
 
@@ -33,13 +35,5 @@ Plugin {
             settingType = "Integer"
             defaultValue = "800"
         }
-    }
-
-    Hook {
-    	hookType = "add_action"
-        hookName = "init"
-        callback = "fetch_settings"
-	    priority = 15
-	    acceptedArgs = 2
     }
 }

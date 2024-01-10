@@ -6,7 +6,10 @@ package co7217.week18.entity.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -62,20 +65,28 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Keyword cEqualsSignKeyword_27 = (Keyword)cGroup.eContents().get(27);
 		private final Assignment cDeactivateAssignment_28 = (Assignment)cGroup.eContents().get(28);
 		private final RuleCall cDeactivateSTRINGTerminalRuleCall_28_0 = (RuleCall)cDeactivateAssignment_28.eContents().get(0);
-		private final Assignment cWidgetsAssignment_29 = (Assignment)cGroup.eContents().get(29);
-		private final RuleCall cWidgetsWidgetParserRuleCall_29_0 = (RuleCall)cWidgetsAssignment_29.eContents().get(0);
-		private final Assignment cShortcodesAssignment_30 = (Assignment)cGroup.eContents().get(30);
-		private final RuleCall cShortcodesShortcodeParserRuleCall_30_0 = (RuleCall)cShortcodesAssignment_30.eContents().get(0);
-		private final Assignment cCustomPostTypesAssignment_31 = (Assignment)cGroup.eContents().get(31);
-		private final RuleCall cCustomPostTypesCustomPostTypeParserRuleCall_31_0 = (RuleCall)cCustomPostTypesAssignment_31.eContents().get(0);
-		private final Assignment cSettingsAssignment_32 = (Assignment)cGroup.eContents().get(32);
-		private final RuleCall cSettingsSettingParserRuleCall_32_0 = (RuleCall)cSettingsAssignment_32.eContents().get(0);
-		private final Assignment cHooksAssignment_33 = (Assignment)cGroup.eContents().get(33);
-		private final RuleCall cHooksHookParserRuleCall_33_0 = (RuleCall)cHooksAssignment_33.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_34 = (Keyword)cGroup.eContents().get(34);
+		private final Keyword cUninstallKeyword_29 = (Keyword)cGroup.eContents().get(29);
+		private final Keyword cEqualsSignKeyword_30 = (Keyword)cGroup.eContents().get(30);
+		private final Assignment cUninstallAssignment_31 = (Assignment)cGroup.eContents().get(31);
+		private final RuleCall cUninstallSTRINGTerminalRuleCall_31_0 = (RuleCall)cUninstallAssignment_31.eContents().get(0);
+		private final Assignment cWidgetsAssignment_32 = (Assignment)cGroup.eContents().get(32);
+		private final RuleCall cWidgetsWidgetParserRuleCall_32_0 = (RuleCall)cWidgetsAssignment_32.eContents().get(0);
+		private final Assignment cShortcodesAssignment_33 = (Assignment)cGroup.eContents().get(33);
+		private final RuleCall cShortcodesShortcodeParserRuleCall_33_0 = (RuleCall)cShortcodesAssignment_33.eContents().get(0);
+		private final Assignment cCustomPostTypesAssignment_34 = (Assignment)cGroup.eContents().get(34);
+		private final RuleCall cCustomPostTypesCustomPostTypeParserRuleCall_34_0 = (RuleCall)cCustomPostTypesAssignment_34.eContents().get(0);
+		private final Assignment cSettingsAssignment_35 = (Assignment)cGroup.eContents().get(35);
+		private final RuleCall cSettingsSettingParserRuleCall_35_0 = (RuleCall)cSettingsAssignment_35.eContents().get(0);
+		private final Assignment cHooksAssignment_36 = (Assignment)cGroup.eContents().get(36);
+		private final RuleCall cHooksHookParserRuleCall_36_0 = (RuleCall)cHooksAssignment_36.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_37 = (Keyword)cGroup.eContents().get(37);
 		
+		//// Definition of the Plugin entity.
 		//Plugin:
+		//    // Plugin starts with the keyword 'Plugin' and is enclosed in curly braces.
 		//    'Plugin' '{'
+		//        // Definition of various properties of the plugin.
+		//        // Each property follows the pattern: keyword '=' value
 		//        'name' '=' name=STRING
 		//        'version' '=' version=STRING
 		//        'description' '=' description=STRING?
@@ -85,6 +96,8 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//        'textDomain' '=' textDomain=STRING?
 		//        'activate' '=' activate=STRING?
 		//        'deactivate' '=' deactivate=STRING?
+		//        'uninstall' '=' uninstall=STRING?
+		//        // Plugin may contain multiple widgets, shortcodes, custom post types, settings, and hooks.
 		//        (widgets+=Widget)*
 		//        (shortcodes+=Shortcode)*
 		//        (customPostTypes+=CustomPostType)*
@@ -94,7 +107,10 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//// Plugin starts with the keyword 'Plugin' and is enclosed in curly braces.
 		//'Plugin' '{'
+		//    // Definition of various properties of the plugin.
+		//    // Each property follows the pattern: keyword '=' value
 		//    'name' '=' name=STRING
 		//    'version' '=' version=STRING
 		//    'description' '=' description=STRING?
@@ -104,6 +120,8 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//    'textDomain' '=' textDomain=STRING?
 		//    'activate' '=' activate=STRING?
 		//    'deactivate' '=' deactivate=STRING?
+		//    'uninstall' '=' uninstall=STRING?
+		//    // Plugin may contain multiple widgets, shortcodes, custom post types, settings, and hooks.
 		//    (widgets+=Widget)*
 		//    (shortcodes+=Shortcode)*
 		//    (customPostTypes+=CustomPostType)*
@@ -112,12 +130,15 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
+		//// Plugin starts with the keyword 'Plugin' and is enclosed in curly braces.
 		//'Plugin'
 		public Keyword getPluginKeyword_0() { return cPluginKeyword_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
+		//// Definition of various properties of the plugin.
+		//// Each property follows the pattern: keyword '=' value
 		//'name'
 		public Keyword getNameKeyword_2() { return cNameKeyword_2; }
 		
@@ -226,38 +247,51 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//STRING
 		public RuleCall getDeactivateSTRINGTerminalRuleCall_28_0() { return cDeactivateSTRINGTerminalRuleCall_28_0; }
 		
+		//'uninstall'
+		public Keyword getUninstallKeyword_29() { return cUninstallKeyword_29; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_30() { return cEqualsSignKeyword_30; }
+		
+		//uninstall=STRING?
+		public Assignment getUninstallAssignment_31() { return cUninstallAssignment_31; }
+		
+		//STRING
+		public RuleCall getUninstallSTRINGTerminalRuleCall_31_0() { return cUninstallSTRINGTerminalRuleCall_31_0; }
+		
+		//// Plugin may contain multiple widgets, shortcodes, custom post types, settings, and hooks.
 		//(widgets+=Widget)*
-		public Assignment getWidgetsAssignment_29() { return cWidgetsAssignment_29; }
+		public Assignment getWidgetsAssignment_32() { return cWidgetsAssignment_32; }
 		
 		//Widget
-		public RuleCall getWidgetsWidgetParserRuleCall_29_0() { return cWidgetsWidgetParserRuleCall_29_0; }
+		public RuleCall getWidgetsWidgetParserRuleCall_32_0() { return cWidgetsWidgetParserRuleCall_32_0; }
 		
 		//(shortcodes+=Shortcode)*
-		public Assignment getShortcodesAssignment_30() { return cShortcodesAssignment_30; }
+		public Assignment getShortcodesAssignment_33() { return cShortcodesAssignment_33; }
 		
 		//Shortcode
-		public RuleCall getShortcodesShortcodeParserRuleCall_30_0() { return cShortcodesShortcodeParserRuleCall_30_0; }
+		public RuleCall getShortcodesShortcodeParserRuleCall_33_0() { return cShortcodesShortcodeParserRuleCall_33_0; }
 		
 		//(customPostTypes+=CustomPostType)*
-		public Assignment getCustomPostTypesAssignment_31() { return cCustomPostTypesAssignment_31; }
+		public Assignment getCustomPostTypesAssignment_34() { return cCustomPostTypesAssignment_34; }
 		
 		//CustomPostType
-		public RuleCall getCustomPostTypesCustomPostTypeParserRuleCall_31_0() { return cCustomPostTypesCustomPostTypeParserRuleCall_31_0; }
+		public RuleCall getCustomPostTypesCustomPostTypeParserRuleCall_34_0() { return cCustomPostTypesCustomPostTypeParserRuleCall_34_0; }
 		
 		//(settings+=Setting)*
-		public Assignment getSettingsAssignment_32() { return cSettingsAssignment_32; }
+		public Assignment getSettingsAssignment_35() { return cSettingsAssignment_35; }
 		
 		//Setting
-		public RuleCall getSettingsSettingParserRuleCall_32_0() { return cSettingsSettingParserRuleCall_32_0; }
+		public RuleCall getSettingsSettingParserRuleCall_35_0() { return cSettingsSettingParserRuleCall_35_0; }
 		
 		//(hooks+=Hook)*
-		public Assignment getHooksAssignment_33() { return cHooksAssignment_33; }
+		public Assignment getHooksAssignment_36() { return cHooksAssignment_36; }
 		
 		//Hook
-		public RuleCall getHooksHookParserRuleCall_33_0() { return cHooksHookParserRuleCall_33_0; }
+		public RuleCall getHooksHookParserRuleCall_36_0() { return cHooksHookParserRuleCall_36_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_34() { return cRightCurlyBracketKeyword_34; }
+		public Keyword getRightCurlyBracketKeyword_37() { return cRightCurlyBracketKeyword_37; }
 	}
 	public class WidgetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.Widget");
@@ -276,10 +310,12 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final RuleCall cSettingsSettingParserRuleCall_8_0 = (RuleCall)cSettingsAssignment_8.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
+		//// Definition of the Widget entity.
 		//Widget:
 		//    'Widget' '{'
 		//        'widgetName' '=' widgetName=STRING
-		//        'widgetDescription' '=' widgetDescription=STRING
+		//        'widgetDescription' '=' widgetDescription=STRING?
+		//        // A widget can have multiple settings.
 		//        (settings+=Setting)*
 		//    '}'
 		//;
@@ -287,7 +323,8 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		
 		//'Widget' '{'
 		//    'widgetName' '=' widgetName=STRING
-		//    'widgetDescription' '=' widgetDescription=STRING
+		//    'widgetDescription' '=' widgetDescription=STRING?
+		//    // A widget can have multiple settings.
 		//    (settings+=Setting)*
 		//'}'
 		public Group getGroup() { return cGroup; }
@@ -316,12 +353,13 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'='
 		public Keyword getEqualsSignKeyword_6() { return cEqualsSignKeyword_6; }
 		
-		//widgetDescription=STRING
+		//widgetDescription=STRING?
 		public Assignment getWidgetDescriptionAssignment_7() { return cWidgetDescriptionAssignment_7; }
 		
 		//STRING
 		public RuleCall getWidgetDescriptionSTRINGTerminalRuleCall_7_0() { return cWidgetDescriptionSTRINGTerminalRuleCall_7_0; }
 		
+		//// A widget can have multiple settings.
 		//(settings+=Setting)*
 		public Assignment getSettingsAssignment_8() { return cSettingsAssignment_8; }
 		
@@ -344,9 +382,11 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final RuleCall cSettingsSettingParserRuleCall_5_0 = (RuleCall)cSettingsAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
+		//// Definition of the Shortcode entity.
 		//Shortcode:
 		//    'Shortcode' '{'
 		//        'shortcodeName' '=' shortcodeName=STRING
+		//        // A shortcode can have multiple settings.
 		//        (settings+=Setting)*
 		//    '}'
 		//;
@@ -354,6 +394,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		
 		//'Shortcode' '{'
 		//    'shortcodeName' '=' shortcodeName=STRING
+		//    // A shortcode can have multiple settings.
 		//    (settings+=Setting)*
 		//'}'
 		public Group getGroup() { return cGroup; }
@@ -376,6 +417,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//STRING
 		public RuleCall getShortcodeNameSTRINGTerminalRuleCall_4_0() { return cShortcodeNameSTRINGTerminalRuleCall_4_0; }
 		
+		//// A shortcode can have multiple settings.
 		//(settings+=Setting)*
 		public Assignment getSettingsAssignment_5() { return cSettingsAssignment_5; }
 		
@@ -404,6 +446,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final RuleCall cTaxonomiesSTRINGTerminalRuleCall_10_0 = (RuleCall)cTaxonomiesAssignment_10.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
+		//// Definition of the CustomPostType entity.
 		//CustomPostType:
 		//    'CustomPostType' '{'
 		//        'postTypeName' '=' postTypeName=STRING
@@ -484,6 +527,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final RuleCall cDefaultValueSTRINGTerminalRuleCall_10_0 = (RuleCall)cDefaultValueAssignment_10.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
+		//// Definition of the Setting entity.
 		//Setting:
 		//    'Setting' '{'
 		//        'settingName' '=' settingName=STRING
@@ -553,7 +597,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Keyword cHookTypeKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cHookTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cHookTypeSTRINGTerminalRuleCall_4_0 = (RuleCall)cHookTypeAssignment_4.eContents().get(0);
+		private final RuleCall cHookTypeHookTypeEnumRuleCall_4_0 = (RuleCall)cHookTypeAssignment_4.eContents().get(0);
 		private final Keyword cHookNameKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cEqualsSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Assignment cHookNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
@@ -572,23 +616,24 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final RuleCall cAcceptedArgsINTTerminalRuleCall_16_0 = (RuleCall)cAcceptedArgsAssignment_16.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_17 = (Keyword)cGroup.eContents().get(17);
 		
+		//// Definition of the Hook entity.
 		//Hook:
 		//    'Hook' '{'
-		//        'hookType' '=' hookType=STRING
+		//        'hookType' '=' hookType=HookType
 		//        'hookName' '=' hookName=STRING
 		//        'callback' '=' callback=STRING
-		//        'priority' '=' priority=INT
-		//        'acceptedArgs' '=' acceptedArgs=INT
+		//        'priority' '=' priority=INT?
+		//        'acceptedArgs' '=' acceptedArgs=INT?
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Hook' '{'
-		//    'hookType' '=' hookType=STRING
+		//    'hookType' '=' hookType=HookType
 		//    'hookName' '=' hookName=STRING
 		//    'callback' '=' callback=STRING
-		//    'priority' '=' priority=INT
-		//    'acceptedArgs' '=' acceptedArgs=INT
+		//    'priority' '=' priority=INT?
+		//    'acceptedArgs' '=' acceptedArgs=INT?
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -604,11 +649,11 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'='
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 		
-		//hookType=STRING
+		//hookType=HookType
 		public Assignment getHookTypeAssignment_4() { return cHookTypeAssignment_4; }
 		
-		//STRING
-		public RuleCall getHookTypeSTRINGTerminalRuleCall_4_0() { return cHookTypeSTRINGTerminalRuleCall_4_0; }
+		//HookType
+		public RuleCall getHookTypeHookTypeEnumRuleCall_4_0() { return cHookTypeHookTypeEnumRuleCall_4_0; }
 		
 		//'hookName'
 		public Keyword getHookNameKeyword_5() { return cHookNameKeyword_5; }
@@ -640,7 +685,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'='
 		public Keyword getEqualsSignKeyword_12() { return cEqualsSignKeyword_12; }
 		
-		//priority=INT
+		//priority=INT?
 		public Assignment getPriorityAssignment_13() { return cPriorityAssignment_13; }
 		
 		//INT
@@ -652,7 +697,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'='
 		public Keyword getEqualsSignKeyword_15() { return cEqualsSignKeyword_15; }
 		
-		//acceptedArgs=INT
+		//acceptedArgs=INT?
 		public Assignment getAcceptedArgsAssignment_16() { return cAcceptedArgsAssignment_16; }
 		
 		//INT
@@ -662,6 +707,35 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		public Keyword getRightCurlyBracketKeyword_17() { return cRightCurlyBracketKeyword_17; }
 	}
 	
+	public class HookTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.HookType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cFILTEREnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cFILTERFilterKeyword_0_0 = (Keyword)cFILTEREnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cACTIONEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cACTIONActionKeyword_1_0 = (Keyword)cACTIONEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//// Enumeration for Hook Type
+		//enum HookType :
+		//    FILTER = 'filter' | ACTION = 'action'
+		//;
+		public EnumRule getRule() { return rule; }
+		
+		//FILTER = 'filter' | ACTION = 'action'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//FILTER = 'filter'
+		public EnumLiteralDeclaration getFILTEREnumLiteralDeclaration_0() { return cFILTEREnumLiteralDeclaration_0; }
+		
+		//'filter'
+		public Keyword getFILTERFilterKeyword_0_0() { return cFILTERFilterKeyword_0_0; }
+		
+		//ACTION = 'action'
+		public EnumLiteralDeclaration getACTIONEnumLiteralDeclaration_1() { return cACTIONEnumLiteralDeclaration_1; }
+		
+		//'action'
+		public Keyword getACTIONActionKeyword_1_0() { return cACTIONActionKeyword_1_0; }
+	}
 	
 	private final PluginElements pPlugin;
 	private final WidgetElements pWidget;
@@ -669,6 +743,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	private final CustomPostTypeElements pCustomPostType;
 	private final SettingElements pSetting;
 	private final HookElements pHook;
+	private final HookTypeElements eHookType;
 	
 	private final Grammar grammar;
 	
@@ -685,6 +760,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		this.pCustomPostType = new CustomPostTypeElements();
 		this.pSetting = new SettingElements();
 		this.pHook = new HookElements();
+		this.eHookType = new HookTypeElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -714,8 +790,12 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	}
 
 	
+	//// Definition of the Plugin entity.
 	//Plugin:
+	//    // Plugin starts with the keyword 'Plugin' and is enclosed in curly braces.
 	//    'Plugin' '{'
+	//        // Definition of various properties of the plugin.
+	//        // Each property follows the pattern: keyword '=' value
 	//        'name' '=' name=STRING
 	//        'version' '=' version=STRING
 	//        'description' '=' description=STRING?
@@ -725,6 +805,8 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//        'textDomain' '=' textDomain=STRING?
 	//        'activate' '=' activate=STRING?
 	//        'deactivate' '=' deactivate=STRING?
+	//        'uninstall' '=' uninstall=STRING?
+	//        // Plugin may contain multiple widgets, shortcodes, custom post types, settings, and hooks.
 	//        (widgets+=Widget)*
 	//        (shortcodes+=Shortcode)*
 	//        (customPostTypes+=CustomPostType)*
@@ -740,10 +822,12 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		return getPluginAccess().getRule();
 	}
 	
+	//// Definition of the Widget entity.
 	//Widget:
 	//    'Widget' '{'
 	//        'widgetName' '=' widgetName=STRING
-	//        'widgetDescription' '=' widgetDescription=STRING
+	//        'widgetDescription' '=' widgetDescription=STRING?
+	//        // A widget can have multiple settings.
 	//        (settings+=Setting)*
 	//    '}'
 	//;
@@ -755,9 +839,11 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		return getWidgetAccess().getRule();
 	}
 	
+	//// Definition of the Shortcode entity.
 	//Shortcode:
 	//    'Shortcode' '{'
 	//        'shortcodeName' '=' shortcodeName=STRING
+	//        // A shortcode can have multiple settings.
 	//        (settings+=Setting)*
 	//    '}'
 	//;
@@ -769,6 +855,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		return getShortcodeAccess().getRule();
 	}
 	
+	//// Definition of the CustomPostType entity.
 	//CustomPostType:
 	//    'CustomPostType' '{'
 	//        'postTypeName' '=' postTypeName=STRING
@@ -784,6 +871,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		return getCustomPostTypeAccess().getRule();
 	}
 	
+	//// Definition of the Setting entity.
 	//Setting:
 	//    'Setting' '{'
 	//        'settingName' '=' settingName=STRING
@@ -799,13 +887,14 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		return getSettingAccess().getRule();
 	}
 	
+	//// Definition of the Hook entity.
 	//Hook:
 	//    'Hook' '{'
-	//        'hookType' '=' hookType=STRING
+	//        'hookType' '=' hookType=HookType
 	//        'hookName' '=' hookName=STRING
 	//        'callback' '=' callback=STRING
-	//        'priority' '=' priority=INT
-	//        'acceptedArgs' '=' acceptedArgs=INT
+	//        'priority' '=' priority=INT?
+	//        'acceptedArgs' '=' acceptedArgs=INT?
 	//    '}'
 	//;
 	public HookElements getHookAccess() {
@@ -814,6 +903,18 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	
 	public ParserRule getHookRule() {
 		return getHookAccess().getRule();
+	}
+	
+	//// Enumeration for Hook Type
+	//enum HookType :
+	//    FILTER = 'filter' | ACTION = 'action'
+	//;
+	public HookTypeElements getHookTypeAccess() {
+		return eHookType;
+	}
+	
+	public EnumRule getHookTypeRule() {
+		return getHookTypeAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

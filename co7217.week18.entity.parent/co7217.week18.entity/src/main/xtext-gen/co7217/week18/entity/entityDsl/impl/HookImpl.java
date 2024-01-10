@@ -5,6 +5,7 @@ package co7217.week18.entity.entityDsl.impl;
 
 import co7217.week18.entity.entityDsl.EntityDslPackage;
 import co7217.week18.entity.entityDsl.Hook;
+import co7217.week18.entity.entityDsl.HookType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -40,7 +41,7 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
    * @generated
    * @ordered
    */
-  protected static final String HOOK_TYPE_EDEFAULT = null;
+  protected static final HookType HOOK_TYPE_EDEFAULT = HookType.FILTER;
 
   /**
    * The cached value of the '{@link #getHookType() <em>Hook Type</em>}' attribute.
@@ -50,7 +51,7 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
    * @generated
    * @ordered
    */
-  protected String hookType = HOOK_TYPE_EDEFAULT;
+  protected HookType hookType = HOOK_TYPE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getHookName() <em>Hook Name</em>}' attribute.
@@ -159,7 +160,7 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
    * @generated
    */
   @Override
-  public String getHookType()
+  public HookType getHookType()
   {
     return hookType;
   }
@@ -170,10 +171,10 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
    * @generated
    */
   @Override
-  public void setHookType(String newHookType)
+  public void setHookType(HookType newHookType)
   {
-    String oldHookType = hookType;
-    hookType = newHookType;
+    HookType oldHookType = hookType;
+    hookType = newHookType == null ? HOOK_TYPE_EDEFAULT : newHookType;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.HOOK__HOOK_TYPE, oldHookType, hookType));
   }
@@ -313,7 +314,7 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
     switch (featureID)
     {
       case EntityDslPackage.HOOK__HOOK_TYPE:
-        setHookType((String)newValue);
+        setHookType((HookType)newValue);
         return;
       case EntityDslPackage.HOOK__HOOK_NAME:
         setHookName((String)newValue);
@@ -371,7 +372,7 @@ public class HookImpl extends MinimalEObjectImpl.Container implements Hook
     switch (featureID)
     {
       case EntityDslPackage.HOOK__HOOK_TYPE:
-        return HOOK_TYPE_EDEFAULT == null ? hookType != null : !HOOK_TYPE_EDEFAULT.equals(hookType);
+        return hookType != HOOK_TYPE_EDEFAULT;
       case EntityDslPackage.HOOK__HOOK_NAME:
         return HOOK_NAME_EDEFAULT == null ? hookName != null : !HOOK_NAME_EDEFAULT.equals(hookName);
       case EntityDslPackage.HOOK__CALLBACK:

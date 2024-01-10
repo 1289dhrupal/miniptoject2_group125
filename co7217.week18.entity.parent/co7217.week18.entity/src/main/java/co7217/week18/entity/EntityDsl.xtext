@@ -1,10 +1,15 @@
+// Grammar definition for the Entity DSL.
 grammar co7217.week18.entity.EntityDsl with org.eclipse.xtext.common.Terminals
 
+// Generation definition for the Entity DSL.
 generate entityDsl "http://www.week18.co7217/entity/EntityDsl"
 
-
+// Definition of the Plugin entity.
 Plugin:
+    // Plugin starts with the keyword 'Plugin' and is enclosed in curly braces.
     'Plugin' '{'
+        // Definition of various properties of the plugin.
+        // Each property follows the pattern: keyword '=' value
         'name' '=' name=STRING
         'version' '=' version=STRING
         'description' '=' description=STRING?
@@ -14,6 +19,8 @@ Plugin:
         'textDomain' '=' textDomain=STRING?
         'activate' '=' activate=STRING? 
         'deactivate' '=' deactivate=STRING? 
+        'uninstall' '=' uninstall=STRING? 
+        // Plugin may contain multiple widgets, shortcodes, custom post types, settings, and hooks.
         (widgets+=Widget)*
         (shortcodes+=Shortcode)*
         (customPostTypes+=CustomPostType)*
@@ -22,21 +29,26 @@ Plugin:
     '}'
 ;
 
+// Definition of the Widget entity.
 Widget:
     'Widget' '{'
         'widgetName' '=' widgetName=STRING
         'widgetDescription' '=' widgetDescription=STRING?
+        // A widget can have multiple settings.
         (settings+=Setting)*
     '}'
 ;
 
+// Definition of the Shortcode entity.
 Shortcode:
     'Shortcode' '{'
         'shortcodeName' '=' shortcodeName=STRING
+        // A shortcode can have multiple settings.
         (settings+=Setting)*
     '}'
 ;
 
+// Definition of the CustomPostType entity.
 CustomPostType:
     'CustomPostType' '{'
         'postTypeName' '=' postTypeName=STRING
@@ -45,6 +57,7 @@ CustomPostType:
     '}'
 ;
 
+// Definition of the Setting entity.
 Setting:
     'Setting' '{'
         'settingName' '=' settingName=STRING
@@ -53,12 +66,18 @@ Setting:
     '}'
 ;
 
+// Definition of the Hook entity.
 Hook:
     'Hook' '{'
-    	'hookType' '=' hookType=STRING 
+        'hookType' '=' hookType=HookType 
         'hookName' '=' hookName=STRING
         'callback' '=' callback=STRING
         'priority' '=' priority=INT?
         'acceptedArgs' '=' acceptedArgs=INT?
     '}'
+;
+
+// Enumeration for Hook Type
+enum HookType :
+    FILTER = 'filter' | ACTION = 'action'
 ;

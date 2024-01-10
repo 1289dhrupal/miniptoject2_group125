@@ -44,6 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getTextDomain <em>Text Domain</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getActivate <em>Activate</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getDeactivate <em>Deactivate</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getUninstall <em>Uninstall</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getWidgets <em>Widgets</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getShortcodes <em>Shortcodes</em>}</li>
  *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getCustomPostTypes <em>Custom Post Types</em>}</li>
@@ -234,6 +235,26 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
    * @ordered
    */
   protected String deactivate = DEACTIVATE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getUninstall() <em>Uninstall</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUninstall()
+   * @generated
+   * @ordered
+   */
+  protected static final String UNINSTALL_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getUninstall() <em>Uninstall</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUninstall()
+   * @generated
+   * @ordered
+   */
+  protected String uninstall = UNINSTALL_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference list.
@@ -537,6 +558,31 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
    * @generated
    */
   @Override
+  public String getUninstall()
+  {
+    return uninstall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setUninstall(String newUninstall)
+  {
+    String oldUninstall = uninstall;
+    uninstall = newUninstall;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__UNINSTALL, oldUninstall, uninstall));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Widget> getWidgets()
   {
     if (widgets == null)
@@ -658,6 +704,8 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
         return getActivate();
       case EntityDslPackage.PLUGIN__DEACTIVATE:
         return getDeactivate();
+      case EntityDslPackage.PLUGIN__UNINSTALL:
+        return getUninstall();
       case EntityDslPackage.PLUGIN__WIDGETS:
         return getWidgets();
       case EntityDslPackage.PLUGIN__SHORTCODES:
@@ -709,6 +757,9 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
         return;
       case EntityDslPackage.PLUGIN__DEACTIVATE:
         setDeactivate((String)newValue);
+        return;
+      case EntityDslPackage.PLUGIN__UNINSTALL:
+        setUninstall((String)newValue);
         return;
       case EntityDslPackage.PLUGIN__WIDGETS:
         getWidgets().clear();
@@ -771,6 +822,9 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
       case EntityDslPackage.PLUGIN__DEACTIVATE:
         setDeactivate(DEACTIVATE_EDEFAULT);
         return;
+      case EntityDslPackage.PLUGIN__UNINSTALL:
+        setUninstall(UNINSTALL_EDEFAULT);
+        return;
       case EntityDslPackage.PLUGIN__WIDGETS:
         getWidgets().clear();
         return;
@@ -818,6 +872,8 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
         return ACTIVATE_EDEFAULT == null ? activate != null : !ACTIVATE_EDEFAULT.equals(activate);
       case EntityDslPackage.PLUGIN__DEACTIVATE:
         return DEACTIVATE_EDEFAULT == null ? deactivate != null : !DEACTIVATE_EDEFAULT.equals(deactivate);
+      case EntityDslPackage.PLUGIN__UNINSTALL:
+        return UNINSTALL_EDEFAULT == null ? uninstall != null : !UNINSTALL_EDEFAULT.equals(uninstall);
       case EntityDslPackage.PLUGIN__WIDGETS:
         return widgets != null && !widgets.isEmpty();
       case EntityDslPackage.PLUGIN__SHORTCODES:
@@ -861,6 +917,8 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     result.append(activate);
     result.append(", deactivate: ");
     result.append(deactivate);
+    result.append(", uninstall: ");
+    result.append(uninstall);
     result.append(')');
     return result.toString();
   }
