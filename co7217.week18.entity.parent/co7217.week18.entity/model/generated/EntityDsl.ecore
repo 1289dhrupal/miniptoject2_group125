@@ -2,7 +2,12 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="entityDsl" nsURI="http://www.week18.co7217/entity/EntityDsl"
     nsPrefix="entityDsl">
-  <eClassifiers xsi:type="ecore:EClass" name="Plugin">
+  <eClassifiers xsi:type="ecore:EClass" name="PluginModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Element" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Meta" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -13,29 +18,19 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="activate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deactivate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uninstall" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="widgets" upperBound="-1"
-        eType="#//Widget" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="shortcodes" upperBound="-1"
-        eType="#//Shortcode" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="customPostTypes" upperBound="-1"
-        eType="#//CustomPostType" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="settings" upperBound="-1"
-        eType="#//Setting" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
-        eType="#//Hook" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Widget">
+  <eClassifiers xsi:type="ecore:EClass" name="Widget" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="widgetName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="widgetDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="settings" upperBound="-1"
         eType="#//Setting" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Shortcode">
+  <eClassifiers xsi:type="ecore:EClass" name="Shortcode" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortcodeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="settings" upperBound="-1"
         eType="#//Setting" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomPostType">
+  <eClassifiers xsi:type="ecore:EClass" name="CustomPostType" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cptName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cptSingularName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cptSupports" upperBound="-1"
@@ -43,12 +38,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="cptTaxonomies" upperBound="-1"
         eType="#//StringList" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Setting">
+  <eClassifiers xsi:type="ecore:EClass" name="Setting" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="settingName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="settingType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Hook">
+  <eClassifiers xsi:type="ecore:EClass" name="Hook" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hookType" eType="#//HookType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hookName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="callback" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -4,11 +4,13 @@
 package co7217.week18.entity.entityDsl.impl;
 
 import co7217.week18.entity.entityDsl.CustomPostType;
+import co7217.week18.entity.entityDsl.Element;
 import co7217.week18.entity.entityDsl.EntityDslFactory;
 import co7217.week18.entity.entityDsl.EntityDslPackage;
 import co7217.week18.entity.entityDsl.Hook;
 import co7217.week18.entity.entityDsl.HookType;
-import co7217.week18.entity.entityDsl.Plugin;
+import co7217.week18.entity.entityDsl.Meta;
+import co7217.week18.entity.entityDsl.PluginModel;
 import co7217.week18.entity.entityDsl.Setting;
 import co7217.week18.entity.entityDsl.Shortcode;
 import co7217.week18.entity.entityDsl.StringList;
@@ -35,7 +37,21 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass pluginEClass = null;
+  private EClass pluginModelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass elementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass metaEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -155,9 +171,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EClass getPlugin()
+  public EClass getPluginModel()
   {
-    return pluginEClass;
+    return pluginModelEClass;
   }
 
   /**
@@ -166,9 +182,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_Name()
+  public EReference getPluginModel_Elements()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(0);
+    return (EReference)pluginModelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -177,9 +193,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_Version()
+  public EClass getElement()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(1);
+    return elementEClass;
   }
 
   /**
@@ -188,9 +204,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_Description()
+  public EClass getMeta()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(2);
+    return metaEClass;
   }
 
   /**
@@ -199,9 +215,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_Author()
+  public EAttribute getMeta_Name()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -210,9 +226,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_License()
+  public EAttribute getMeta_Version()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -221,9 +237,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_Prefix()
+  public EAttribute getMeta_Description()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -232,9 +248,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_TextDomain()
+  public EAttribute getMeta_Author()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(6);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -243,9 +259,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_Activate()
+  public EAttribute getMeta_License()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -254,9 +270,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_Deactivate()
+  public EAttribute getMeta_Prefix()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(8);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -265,9 +281,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getPlugin_Uninstall()
+  public EAttribute getMeta_TextDomain()
   {
-    return (EAttribute)pluginEClass.getEStructuralFeatures().get(9);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -276,9 +292,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getPlugin_Widgets()
+  public EAttribute getMeta_Activate()
   {
-    return (EReference)pluginEClass.getEStructuralFeatures().get(10);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -287,9 +303,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getPlugin_Shortcodes()
+  public EAttribute getMeta_Deactivate()
   {
-    return (EReference)pluginEClass.getEStructuralFeatures().get(11);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -298,31 +314,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EReference getPlugin_CustomPostTypes()
+  public EAttribute getMeta_Uninstall()
   {
-    return (EReference)pluginEClass.getEStructuralFeatures().get(12);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getPlugin_Settings()
-  {
-    return (EReference)pluginEClass.getEStructuralFeatures().get(13);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getPlugin_Hooks()
-  {
-    return (EReference)pluginEClass.getEStructuralFeatures().get(14);
+    return (EAttribute)metaEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -631,22 +625,22 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     isCreated = true;
 
     // Create classes and their features
-    pluginEClass = createEClass(PLUGIN);
-    createEAttribute(pluginEClass, PLUGIN__NAME);
-    createEAttribute(pluginEClass, PLUGIN__VERSION);
-    createEAttribute(pluginEClass, PLUGIN__DESCRIPTION);
-    createEAttribute(pluginEClass, PLUGIN__AUTHOR);
-    createEAttribute(pluginEClass, PLUGIN__LICENSE);
-    createEAttribute(pluginEClass, PLUGIN__PREFIX);
-    createEAttribute(pluginEClass, PLUGIN__TEXT_DOMAIN);
-    createEAttribute(pluginEClass, PLUGIN__ACTIVATE);
-    createEAttribute(pluginEClass, PLUGIN__DEACTIVATE);
-    createEAttribute(pluginEClass, PLUGIN__UNINSTALL);
-    createEReference(pluginEClass, PLUGIN__WIDGETS);
-    createEReference(pluginEClass, PLUGIN__SHORTCODES);
-    createEReference(pluginEClass, PLUGIN__CUSTOM_POST_TYPES);
-    createEReference(pluginEClass, PLUGIN__SETTINGS);
-    createEReference(pluginEClass, PLUGIN__HOOKS);
+    pluginModelEClass = createEClass(PLUGIN_MODEL);
+    createEReference(pluginModelEClass, PLUGIN_MODEL__ELEMENTS);
+
+    elementEClass = createEClass(ELEMENT);
+
+    metaEClass = createEClass(META);
+    createEAttribute(metaEClass, META__NAME);
+    createEAttribute(metaEClass, META__VERSION);
+    createEAttribute(metaEClass, META__DESCRIPTION);
+    createEAttribute(metaEClass, META__AUTHOR);
+    createEAttribute(metaEClass, META__LICENSE);
+    createEAttribute(metaEClass, META__PREFIX);
+    createEAttribute(metaEClass, META__TEXT_DOMAIN);
+    createEAttribute(metaEClass, META__ACTIVATE);
+    createEAttribute(metaEClass, META__DEACTIVATE);
+    createEAttribute(metaEClass, META__UNINSTALL);
 
     widgetEClass = createEClass(WIDGET);
     createEAttribute(widgetEClass, WIDGET__WIDGET_NAME);
@@ -711,24 +705,30 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    metaEClass.getESuperTypes().add(this.getElement());
+    widgetEClass.getESuperTypes().add(this.getElement());
+    shortcodeEClass.getESuperTypes().add(this.getElement());
+    customPostTypeEClass.getESuperTypes().add(this.getElement());
+    settingEClass.getESuperTypes().add(this.getElement());
+    hookEClass.getESuperTypes().add(this.getElement());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(pluginEClass, Plugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPlugin_Name(), ecorePackage.getEString(), "name", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPlugin_Version(), ecorePackage.getEString(), "version", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPlugin_Description(), ecorePackage.getEString(), "description", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPlugin_Author(), ecorePackage.getEString(), "author", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPlugin_License(), ecorePackage.getEString(), "license", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPlugin_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPlugin_TextDomain(), ecorePackage.getEString(), "textDomain", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPlugin_Activate(), ecorePackage.getEString(), "activate", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPlugin_Deactivate(), ecorePackage.getEString(), "deactivate", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPlugin_Uninstall(), ecorePackage.getEString(), "uninstall", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPlugin_Widgets(), this.getWidget(), null, "widgets", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPlugin_Shortcodes(), this.getShortcode(), null, "shortcodes", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPlugin_CustomPostTypes(), this.getCustomPostType(), null, "customPostTypes", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPlugin_Settings(), this.getSetting(), null, "settings", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPlugin_Hooks(), this.getHook(), null, "hooks", null, 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(pluginModelEClass, PluginModel.class, "PluginModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPluginModel_Elements(), this.getElement(), null, "elements", null, 0, -1, PluginModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(metaEClass, Meta.class, "Meta", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMeta_Name(), ecorePackage.getEString(), "name", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeta_Version(), ecorePackage.getEString(), "version", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeta_Description(), ecorePackage.getEString(), "description", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeta_Author(), ecorePackage.getEString(), "author", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeta_License(), ecorePackage.getEString(), "license", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeta_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeta_TextDomain(), ecorePackage.getEString(), "textDomain", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeta_Activate(), ecorePackage.getEString(), "activate", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeta_Deactivate(), ecorePackage.getEString(), "deactivate", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMeta_Uninstall(), ecorePackage.getEString(), "uninstall", null, 0, 1, Meta.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(widgetEClass, Widget.class, "Widget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWidget_WidgetName(), ecorePackage.getEString(), "widgetName", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -3,58 +3,38 @@
  */
 package co7217.week18.entity.entityDsl.impl;
 
-import co7217.week18.entity.entityDsl.CustomPostType;
 import co7217.week18.entity.entityDsl.EntityDslPackage;
-import co7217.week18.entity.entityDsl.Hook;
-import co7217.week18.entity.entityDsl.Plugin;
-import co7217.week18.entity.entityDsl.Setting;
-import co7217.week18.entity.entityDsl.Shortcode;
-import co7217.week18.entity.entityDsl.Widget;
-
-import java.util.Collection;
+import co7217.week18.entity.entityDsl.Meta;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Plugin</b></em>'.
+ * An implementation of the model object '<em><b>Meta</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getName <em>Name</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getAuthor <em>Author</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getLicense <em>License</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getPrefix <em>Prefix</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getTextDomain <em>Text Domain</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getActivate <em>Activate</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getDeactivate <em>Deactivate</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getUninstall <em>Uninstall</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getWidgets <em>Widgets</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getShortcodes <em>Shortcodes</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getCustomPostTypes <em>Custom Post Types</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getSettings <em>Settings</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.PluginImpl#getHooks <em>Hooks</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getName <em>Name</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getAuthor <em>Author</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getLicense <em>License</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getPrefix <em>Prefix</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getTextDomain <em>Text Domain</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getActivate <em>Activate</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getDeactivate <em>Deactivate</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.MetaImpl#getUninstall <em>Uninstall</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
+public class MetaImpl extends ElementImpl implements Meta
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -257,61 +237,11 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
   protected String uninstall = UNINSTALL_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getWidgets()
-   * @generated
-   * @ordered
-   */
-  protected EList<Widget> widgets;
-
-  /**
-   * The cached value of the '{@link #getShortcodes() <em>Shortcodes</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getShortcodes()
-   * @generated
-   * @ordered
-   */
-  protected EList<Shortcode> shortcodes;
-
-  /**
-   * The cached value of the '{@link #getCustomPostTypes() <em>Custom Post Types</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCustomPostTypes()
-   * @generated
-   * @ordered
-   */
-  protected EList<CustomPostType> customPostTypes;
-
-  /**
-   * The cached value of the '{@link #getSettings() <em>Settings</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSettings()
-   * @generated
-   * @ordered
-   */
-  protected EList<Setting> settings;
-
-  /**
-   * The cached value of the '{@link #getHooks() <em>Hooks</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHooks()
-   * @generated
-   * @ordered
-   */
-  protected EList<Hook> hooks;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PluginImpl()
+  protected MetaImpl()
   {
     super();
   }
@@ -324,7 +254,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
   @Override
   protected EClass eStaticClass()
   {
-    return EntityDslPackage.Literals.PLUGIN;
+    return EntityDslPackage.Literals.META;
   }
 
   /**
@@ -349,7 +279,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__NAME, oldName, name));
   }
 
   /**
@@ -374,7 +304,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldVersion = version;
     version = newVersion;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__VERSION, oldVersion, version));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__VERSION, oldVersion, version));
   }
 
   /**
@@ -399,7 +329,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldDescription = description;
     description = newDescription;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__DESCRIPTION, oldDescription, description));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__DESCRIPTION, oldDescription, description));
   }
 
   /**
@@ -424,7 +354,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldAuthor = author;
     author = newAuthor;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__AUTHOR, oldAuthor, author));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__AUTHOR, oldAuthor, author));
   }
 
   /**
@@ -449,7 +379,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldLicense = license;
     license = newLicense;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__LICENSE, oldLicense, license));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__LICENSE, oldLicense, license));
   }
 
   /**
@@ -474,7 +404,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldPrefix = prefix;
     prefix = newPrefix;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__PREFIX, oldPrefix, prefix));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__PREFIX, oldPrefix, prefix));
   }
 
   /**
@@ -499,7 +429,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldTextDomain = textDomain;
     textDomain = newTextDomain;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__TEXT_DOMAIN, oldTextDomain, textDomain));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__TEXT_DOMAIN, oldTextDomain, textDomain));
   }
 
   /**
@@ -524,7 +454,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldActivate = activate;
     activate = newActivate;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__ACTIVATE, oldActivate, activate));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__ACTIVATE, oldActivate, activate));
   }
 
   /**
@@ -549,7 +479,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldDeactivate = deactivate;
     deactivate = newDeactivate;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__DEACTIVATE, oldDeactivate, deactivate));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__DEACTIVATE, oldDeactivate, deactivate));
   }
 
   /**
@@ -574,106 +504,7 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     String oldUninstall = uninstall;
     uninstall = newUninstall;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.PLUGIN__UNINSTALL, oldUninstall, uninstall));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Widget> getWidgets()
-  {
-    if (widgets == null)
-    {
-      widgets = new EObjectContainmentEList<Widget>(Widget.class, this, EntityDslPackage.PLUGIN__WIDGETS);
-    }
-    return widgets;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Shortcode> getShortcodes()
-  {
-    if (shortcodes == null)
-    {
-      shortcodes = new EObjectContainmentEList<Shortcode>(Shortcode.class, this, EntityDslPackage.PLUGIN__SHORTCODES);
-    }
-    return shortcodes;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<CustomPostType> getCustomPostTypes()
-  {
-    if (customPostTypes == null)
-    {
-      customPostTypes = new EObjectContainmentEList<CustomPostType>(CustomPostType.class, this, EntityDslPackage.PLUGIN__CUSTOM_POST_TYPES);
-    }
-    return customPostTypes;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Setting> getSettings()
-  {
-    if (settings == null)
-    {
-      settings = new EObjectContainmentEList<Setting>(Setting.class, this, EntityDslPackage.PLUGIN__SETTINGS);
-    }
-    return settings;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Hook> getHooks()
-  {
-    if (hooks == null)
-    {
-      hooks = new EObjectContainmentEList<Hook>(Hook.class, this, EntityDslPackage.PLUGIN__HOOKS);
-    }
-    return hooks;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case EntityDslPackage.PLUGIN__WIDGETS:
-        return ((InternalEList<?>)getWidgets()).basicRemove(otherEnd, msgs);
-      case EntityDslPackage.PLUGIN__SHORTCODES:
-        return ((InternalEList<?>)getShortcodes()).basicRemove(otherEnd, msgs);
-      case EntityDslPackage.PLUGIN__CUSTOM_POST_TYPES:
-        return ((InternalEList<?>)getCustomPostTypes()).basicRemove(otherEnd, msgs);
-      case EntityDslPackage.PLUGIN__SETTINGS:
-        return ((InternalEList<?>)getSettings()).basicRemove(otherEnd, msgs);
-      case EntityDslPackage.PLUGIN__HOOKS:
-        return ((InternalEList<?>)getHooks()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.META__UNINSTALL, oldUninstall, uninstall));
   }
 
   /**
@@ -686,36 +517,26 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
   {
     switch (featureID)
     {
-      case EntityDslPackage.PLUGIN__NAME:
+      case EntityDslPackage.META__NAME:
         return getName();
-      case EntityDslPackage.PLUGIN__VERSION:
+      case EntityDslPackage.META__VERSION:
         return getVersion();
-      case EntityDslPackage.PLUGIN__DESCRIPTION:
+      case EntityDslPackage.META__DESCRIPTION:
         return getDescription();
-      case EntityDslPackage.PLUGIN__AUTHOR:
+      case EntityDslPackage.META__AUTHOR:
         return getAuthor();
-      case EntityDslPackage.PLUGIN__LICENSE:
+      case EntityDslPackage.META__LICENSE:
         return getLicense();
-      case EntityDslPackage.PLUGIN__PREFIX:
+      case EntityDslPackage.META__PREFIX:
         return getPrefix();
-      case EntityDslPackage.PLUGIN__TEXT_DOMAIN:
+      case EntityDslPackage.META__TEXT_DOMAIN:
         return getTextDomain();
-      case EntityDslPackage.PLUGIN__ACTIVATE:
+      case EntityDslPackage.META__ACTIVATE:
         return getActivate();
-      case EntityDslPackage.PLUGIN__DEACTIVATE:
+      case EntityDslPackage.META__DEACTIVATE:
         return getDeactivate();
-      case EntityDslPackage.PLUGIN__UNINSTALL:
+      case EntityDslPackage.META__UNINSTALL:
         return getUninstall();
-      case EntityDslPackage.PLUGIN__WIDGETS:
-        return getWidgets();
-      case EntityDslPackage.PLUGIN__SHORTCODES:
-        return getShortcodes();
-      case EntityDslPackage.PLUGIN__CUSTOM_POST_TYPES:
-        return getCustomPostTypes();
-      case EntityDslPackage.PLUGIN__SETTINGS:
-        return getSettings();
-      case EntityDslPackage.PLUGIN__HOOKS:
-        return getHooks();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -725,61 +546,40 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case EntityDslPackage.PLUGIN__NAME:
+      case EntityDslPackage.META__NAME:
         setName((String)newValue);
         return;
-      case EntityDslPackage.PLUGIN__VERSION:
+      case EntityDslPackage.META__VERSION:
         setVersion((String)newValue);
         return;
-      case EntityDslPackage.PLUGIN__DESCRIPTION:
+      case EntityDslPackage.META__DESCRIPTION:
         setDescription((String)newValue);
         return;
-      case EntityDslPackage.PLUGIN__AUTHOR:
+      case EntityDslPackage.META__AUTHOR:
         setAuthor((String)newValue);
         return;
-      case EntityDslPackage.PLUGIN__LICENSE:
+      case EntityDslPackage.META__LICENSE:
         setLicense((String)newValue);
         return;
-      case EntityDslPackage.PLUGIN__PREFIX:
+      case EntityDslPackage.META__PREFIX:
         setPrefix((String)newValue);
         return;
-      case EntityDslPackage.PLUGIN__TEXT_DOMAIN:
+      case EntityDslPackage.META__TEXT_DOMAIN:
         setTextDomain((String)newValue);
         return;
-      case EntityDslPackage.PLUGIN__ACTIVATE:
+      case EntityDslPackage.META__ACTIVATE:
         setActivate((String)newValue);
         return;
-      case EntityDslPackage.PLUGIN__DEACTIVATE:
+      case EntityDslPackage.META__DEACTIVATE:
         setDeactivate((String)newValue);
         return;
-      case EntityDslPackage.PLUGIN__UNINSTALL:
+      case EntityDslPackage.META__UNINSTALL:
         setUninstall((String)newValue);
-        return;
-      case EntityDslPackage.PLUGIN__WIDGETS:
-        getWidgets().clear();
-        getWidgets().addAll((Collection<? extends Widget>)newValue);
-        return;
-      case EntityDslPackage.PLUGIN__SHORTCODES:
-        getShortcodes().clear();
-        getShortcodes().addAll((Collection<? extends Shortcode>)newValue);
-        return;
-      case EntityDslPackage.PLUGIN__CUSTOM_POST_TYPES:
-        getCustomPostTypes().clear();
-        getCustomPostTypes().addAll((Collection<? extends CustomPostType>)newValue);
-        return;
-      case EntityDslPackage.PLUGIN__SETTINGS:
-        getSettings().clear();
-        getSettings().addAll((Collection<? extends Setting>)newValue);
-        return;
-      case EntityDslPackage.PLUGIN__HOOKS:
-        getHooks().clear();
-        getHooks().addAll((Collection<? extends Hook>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -795,50 +595,35 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
   {
     switch (featureID)
     {
-      case EntityDslPackage.PLUGIN__NAME:
+      case EntityDslPackage.META__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case EntityDslPackage.PLUGIN__VERSION:
+      case EntityDslPackage.META__VERSION:
         setVersion(VERSION_EDEFAULT);
         return;
-      case EntityDslPackage.PLUGIN__DESCRIPTION:
+      case EntityDslPackage.META__DESCRIPTION:
         setDescription(DESCRIPTION_EDEFAULT);
         return;
-      case EntityDslPackage.PLUGIN__AUTHOR:
+      case EntityDslPackage.META__AUTHOR:
         setAuthor(AUTHOR_EDEFAULT);
         return;
-      case EntityDslPackage.PLUGIN__LICENSE:
+      case EntityDslPackage.META__LICENSE:
         setLicense(LICENSE_EDEFAULT);
         return;
-      case EntityDslPackage.PLUGIN__PREFIX:
+      case EntityDslPackage.META__PREFIX:
         setPrefix(PREFIX_EDEFAULT);
         return;
-      case EntityDslPackage.PLUGIN__TEXT_DOMAIN:
+      case EntityDslPackage.META__TEXT_DOMAIN:
         setTextDomain(TEXT_DOMAIN_EDEFAULT);
         return;
-      case EntityDslPackage.PLUGIN__ACTIVATE:
+      case EntityDslPackage.META__ACTIVATE:
         setActivate(ACTIVATE_EDEFAULT);
         return;
-      case EntityDslPackage.PLUGIN__DEACTIVATE:
+      case EntityDslPackage.META__DEACTIVATE:
         setDeactivate(DEACTIVATE_EDEFAULT);
         return;
-      case EntityDslPackage.PLUGIN__UNINSTALL:
+      case EntityDslPackage.META__UNINSTALL:
         setUninstall(UNINSTALL_EDEFAULT);
-        return;
-      case EntityDslPackage.PLUGIN__WIDGETS:
-        getWidgets().clear();
-        return;
-      case EntityDslPackage.PLUGIN__SHORTCODES:
-        getShortcodes().clear();
-        return;
-      case EntityDslPackage.PLUGIN__CUSTOM_POST_TYPES:
-        getCustomPostTypes().clear();
-        return;
-      case EntityDslPackage.PLUGIN__SETTINGS:
-        getSettings().clear();
-        return;
-      case EntityDslPackage.PLUGIN__HOOKS:
-        getHooks().clear();
         return;
     }
     super.eUnset(featureID);
@@ -854,36 +639,26 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
   {
     switch (featureID)
     {
-      case EntityDslPackage.PLUGIN__NAME:
+      case EntityDslPackage.META__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case EntityDslPackage.PLUGIN__VERSION:
+      case EntityDslPackage.META__VERSION:
         return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-      case EntityDslPackage.PLUGIN__DESCRIPTION:
+      case EntityDslPackage.META__DESCRIPTION:
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-      case EntityDslPackage.PLUGIN__AUTHOR:
+      case EntityDslPackage.META__AUTHOR:
         return AUTHOR_EDEFAULT == null ? author != null : !AUTHOR_EDEFAULT.equals(author);
-      case EntityDslPackage.PLUGIN__LICENSE:
+      case EntityDslPackage.META__LICENSE:
         return LICENSE_EDEFAULT == null ? license != null : !LICENSE_EDEFAULT.equals(license);
-      case EntityDslPackage.PLUGIN__PREFIX:
+      case EntityDslPackage.META__PREFIX:
         return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT.equals(prefix);
-      case EntityDslPackage.PLUGIN__TEXT_DOMAIN:
+      case EntityDslPackage.META__TEXT_DOMAIN:
         return TEXT_DOMAIN_EDEFAULT == null ? textDomain != null : !TEXT_DOMAIN_EDEFAULT.equals(textDomain);
-      case EntityDslPackage.PLUGIN__ACTIVATE:
+      case EntityDslPackage.META__ACTIVATE:
         return ACTIVATE_EDEFAULT == null ? activate != null : !ACTIVATE_EDEFAULT.equals(activate);
-      case EntityDslPackage.PLUGIN__DEACTIVATE:
+      case EntityDslPackage.META__DEACTIVATE:
         return DEACTIVATE_EDEFAULT == null ? deactivate != null : !DEACTIVATE_EDEFAULT.equals(deactivate);
-      case EntityDslPackage.PLUGIN__UNINSTALL:
+      case EntityDslPackage.META__UNINSTALL:
         return UNINSTALL_EDEFAULT == null ? uninstall != null : !UNINSTALL_EDEFAULT.equals(uninstall);
-      case EntityDslPackage.PLUGIN__WIDGETS:
-        return widgets != null && !widgets.isEmpty();
-      case EntityDslPackage.PLUGIN__SHORTCODES:
-        return shortcodes != null && !shortcodes.isEmpty();
-      case EntityDslPackage.PLUGIN__CUSTOM_POST_TYPES:
-        return customPostTypes != null && !customPostTypes.isEmpty();
-      case EntityDslPackage.PLUGIN__SETTINGS:
-        return settings != null && !settings.isEmpty();
-      case EntityDslPackage.PLUGIN__HOOKS:
-        return hooks != null && !hooks.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -923,4 +698,4 @@ public class PluginImpl extends MinimalEObjectImpl.Container implements Plugin
     return result.toString();
   }
 
-} //PluginImpl
+} //MetaImpl

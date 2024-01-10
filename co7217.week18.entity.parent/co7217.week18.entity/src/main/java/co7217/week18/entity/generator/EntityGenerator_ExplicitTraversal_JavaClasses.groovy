@@ -11,7 +11,8 @@ import com.google.inject.Injector
 import co7217.week18.entity.EntityDslStandaloneSetup
 import co7217.week18.entity.entityDsl.CustomPostType
 import co7217.week18.entity.entityDsl.Hook
-import co7217.week18.entity.entityDsl.Plugin
+import co7217.week18.entity.entityDsl.Meta
+import co7217.week18.entity.entityDsl.PluginModel
 import co7217.week18.entity.entityDsl.Setting
 import co7217.week18.entity.entityDsl.Shortcode
 import co7217.week18.entity.entityDsl.StringList
@@ -20,7 +21,9 @@ import co7217.week18.entity.entityDsl.Widget
 class EntityGenerator_ExplicitTraversal_JavaClasses {
 	
 	private static String mPluginFileName = null;
-
+	private static String mPluginPrefix = null;
+	private static String mPluginTextDomain = null;
+	
 	    // Main method to execute the code.
     def static void main(String[] args) {
         // Initialize the injector for the domain-specific language (DSL)
@@ -30,55 +33,37 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 
         // Load a resource (model file) from the filesystem.
-        Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin.dmodel"), true);
+        Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin3.dmodel"), true);
 
         // Extract the root object (Plugin model) from the loaded resource.
-        Plugin model = (Plugin) resource.getContents().get(0);
-
-		mPluginFileName = sanitizeFilename(model.getName());
-
-        // Generate the main file for the plugin.
-		println "Generating Plugin File."
-        generatePluginMainFile(model);
-
-        // Handling activation, deactivation, and uninstall logic for the plugin.
-        if ("true".equalsIgnoreCase(model.getActivate())) {
-			println "Generating Activate File."
-            generateActivationFile(model);
-        }
-
-        if ("true".equalsIgnoreCase(model.getDeactivate())) {
-			println "Generating Deactivate File."
-            generateDeactivationFile(model);
-        }
-
-        if ("true".equalsIgnoreCase(model.getUninstall())) {
-			println "Generating Uninstall File."
-            generateUninstallFile(model);
-        }
-
-        // Generate files for widgets, shortcodes, and custom post types.
-        for (Widget widget: model.getWidgets()) {
-        	println "Generating Widget : " + widget.getWidgetName();
-            generateWidgetFile(widget, model);
-        }
-
-        for (Shortcode shortcode: model.getShortcodes()) {
-			println "Generating Shortcode : " + shortcode.getShortcodeName();
-            generateShortcodeFile(shortcode, model);
-        }
-
-        for (CustomPostType cpt: model.getCustomPostTypes()) {
-			println "Generating CustomPostType : " + cpt.getCptSingularName();
-            generateCustomPostTypeFile(cpt, model);
-        }
-
-        // Add hooks as specified in the plugin file.
-        for (Hook hook: model.getHooks()) {
-        	println "Generating Hook : " + hook.getHookName();
-            generateHooks(hook, model);
-        }
+        PluginModel model = (PluginModel) resource.getContents().get(0);		
+		generate(model);
     }
+
+	def static void generate(PluginModel model) {
+		for (el in model.elements) {
+			switch(el) {
+				case Meta :
+					mPluginFileName = sanitizeFilename(el.getName())
+					mPluginPrefix = el.getPrefix()
+					mPluginTextDomain = el.getTextDomain()
+					generatePluginMainFile(el)
+					break
+				case Widget :
+					generateWidgetFile(el)
+					break
+				case Shortcode :
+					generateShortcodeFile(el)
+					break
+				case CustomPostType :
+					generateCustomPostTypeFile(el)
+					break
+				case Hook :
+					generateHooks(el)
+					break
+			}
+		}
+	}
 
     /**
      * Generates the main PHP file for the WordPress plugin.
@@ -86,12 +71,14 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      *
      * @param model The Plugin object containing details needed for generating the main file.
      */
-    def static void generatePluginMainFile(Plugin model) {
+    def static void generatePluginMainFile(Meta meta) {
+		println "Generating Main Plugin File."
+		
         // Extracting basic plugin details from the Plugin object.
-        String pluginName = model.getName();
-        String pluginDescription = model.getDescription();
-        String pluginVersion = model.getVersion();
-        String pluginAuthor = model.getAuthor();
+        String pluginName = meta.getName();
+        String pluginDescription = meta.getDescription();
+        String pluginVersion = meta.getVersion();
+        String pluginAuthor = meta.getAuthor();
 
         // Constructing the PHP file content with plugin metadata.
         // This includes plugin name, description, version, and author.
@@ -106,8 +93,21 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
 
         // Converting the plugin name to lowercase and replacing spaces with hyphens.
         // This is typically done for file naming conventions.
-        String fileName = sanitizeFilename(model.getName()) + ".php";
+        String fileName = sanitizeFilename(mPluginFileName) + ".php";
         writeFile(content, fileName);
+		
+		// Handling activation, deactivation, and uninstall logic for the plugin.
+		if ("true".equalsIgnoreCase(meta.getActivate())) {
+			generateActivationFile(meta);
+		}
+
+		if ("true".equalsIgnoreCase(meta.getDeactivate())) {
+			generateDeactivationFile(meta);
+		}
+
+		if ("true".equalsIgnoreCase(meta.getUninstall())) {
+			generateUninstallFile(meta);
+		}
     }
 
     /**
@@ -116,26 +116,28 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      *
      * @param model The Plugin object from which activation details are retrieved.
      */
-    def static void generateActivationFile(Plugin model) {
+    def static void generateActivationFile(Meta meta) {
+		println "Generating Activate File."
+
         // Start building the PHP file content for plugin activation.
         String content = """<?php\n\n"""
 
         // Adding a function for plugin activation.
         // The function name is dynamically generated using the plugin prefix from the model.
-        content += """function ${getPluginPrefix(model)}_activate() {\n"""
+        content += """function ${mPluginPrefix}_activate() {\n"""
         content += """    // Activation code here\n"""
         content += """}\n\n"""
 
         // Registering the activation function with WordPress.
         // It hooks the function to the plugin activation event.
-        content += """register_activation_hook(__FILE__, '${getPluginPrefix(model)}_activate');\n"""
+        content += """register_activation_hook(__FILE__, '${mPluginPrefix}_activate');\n"""
 
         // Writing the built content to the activation PHP file.
         String fileName = sanitizeFilename("activate") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created activation file in the main plugin file.
-        include(fileName, model)
+        include(fileName)
     }
 
     /**
@@ -144,26 +146,28 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      *
      * @param model The Plugin object from which deactivation details are retrieved.
      */
-    def static void generateDeactivationFile(Plugin model) {
+    def static void generateDeactivationFile(Meta meta) {
+		println "Generating Deactivate File."
+
         // Starting the PHP file content for plugin deactivation.
         String content = """<?php\n\n"""
         
         // Adding a function for plugin deactivation.
         // The function name is dynamically generated using the plugin prefix from the model.
-        content += """function ${getPluginPrefix(model)}_deactivate() {\n"""
+        content += """function ${mPluginPrefix}_deactivate() {\n"""
         content += """    // Deactivation code here\n"""
         content += """}\n\n"""
 
         // Registering the deactivation function with WordPress.
         // It hooks the function to the plugin deactivation event.
-        content += """register_deactivation_hook(__FILE__, '${getPluginPrefix(model)}_deactivate');\n"""
+        content += """register_deactivation_hook(__FILE__, '${mPluginPrefix}_deactivate');\n"""
 
         // Writing the built content to the deactivation PHP file.
         String fileName = sanitizeFilename("deactivate") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created deactivation file in the main plugin file.
-        include(fileName, model)
+        include(fileName)
     }
 
 	/**
@@ -172,26 +176,28 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
 	 *
 	 * @param model The Plugin object from which uninstallation details are retrieved.
 	 */
-	def static void generateUninstallFile(Plugin model) {
+	def static void generateUninstallFile(Meta meta) {
+		println "Generating Uninstall File."
+
 		// Starting the PHP file content for plugin uninstallation.
 		String content = """<?php\n\n"""
         
         // Adding a function for plugin uninstallation.
         // The function name is dynamically generated using the plugin prefix from the model.
-        content += """function ${getPluginPrefix(model)}_uninstall() {\n"""
+        content += """function ${mPluginPrefix}_uninstall() {\n"""
 		content += """    // Uninstallation code here\n"""
         content += """}\n\n"""
 
 		// Registering the uninstallation function with WordPress.
 		// It hooks the function to the plugin uninstallation event.
-		content += """register_uninstall_hook(__FILE__, '${getPluginPrefix(model)}_uninstall');\n"""
+		content += """register_uninstall_hook(__FILE__, '${mPluginPrefix}_uninstall');\n"""
 
         // Writing the built content to the uninstallation PHP file.
         String fileName = sanitizeFilename("uninstall") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created uninstallation file in the main plugin file.
-        include(fileName, model)
+        include(fileName)
     }
 
     /**
@@ -201,7 +207,9 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      * @param widget The Widget object containing details about the widget.
      * @param model The Plugin object associated with this widget.
      */
-    def static void generateWidgetFile(Widget widget, Plugin model) {
+    def static void generateWidgetFile(Widget widget) {
+		println "Generating Widget : " + widget.getWidgetName();
+
         // Preparing the widget name by converting it to lowercase and replacing spaces with underscores.
         String widgetName = sanitizeFieldname(widget.getWidgetName());
         String widgetDescription = widget.getWidgetDescription();
@@ -216,16 +224,16 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         // Building the content of the PHP file for the widget.
         String content = """<?php\n"""
         content += """// Widget code for $widgetName here\n\n"""
-        content += """class ${getPluginPrefix(model)}_${widgetName}_widget extends WP_Widget {\n"""
+        content += """class ${mPluginPrefix}_${widgetName}_widget extends WP_Widget {\n"""
         content += """    public function __construct() {\n"""
         content += """        // actual widget processes\n\n"""
         content += """        parent::__construct(\n"""
         content += """            '${widgetName}', // Base ID\n"""
         content += """            '${widget.getWidgetName()}', // Name\n"""
-        content += """            array( 'description' => __( '${widget.getWidgetDescription()}', '${model.getTextDomain()}' ) ) // Args\n"""
+        content += """            array( 'description' => __( '${widget.getWidgetDescription()}', '${mPluginTextDomain}' ) ) // Args\n"""
         content += """        );\n\n"""
         content += """        add_action( 'widgets_init',  function() {\n"""
-        content += """            register_widget( '${getPluginPrefix(model)}_${widgetName}_widget' );\n"""
+        content += """            register_widget( '${mPluginPrefix}_${widgetName}_widget' );\n"""
         content += """        });\n"""
         content += """    }\n\n"""
         content += """    public \$args = array(\n"""
@@ -246,14 +254,14 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         content += """        return \$instance;\n"""
         content += """    }\n"""
         content += """}\n\n"""
-        content += """\$${getPluginPrefix(model)}_${widgetName} = new ${getPluginPrefix(model)}_${widgetName}();\n""";
+        content += """\$${mPluginPrefix}_${widgetName} = new ${mPluginPrefix}_${widgetName}();\n""";
 
         // Writing the built content to the widget-[widget-name] PHP file.
         String fileName = sanitizeFilename("widget-${widget.getWidgetName()}") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created widget file in the main plugin file.
-        include(fileName, model)
+        include(fileName)
     }
 
     /**
@@ -263,7 +271,9 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      * @param shortcode The Shortcode object containing details about the shortcode.
      * @param model The Plugin object associated with this shortcode.
      */
-    def static void generateShortcodeFile(Shortcode shortcode, Plugin model) {
+    def static void generateShortcodeFile(Shortcode shortcode) {
+		println "Generating Shortcode : " + shortcode.getShortcodeName();
+
         // Preparing the shortcode name by converting it to lowercase and replacing spaces with underscores.
         String shortcodeName = sanitizeFieldname(shortcode.getShortcodeName());
     
@@ -279,8 +289,8 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         // Building the content of the PHP file for the shortcode.
         String content = """<?php\n"""
         content += """// Shortcode code for $shortcodeName here\n\n"""
-        content += """// [${getPluginPrefix(model)}_${shortcodeName}${defaultSettings}]\n"""
-        content += """function ${getPluginPrefix(model)}_${shortcodeName}_shortcode ( \$atts = [], \$content = null) {\n\n"""
+        content += """// [${mPluginPrefix}_${shortcodeName}${defaultSettings}]\n"""
+        content += """function ${mPluginPrefix}_${shortcodeName}_shortcode ( \$atts = [], \$content = null) {\n\n"""
         content += """    // extract attributes\n"""
         content += """    \$a = shortcode_atts( array("""
         content += """${extractSettings}\n"""
@@ -288,14 +298,14 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         content += """    // always return something\n"""
         content += """    return '';\n"""
         content += """}\n\n"""
-        content += """add_shortcode('${getPluginPrefix(model)}_${shortcodeName}', '${getPluginPrefix(model)}_${shortcodeName}_shortcode');\n"""
+        content += """add_shortcode('${mPluginPrefix}_${shortcodeName}', '${mPluginPrefix}_${shortcodeName}_shortcode');\n"""
 
         // Writing the built content to the shortcode-[shortcode-name] PHP file.
         String fileName = sanitizeFilename("shortcode-${shortcode.getShortcodeName()}") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created shortcode file in the main plugin file.
-        include(fileName, model)
+        include(fileName)
     }
 
     /**
@@ -304,21 +314,23 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      * @param cpt The CustomPostType object containing details about the custom post type.
      * @param model The Plugin object associated with this custom post type.
      */
-    def static void generateCustomPostTypeFile(CustomPostType cpt, Plugin model) {
+    def static void generateCustomPostTypeFile(CustomPostType cpt) {
+		println "Generating CustomPostType : " + cpt.getCptSingularName();
+
         String cptName = sanitizeFieldname(cpt.getCptSingularName());
 
         String content = """\n// Register Custom Post Type for '${cpt.getCptSingularName()}'\n"""
-		content += """function register_${model.getPrefix()}_${cptName}_post_type() {\n"""
+		content += """function register_${mPluginPrefix}_${cptName}_post_type() {\n"""
 		content += """    // Set up labels for the '${cpt.getCptSingularName()}' post type\n"""
 		content += """\n"""
 		content += """    \$labels = array(\n"""
-		content += """        'name'          => __( '${cpt.getCptName()}', '${model.getTextDomain()}'),\n"""
-		content += """        'singular_name' => __( '${cpt.getCptSingularName()}', '${model.getTextDomain()}'),\n"""
+		content += """        'name'          => __( '${cpt.getCptName()}', '${mPluginTextDomain}'),\n"""
+		content += """        'singular_name' => __( '${cpt.getCptSingularName()}', '${mPluginTextDomain}'),\n"""
 		content += """    );\n\n"""
 		content += """    // Set up the arguments for the '${cpt.getCptSingularName()}' post type\n"""
 		content += """    \$args = array(\n"""
-		content += """        'label'           => __( '${cpt.getCptName()}', '${model.getTextDomain()}'),\n"""
-		content += """        'description'     => __( '${cpt.getCptName()}', '${model.getTextDomain()}'),\n"""
+		content += """        'label'           => __( '${cpt.getCptName()}', '${mPluginTextDomain}'),\n"""
+		content += """        'description'     => __( '${cpt.getCptName()}', '${mPluginTextDomain}'),\n"""
 		content += """        'labels'          => \$labels,\n"""
 		content += """        'supports'        => array(${toStringList(cpt.getCptSupports())}),\n"""
 		content += """        'supports'        => array(${toStringList(cpt.getCptTaxonomies())}),\n"""
@@ -330,10 +342,10 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
 		content += """    register_post_type('${cptName}', \$args);\n\n"""
 		content += """}\n\n"""
 		content += """// Hook into the 'init' action\n"""
-		content += """add_action('init', 'register_${model.getPrefix()}_${cptName}_post_type', 0);\n\n"""
+		content += """add_action('init', 'register_${mPluginPrefix}_${cptName}_post_type', 0);\n\n"""
 		
         // Writing the built content to the [plugin-name] PHP file.
-        String pluginName = sanitizeFilename(model.getName()) + ".php";
+        String pluginName = sanitizeFilename(mPluginFileName) + ".php";
         writeFile(content, pluginName, true);
     }
 
@@ -344,7 +356,9 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      * @param hook The Hook object containing details about the hook.
      * @param model The Plugin object associated with this hook.
      */
-    def static void generateHooks(Hook hook, Plugin model) {
+    def static void generateHooks(Hook hook) {
+		println "Generating Hook : " + hook.getHookName();
+
         // Extracting necessary information from the hook object.
         String hookType = hook.getHookType(); // The type of the hook (e.g., action or filter).
         String hookName = hook.getHookName();
@@ -369,15 +383,15 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
 
         // Constructing the content for the PHP file.
         String content = """\n"""
-        content += """function ${getPluginPrefix(model)}_${callback} ( ${variables} ) {\n"""
+        content += """function ${mPluginPrefix}_${callback} ( ${variables} ) {\n"""
         content += """    // Logic for ${callback} goes here\n"""
         content += """}\n"""
         
         // Registering the hook with WordPress, using the hook type, name, and callback function.
-        content += """add_${hookType}('${hookName}', '${getPluginPrefix(model)}_${callback}'${priority}${acceptedArgs});\n"""
+        content += """add_${hookType}('${hookName}', '${mPluginPrefix}_${callback}'${priority}${acceptedArgs});\n"""
 
         // Writing the built content to the [plugin-name] PHP file.
-        String pluginName = sanitizeFilename(model.getName()) + ".php";
+        String pluginName = sanitizeFilename(mPluginFileName) + ".php";
         writeFile(content, pluginName, true);
     }
 
@@ -431,30 +445,19 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
 	}
 
     /**
-     * Retrieves the prefix of the plugin.
-     *
-     * @param model The Plugin object from which to retrieve the prefix.
-     * @return The prefix of the plugin.
-     */
-    def static String getPluginPrefix(Plugin model) {
-        // Returns the prefix attribute from the Plugin model.
-        return model.getPrefix();
-    }
-
-    /**
      * Includes a given file in the main plugin file.
      * 
      * @param fileName The name of the file to be included.
      * @param model The Plugin object containing the plugin's details.
      */
-    def static void include(String fileName, Plugin model) {
+    def static void include(String fileName) {
         // Preparing the content to be written to the plugin's main file. 
         // It adds a 'require_once' statement for the given fileName.
         String content = """require_once plugin_dir_path(__FILE__) . ('${fileName}');\n"""
 
         // Writing the 'require_once' statement to the plugin's main PHP file.
         // The 'true' parameter in writeFile indicates that the content should be appended to the file.
-		String pluginName = sanitizeFilename(model.getName()) + ".php";
+		String pluginName = sanitizeFilename(mPluginFileName) + ".php";
         writeFile(content, pluginName, true);
     }
 	

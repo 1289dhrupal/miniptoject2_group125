@@ -76,9 +76,19 @@ public class EntityDslAdapterFactory extends AdapterFactoryImpl
     new EntityDslSwitch<Adapter>()
     {
       @Override
-      public Adapter casePlugin(Plugin object)
+      public Adapter casePluginModel(PluginModel object)
       {
-        return createPluginAdapter();
+        return createPluginModelAdapter();
+      }
+      @Override
+      public Adapter caseElement(Element object)
+      {
+        return createElementAdapter();
+      }
+      @Override
+      public Adapter caseMeta(Meta object)
+      {
+        return createMetaAdapter();
       }
       @Override
       public Adapter caseWidget(Widget object)
@@ -133,16 +143,46 @@ public class EntityDslAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link co7217.week18.entity.entityDsl.Plugin <em>Plugin</em>}'.
+   * Creates a new adapter for an object of class '{@link co7217.week18.entity.entityDsl.PluginModel <em>Plugin Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see co7217.week18.entity.entityDsl.Plugin
+   * @see co7217.week18.entity.entityDsl.PluginModel
    * @generated
    */
-  public Adapter createPluginAdapter()
+  public Adapter createPluginModelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.week18.entity.entityDsl.Element <em>Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.week18.entity.entityDsl.Element
+   * @generated
+   */
+  public Adapter createElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.week18.entity.entityDsl.Meta <em>Meta</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.week18.entity.entityDsl.Meta
+   * @generated
+   */
+  public Adapter createMetaAdapter()
   {
     return null;
   }

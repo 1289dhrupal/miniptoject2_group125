@@ -31,8 +31,9 @@ public class EntityDslParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, EntityDslGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getElementAccess().getAlternatives(), "rule__Element__Alternatives");
 			builder.put(grammarAccess.getHookTypeAccess().getAlternatives(), "rule__HookType__Alternatives");
-			builder.put(grammarAccess.getPluginAccess().getGroup(), "rule__Plugin__Group__0");
+			builder.put(grammarAccess.getMetaAccess().getGroup(), "rule__Meta__Group__0");
 			builder.put(grammarAccess.getWidgetAccess().getGroup(), "rule__Widget__Group__0");
 			builder.put(grammarAccess.getShortcodeAccess().getGroup(), "rule__Shortcode__Group__0");
 			builder.put(grammarAccess.getCustomPostTypeAccess().getGroup(), "rule__CustomPostType__Group__0");
@@ -40,21 +41,17 @@ public class EntityDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getHookAccess().getGroup(), "rule__Hook__Group__0");
 			builder.put(grammarAccess.getStringListAccess().getGroup(), "rule__StringList__Group__0");
 			builder.put(grammarAccess.getStringListAccess().getGroup_1(), "rule__StringList__Group_1__0");
-			builder.put(grammarAccess.getPluginAccess().getNameAssignment_4(), "rule__Plugin__NameAssignment_4");
-			builder.put(grammarAccess.getPluginAccess().getVersionAssignment_7(), "rule__Plugin__VersionAssignment_7");
-			builder.put(grammarAccess.getPluginAccess().getDescriptionAssignment_10(), "rule__Plugin__DescriptionAssignment_10");
-			builder.put(grammarAccess.getPluginAccess().getAuthorAssignment_13(), "rule__Plugin__AuthorAssignment_13");
-			builder.put(grammarAccess.getPluginAccess().getLicenseAssignment_16(), "rule__Plugin__LicenseAssignment_16");
-			builder.put(grammarAccess.getPluginAccess().getPrefixAssignment_19(), "rule__Plugin__PrefixAssignment_19");
-			builder.put(grammarAccess.getPluginAccess().getTextDomainAssignment_22(), "rule__Plugin__TextDomainAssignment_22");
-			builder.put(grammarAccess.getPluginAccess().getActivateAssignment_25(), "rule__Plugin__ActivateAssignment_25");
-			builder.put(grammarAccess.getPluginAccess().getDeactivateAssignment_28(), "rule__Plugin__DeactivateAssignment_28");
-			builder.put(grammarAccess.getPluginAccess().getUninstallAssignment_31(), "rule__Plugin__UninstallAssignment_31");
-			builder.put(grammarAccess.getPluginAccess().getWidgetsAssignment_32(), "rule__Plugin__WidgetsAssignment_32");
-			builder.put(grammarAccess.getPluginAccess().getShortcodesAssignment_33(), "rule__Plugin__ShortcodesAssignment_33");
-			builder.put(grammarAccess.getPluginAccess().getCustomPostTypesAssignment_34(), "rule__Plugin__CustomPostTypesAssignment_34");
-			builder.put(grammarAccess.getPluginAccess().getSettingsAssignment_35(), "rule__Plugin__SettingsAssignment_35");
-			builder.put(grammarAccess.getPluginAccess().getHooksAssignment_36(), "rule__Plugin__HooksAssignment_36");
+			builder.put(grammarAccess.getPluginModelAccess().getElementsAssignment(), "rule__PluginModel__ElementsAssignment");
+			builder.put(grammarAccess.getMetaAccess().getNameAssignment_4(), "rule__Meta__NameAssignment_4");
+			builder.put(grammarAccess.getMetaAccess().getVersionAssignment_7(), "rule__Meta__VersionAssignment_7");
+			builder.put(grammarAccess.getMetaAccess().getDescriptionAssignment_10(), "rule__Meta__DescriptionAssignment_10");
+			builder.put(grammarAccess.getMetaAccess().getAuthorAssignment_13(), "rule__Meta__AuthorAssignment_13");
+			builder.put(grammarAccess.getMetaAccess().getLicenseAssignment_16(), "rule__Meta__LicenseAssignment_16");
+			builder.put(grammarAccess.getMetaAccess().getPrefixAssignment_19(), "rule__Meta__PrefixAssignment_19");
+			builder.put(grammarAccess.getMetaAccess().getTextDomainAssignment_22(), "rule__Meta__TextDomainAssignment_22");
+			builder.put(grammarAccess.getMetaAccess().getActivateAssignment_25(), "rule__Meta__ActivateAssignment_25");
+			builder.put(grammarAccess.getMetaAccess().getDeactivateAssignment_28(), "rule__Meta__DeactivateAssignment_28");
+			builder.put(grammarAccess.getMetaAccess().getUninstallAssignment_31(), "rule__Meta__UninstallAssignment_31");
 			builder.put(grammarAccess.getWidgetAccess().getWidgetNameAssignment_4(), "rule__Widget__WidgetNameAssignment_4");
 			builder.put(grammarAccess.getWidgetAccess().getWidgetDescriptionAssignment_7(), "rule__Widget__WidgetDescriptionAssignment_7");
 			builder.put(grammarAccess.getWidgetAccess().getSettingsAssignment_8(), "rule__Widget__SettingsAssignment_8");

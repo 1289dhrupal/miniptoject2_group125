@@ -66,7 +66,9 @@ public class EntityDslFactoryImpl extends EFactoryImpl implements EntityDslFacto
   {
     switch (eClass.getClassifierID())
     {
-      case EntityDslPackage.PLUGIN: return createPlugin();
+      case EntityDslPackage.PLUGIN_MODEL: return createPluginModel();
+      case EntityDslPackage.ELEMENT: return createElement();
+      case EntityDslPackage.META: return createMeta();
       case EntityDslPackage.WIDGET: return createWidget();
       case EntityDslPackage.SHORTCODE: return createShortcode();
       case EntityDslPackage.CUSTOM_POST_TYPE: return createCustomPostType();
@@ -118,10 +120,34 @@ public class EntityDslFactoryImpl extends EFactoryImpl implements EntityDslFacto
    * @generated
    */
   @Override
-  public Plugin createPlugin()
+  public PluginModel createPluginModel()
   {
-    PluginImpl plugin = new PluginImpl();
-    return plugin;
+    PluginModelImpl pluginModel = new PluginModelImpl();
+    return pluginModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Element createElement()
+  {
+    ElementImpl element = new ElementImpl();
+    return element;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Meta createMeta()
+  {
+    MetaImpl meta = new MetaImpl();
+    return meta;
   }
 
   /**

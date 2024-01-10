@@ -5,8 +5,6 @@ package co7217.week18.entity.entityDsl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Custom Post Type</b></em>'.
@@ -26,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface CustomPostType extends EObject
+public interface CustomPostType extends Element
 {
   /**
    * Returns the value of the '<em><b>Cpt Name</b></em>' attribute.

@@ -11,7 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class SettingImpl extends MinimalEObjectImpl.Container implements Setting
+public class SettingImpl extends ElementImpl implements Setting
 {
   /**
    * The default value of the '{@link #getSettingName() <em>Setting Name</em>}' attribute.

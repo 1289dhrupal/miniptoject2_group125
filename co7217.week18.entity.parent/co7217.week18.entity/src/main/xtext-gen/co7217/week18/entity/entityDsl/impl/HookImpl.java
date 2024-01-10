@@ -12,7 +12,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +30,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class HookImpl extends MinimalEObjectImpl.Container implements Hook
+public class HookImpl extends ElementImpl implements Hook
 {
   /**
    * The default value of the '{@link #getHookType() <em>Hook Type</em>}' attribute.

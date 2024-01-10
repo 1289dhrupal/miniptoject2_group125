@@ -1,4 +1,5 @@
-Plugin {
+
+Meta {
     name = "CouponAPI"
     version = "1.0.0"
     description = "This is an example plugin."
@@ -9,46 +10,47 @@ Plugin {
     activate = "true"
     deactivate = "true"
     uninstall = "true"
-
-    Widget {
-        widgetName = "Example 1"
-        widgetDescription = "This is a sample widget"
-
-    	Setting {
-            settingName = "BackgroundColor"
-            settingType = "String"
-            defaultValue = "#FFFFFF"
-        }
-
-        Setting {
-            settingName = "Width"
-            settingType = "Integer"
-            defaultValue = "800"
-        }
-    }
-
-    Shortcode {
-        shortcodeName = "Example 2"
-
-        Setting {
-            settingName = "Width"
-            settingType = "Integer"
-            defaultValue = "800"
-        }
-    }
-
-    CustomPostType {
-        cptName = "Coupons"
-        cptSingularName = "Coupon"
-        cptSupports = "title", "editor", "thumbnail"
-        cptTaxonomies = "store", "location"
-    }
-    
-    Hook {
-        hookType = action
-        hookName = "save_post"
-        callback = "save_post"
-        priority = 10
-        acceptedArgs = 2
-    }    
 }
+
+Widget {
+    widgetName = "Example 1"
+    widgetDescription = "This is a sample widget"
+
+	Setting {
+        settingName = "BackgroundColor"
+        settingType = "String"
+        defaultValue = "#FFFFFF"
+    }
+
+    Setting {
+        settingName = "Width"
+        settingType = "Integer"
+        defaultValue = "800"
+    }
+}
+
+Shortcode {
+    shortcodeName = "Example 2"
+
+    Setting {
+        settingName = "Width"
+        settingType = "Integer"
+        defaultValue = "800"
+    }
+}
+
+CustomPostType {
+    cptName = "Coupons"
+    cptSingularName = "Coupon"
+    cptSupports = "title", "editor", "thumbnail"
+    cptTaxonomies = "store", "location"
+}
+
+Hook {
+    hookType = action
+    hookName = "save_post"
+    callback = "save_post"
+    priority = 10
+    acceptedArgs = 2
+}    
+

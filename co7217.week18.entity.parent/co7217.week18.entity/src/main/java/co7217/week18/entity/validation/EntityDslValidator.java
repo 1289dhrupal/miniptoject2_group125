@@ -3,6 +3,10 @@
  */
 package co7217.week18.entity.validation;
 
+import org.eclipse.xtext.validation.Check;
+
+import co7217.week18.entity.entityDsl.EntityDslPackage;
+import co7217.week18.entity.entityDsl.Meta;
 
 /**
  * This class contains custom validation rules. 
@@ -22,4 +26,31 @@ public class EntityDslValidator extends AbstractEntityDslValidator {
 //		}
 //	}
 	
+	@Check
+	public void checkPluginActivate(Meta plugin) {
+	    String activateValue = plugin.getActivate();
+	    if (activateValue != null && !activateValue.equals("true") && !activateValue.equals("false")) {
+	        error("The 'activate' value must be 'true' or 'false'.",
+	              EntityDslPackage.Literals.META__ACTIVATE);
+	    }
+	}
+
+	@Check
+	public void checkPluginDeactivate(Meta plugin) {
+	    String deactivateValue = plugin.getDeactivate();
+	    if (deactivateValue != null && !deactivateValue.equals("true") && !deactivateValue.equals("false")) {
+	        error("The 'deactivate' value must be 'true' or 'false'.",
+	              EntityDslPackage.Literals.META__DEACTIVATE);
+	    }
+	}
+
+	@Check
+	public void checkPluginUninstall(Meta plugin) {
+	    String uninstallValue = plugin.getUninstall();
+	    if (uninstallValue != null && !uninstallValue.equals("true") && !uninstallValue.equals("false")) {
+	        error("The 'uninstall' value must be 'true' or 'false'.",
+	              EntityDslPackage.Literals.META__UNINSTALL);
+	    }
+	}
+
 }

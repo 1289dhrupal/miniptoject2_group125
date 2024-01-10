@@ -59,14 +59,61 @@ public interface EntityDslPackage extends EPackage
   EntityDslPackage eINSTANCE = co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.PluginImpl <em>Plugin</em>}' class.
+   * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.PluginModelImpl <em>Plugin Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see co7217.week18.entity.entityDsl.impl.PluginImpl
-   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getPlugin()
+   * @see co7217.week18.entity.entityDsl.impl.PluginModelImpl
+   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getPluginModel()
    * @generated
    */
-  int PLUGIN = 0;
+  int PLUGIN_MODEL = 0;
+
+  /**
+   * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUGIN_MODEL__ELEMENTS = 0;
+
+  /**
+   * The number of structural features of the '<em>Plugin Model</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUGIN_MODEL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.ElementImpl <em>Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.week18.entity.entityDsl.impl.ElementImpl
+   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getElement()
+   * @generated
+   */
+  int ELEMENT = 1;
+
+  /**
+   * The number of structural features of the '<em>Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENT_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.MetaImpl <em>Meta</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.week18.entity.entityDsl.impl.MetaImpl
+   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getMeta()
+   * @generated
+   */
+  int META = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -75,7 +122,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__NAME = 0;
+  int META__NAME = ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -84,7 +131,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__VERSION = 1;
+  int META__VERSION = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -93,7 +140,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__DESCRIPTION = 2;
+  int META__DESCRIPTION = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Author</b></em>' attribute.
@@ -102,7 +149,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__AUTHOR = 3;
+  int META__AUTHOR = ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>License</b></em>' attribute.
@@ -111,7 +158,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__LICENSE = 4;
+  int META__LICENSE = ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Prefix</b></em>' attribute.
@@ -120,7 +167,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__PREFIX = 5;
+  int META__PREFIX = ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Text Domain</b></em>' attribute.
@@ -129,7 +176,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__TEXT_DOMAIN = 6;
+  int META__TEXT_DOMAIN = ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Activate</b></em>' attribute.
@@ -138,7 +185,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__ACTIVATE = 7;
+  int META__ACTIVATE = ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Deactivate</b></em>' attribute.
@@ -147,7 +194,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__DEACTIVATE = 8;
+  int META__DEACTIVATE = ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Uninstall</b></em>' attribute.
@@ -156,61 +203,16 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLUGIN__UNINSTALL = 9;
+  int META__UNINSTALL = ELEMENT_FEATURE_COUNT + 9;
 
   /**
-   * The feature id for the '<em><b>Widgets</b></em>' containment reference list.
+   * The number of structural features of the '<em>Meta</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PLUGIN__WIDGETS = 10;
-
-  /**
-   * The feature id for the '<em><b>Shortcodes</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PLUGIN__SHORTCODES = 11;
-
-  /**
-   * The feature id for the '<em><b>Custom Post Types</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PLUGIN__CUSTOM_POST_TYPES = 12;
-
-  /**
-   * The feature id for the '<em><b>Settings</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PLUGIN__SETTINGS = 13;
-
-  /**
-   * The feature id for the '<em><b>Hooks</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PLUGIN__HOOKS = 14;
-
-  /**
-   * The number of structural features of the '<em>Plugin</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PLUGIN_FEATURE_COUNT = 15;
+  int META_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 10;
 
   /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.WidgetImpl <em>Widget</em>}' class.
@@ -220,7 +222,7 @@ public interface EntityDslPackage extends EPackage
    * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getWidget()
    * @generated
    */
-  int WIDGET = 1;
+  int WIDGET = 3;
 
   /**
    * The feature id for the '<em><b>Widget Name</b></em>' attribute.
@@ -229,7 +231,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WIDGET__WIDGET_NAME = 0;
+  int WIDGET__WIDGET_NAME = ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Widget Description</b></em>' attribute.
@@ -238,7 +240,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WIDGET__WIDGET_DESCRIPTION = 1;
+  int WIDGET__WIDGET_DESCRIPTION = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Settings</b></em>' containment reference list.
@@ -247,7 +249,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WIDGET__SETTINGS = 2;
+  int WIDGET__SETTINGS = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Widget</em>' class.
@@ -256,7 +258,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WIDGET_FEATURE_COUNT = 3;
+  int WIDGET_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.ShortcodeImpl <em>Shortcode</em>}' class.
@@ -266,7 +268,7 @@ public interface EntityDslPackage extends EPackage
    * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getShortcode()
    * @generated
    */
-  int SHORTCODE = 2;
+  int SHORTCODE = 4;
 
   /**
    * The feature id for the '<em><b>Shortcode Name</b></em>' attribute.
@@ -275,7 +277,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SHORTCODE__SHORTCODE_NAME = 0;
+  int SHORTCODE__SHORTCODE_NAME = ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Settings</b></em>' containment reference list.
@@ -284,7 +286,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SHORTCODE__SETTINGS = 1;
+  int SHORTCODE__SETTINGS = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Shortcode</em>' class.
@@ -293,7 +295,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SHORTCODE_FEATURE_COUNT = 2;
+  int SHORTCODE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl <em>Custom Post Type</em>}' class.
@@ -303,7 +305,7 @@ public interface EntityDslPackage extends EPackage
    * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getCustomPostType()
    * @generated
    */
-  int CUSTOM_POST_TYPE = 3;
+  int CUSTOM_POST_TYPE = 5;
 
   /**
    * The feature id for the '<em><b>Cpt Name</b></em>' attribute.
@@ -312,7 +314,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_POST_TYPE__CPT_NAME = 0;
+  int CUSTOM_POST_TYPE__CPT_NAME = ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Cpt Singular Name</b></em>' attribute.
@@ -321,7 +323,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_POST_TYPE__CPT_SINGULAR_NAME = 1;
+  int CUSTOM_POST_TYPE__CPT_SINGULAR_NAME = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Cpt Supports</b></em>' containment reference list.
@@ -330,7 +332,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_POST_TYPE__CPT_SUPPORTS = 2;
+  int CUSTOM_POST_TYPE__CPT_SUPPORTS = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Cpt Taxonomies</b></em>' containment reference list.
@@ -339,7 +341,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_POST_TYPE__CPT_TAXONOMIES = 3;
+  int CUSTOM_POST_TYPE__CPT_TAXONOMIES = ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Custom Post Type</em>' class.
@@ -348,7 +350,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_POST_TYPE_FEATURE_COUNT = 4;
+  int CUSTOM_POST_TYPE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.SettingImpl <em>Setting</em>}' class.
@@ -358,7 +360,7 @@ public interface EntityDslPackage extends EPackage
    * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getSetting()
    * @generated
    */
-  int SETTING = 4;
+  int SETTING = 6;
 
   /**
    * The feature id for the '<em><b>Setting Name</b></em>' attribute.
@@ -367,7 +369,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SETTING__SETTING_NAME = 0;
+  int SETTING__SETTING_NAME = ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Setting Type</b></em>' attribute.
@@ -376,7 +378,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SETTING__SETTING_TYPE = 1;
+  int SETTING__SETTING_TYPE = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Default Value</b></em>' attribute.
@@ -385,7 +387,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SETTING__DEFAULT_VALUE = 2;
+  int SETTING__DEFAULT_VALUE = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Setting</em>' class.
@@ -394,7 +396,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SETTING_FEATURE_COUNT = 3;
+  int SETTING_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.HookImpl <em>Hook</em>}' class.
@@ -404,7 +406,7 @@ public interface EntityDslPackage extends EPackage
    * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getHook()
    * @generated
    */
-  int HOOK = 5;
+  int HOOK = 7;
 
   /**
    * The feature id for the '<em><b>Hook Type</b></em>' attribute.
@@ -413,7 +415,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int HOOK__HOOK_TYPE = 0;
+  int HOOK__HOOK_TYPE = ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Hook Name</b></em>' attribute.
@@ -422,7 +424,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int HOOK__HOOK_NAME = 1;
+  int HOOK__HOOK_NAME = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Callback</b></em>' attribute.
@@ -431,7 +433,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int HOOK__CALLBACK = 2;
+  int HOOK__CALLBACK = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -440,7 +442,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int HOOK__PRIORITY = 3;
+  int HOOK__PRIORITY = ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Accepted Args</b></em>' attribute.
@@ -449,7 +451,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int HOOK__ACCEPTED_ARGS = 4;
+  int HOOK__ACCEPTED_ARGS = ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Hook</em>' class.
@@ -458,7 +460,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int HOOK_FEATURE_COUNT = 5;
+  int HOOK_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.StringListImpl <em>String List</em>}' class.
@@ -468,7 +470,7 @@ public interface EntityDslPackage extends EPackage
    * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getStringList()
    * @generated
    */
-  int STRING_LIST = 6;
+  int STRING_LIST = 8;
 
   /**
    * The feature id for the '<em><b>Values</b></em>' attribute list.
@@ -496,183 +498,159 @@ public interface EntityDslPackage extends EPackage
    * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getHookType()
    * @generated
    */
-  int HOOK_TYPE = 7;
+  int HOOK_TYPE = 9;
 
 
   /**
-   * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Plugin <em>Plugin</em>}'.
+   * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.PluginModel <em>Plugin Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Plugin</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin
+   * @return the meta object for class '<em>Plugin Model</em>'.
+   * @see co7217.week18.entity.entityDsl.PluginModel
    * @generated
    */
-  EClass getPlugin();
+  EClass getPluginModel();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.PluginModel#getElements <em>Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Elements</em>'.
+   * @see co7217.week18.entity.entityDsl.PluginModel#getElements()
+   * @see #getPluginModel()
+   * @generated
+   */
+  EReference getPluginModel_Elements();
+
+  /**
+   * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Element <em>Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Element</em>'.
+   * @see co7217.week18.entity.entityDsl.Element
+   * @generated
+   */
+  EClass getElement();
+
+  /**
+   * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Meta <em>Meta</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Meta</em>'.
+   * @see co7217.week18.entity.entityDsl.Meta
+   * @generated
+   */
+  EClass getMeta();
+
+  /**
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getName()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getName()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_Name();
+  EAttribute getMeta_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getVersion <em>Version</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getVersion <em>Version</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Version</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getVersion()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getVersion()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_Version();
+  EAttribute getMeta_Version();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getDescription <em>Description</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getDescription <em>Description</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Description</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getDescription()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getDescription()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_Description();
+  EAttribute getMeta_Description();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getAuthor <em>Author</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getAuthor <em>Author</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Author</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getAuthor()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getAuthor()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_Author();
+  EAttribute getMeta_Author();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getLicense <em>License</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getLicense <em>License</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>License</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getLicense()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getLicense()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_License();
+  EAttribute getMeta_License();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getPrefix <em>Prefix</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getPrefix <em>Prefix</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Prefix</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getPrefix()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getPrefix()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_Prefix();
+  EAttribute getMeta_Prefix();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getTextDomain <em>Text Domain</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getTextDomain <em>Text Domain</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Text Domain</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getTextDomain()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getTextDomain()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_TextDomain();
+  EAttribute getMeta_TextDomain();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getActivate <em>Activate</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getActivate <em>Activate</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Activate</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getActivate()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getActivate()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_Activate();
+  EAttribute getMeta_Activate();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getDeactivate <em>Deactivate</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getDeactivate <em>Deactivate</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Deactivate</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getDeactivate()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getDeactivate()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_Deactivate();
+  EAttribute getMeta_Deactivate();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Plugin#getUninstall <em>Uninstall</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.Meta#getUninstall <em>Uninstall</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Uninstall</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getUninstall()
-   * @see #getPlugin()
+   * @see co7217.week18.entity.entityDsl.Meta#getUninstall()
+   * @see #getMeta()
    * @generated
    */
-  EAttribute getPlugin_Uninstall();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.Plugin#getWidgets <em>Widgets</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Widgets</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getWidgets()
-   * @see #getPlugin()
-   * @generated
-   */
-  EReference getPlugin_Widgets();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.Plugin#getShortcodes <em>Shortcodes</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Shortcodes</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getShortcodes()
-   * @see #getPlugin()
-   * @generated
-   */
-  EReference getPlugin_Shortcodes();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.Plugin#getCustomPostTypes <em>Custom Post Types</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Custom Post Types</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getCustomPostTypes()
-   * @see #getPlugin()
-   * @generated
-   */
-  EReference getPlugin_CustomPostTypes();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.Plugin#getSettings <em>Settings</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Settings</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getSettings()
-   * @see #getPlugin()
-   * @generated
-   */
-  EReference getPlugin_Settings();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.Plugin#getHooks <em>Hooks</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Hooks</em>'.
-   * @see co7217.week18.entity.entityDsl.Plugin#getHooks()
-   * @see #getPlugin()
-   * @generated
-   */
-  EReference getPlugin_Hooks();
+  EAttribute getMeta_Uninstall();
 
   /**
    * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Widget <em>Widget</em>}'.
@@ -966,14 +944,42 @@ public interface EntityDslPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.PluginImpl <em>Plugin</em>}' class.
+     * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.PluginModelImpl <em>Plugin Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see co7217.week18.entity.entityDsl.impl.PluginImpl
-     * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getPlugin()
+     * @see co7217.week18.entity.entityDsl.impl.PluginModelImpl
+     * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getPluginModel()
      * @generated
      */
-    EClass PLUGIN = eINSTANCE.getPlugin();
+    EClass PLUGIN_MODEL = eINSTANCE.getPluginModel();
+
+    /**
+     * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PLUGIN_MODEL__ELEMENTS = eINSTANCE.getPluginModel_Elements();
+
+    /**
+     * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.ElementImpl <em>Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.week18.entity.entityDsl.impl.ElementImpl
+     * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getElement()
+     * @generated
+     */
+    EClass ELEMENT = eINSTANCE.getElement();
+
+    /**
+     * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.MetaImpl <em>Meta</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.week18.entity.entityDsl.impl.MetaImpl
+     * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getMeta()
+     * @generated
+     */
+    EClass META = eINSTANCE.getMeta();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -981,7 +987,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__NAME = eINSTANCE.getPlugin_Name();
+    EAttribute META__NAME = eINSTANCE.getMeta_Name();
 
     /**
      * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
@@ -989,7 +995,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__VERSION = eINSTANCE.getPlugin_Version();
+    EAttribute META__VERSION = eINSTANCE.getMeta_Version();
 
     /**
      * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -997,7 +1003,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__DESCRIPTION = eINSTANCE.getPlugin_Description();
+    EAttribute META__DESCRIPTION = eINSTANCE.getMeta_Description();
 
     /**
      * The meta object literal for the '<em><b>Author</b></em>' attribute feature.
@@ -1005,7 +1011,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__AUTHOR = eINSTANCE.getPlugin_Author();
+    EAttribute META__AUTHOR = eINSTANCE.getMeta_Author();
 
     /**
      * The meta object literal for the '<em><b>License</b></em>' attribute feature.
@@ -1013,7 +1019,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__LICENSE = eINSTANCE.getPlugin_License();
+    EAttribute META__LICENSE = eINSTANCE.getMeta_License();
 
     /**
      * The meta object literal for the '<em><b>Prefix</b></em>' attribute feature.
@@ -1021,7 +1027,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__PREFIX = eINSTANCE.getPlugin_Prefix();
+    EAttribute META__PREFIX = eINSTANCE.getMeta_Prefix();
 
     /**
      * The meta object literal for the '<em><b>Text Domain</b></em>' attribute feature.
@@ -1029,7 +1035,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__TEXT_DOMAIN = eINSTANCE.getPlugin_TextDomain();
+    EAttribute META__TEXT_DOMAIN = eINSTANCE.getMeta_TextDomain();
 
     /**
      * The meta object literal for the '<em><b>Activate</b></em>' attribute feature.
@@ -1037,7 +1043,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__ACTIVATE = eINSTANCE.getPlugin_Activate();
+    EAttribute META__ACTIVATE = eINSTANCE.getMeta_Activate();
 
     /**
      * The meta object literal for the '<em><b>Deactivate</b></em>' attribute feature.
@@ -1045,7 +1051,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__DEACTIVATE = eINSTANCE.getPlugin_Deactivate();
+    EAttribute META__DEACTIVATE = eINSTANCE.getMeta_Deactivate();
 
     /**
      * The meta object literal for the '<em><b>Uninstall</b></em>' attribute feature.
@@ -1053,47 +1059,7 @@ public interface EntityDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PLUGIN__UNINSTALL = eINSTANCE.getPlugin_Uninstall();
-
-    /**
-     * The meta object literal for the '<em><b>Widgets</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PLUGIN__WIDGETS = eINSTANCE.getPlugin_Widgets();
-
-    /**
-     * The meta object literal for the '<em><b>Shortcodes</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PLUGIN__SHORTCODES = eINSTANCE.getPlugin_Shortcodes();
-
-    /**
-     * The meta object literal for the '<em><b>Custom Post Types</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PLUGIN__CUSTOM_POST_TYPES = eINSTANCE.getPlugin_CustomPostTypes();
-
-    /**
-     * The meta object literal for the '<em><b>Settings</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PLUGIN__SETTINGS = eINSTANCE.getPlugin_Settings();
-
-    /**
-     * The meta object literal for the '<em><b>Hooks</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PLUGIN__HOOKS = eINSTANCE.getPlugin_Hooks();
+    EAttribute META__UNINSTALL = eINSTANCE.getMeta_Uninstall();
 
     /**
      * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.WidgetImpl <em>Widget</em>}' class.

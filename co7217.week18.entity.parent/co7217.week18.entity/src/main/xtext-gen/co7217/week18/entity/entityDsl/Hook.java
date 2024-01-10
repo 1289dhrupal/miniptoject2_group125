@@ -3,7 +3,6 @@
  */
 package co7217.week18.entity.entityDsl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Hook extends EObject
+public interface Hook extends Element
 {
   /**
    * Returns the value of the '<em><b>Hook Type</b></em>' attribute.

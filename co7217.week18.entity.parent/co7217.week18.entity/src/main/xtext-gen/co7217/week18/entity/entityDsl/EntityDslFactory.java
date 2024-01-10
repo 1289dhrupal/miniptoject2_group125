@@ -24,13 +24,31 @@ public interface EntityDslFactory extends EFactory
   EntityDslFactory eINSTANCE = co7217.week18.entity.entityDsl.impl.EntityDslFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Plugin</em>'.
+   * Returns a new object of class '<em>Plugin Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Plugin</em>'.
+   * @return a new object of class '<em>Plugin Model</em>'.
    * @generated
    */
-  Plugin createPlugin();
+  PluginModel createPluginModel();
+
+  /**
+   * Returns a new object of class '<em>Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Element</em>'.
+   * @generated
+   */
+  Element createElement();
+
+  /**
+   * Returns a new object of class '<em>Meta</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Meta</em>'.
+   * @generated
+   */
+  Meta createMeta();
 
   /**
    * Returns a new object of class '<em>Widget</em>'.

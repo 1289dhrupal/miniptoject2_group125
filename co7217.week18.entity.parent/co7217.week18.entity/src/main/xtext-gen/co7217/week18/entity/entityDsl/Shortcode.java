@@ -5,8 +5,6 @@ package co7217.week18.entity.entityDsl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Shortcode</b></em>'.
@@ -24,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Shortcode extends EObject
+public interface Shortcode extends Element
 {
   /**
    * Returns the value of the '<em><b>Shortcode Name</b></em>' attribute.

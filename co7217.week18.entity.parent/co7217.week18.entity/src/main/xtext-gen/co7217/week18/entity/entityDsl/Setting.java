@@ -3,7 +3,6 @@
  */
 package co7217.week18.entity.entityDsl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Setting extends EObject
+public interface Setting extends Element
 {
   /**
    * Returns the value of the '<em><b>Setting Name</b></em>' attribute.

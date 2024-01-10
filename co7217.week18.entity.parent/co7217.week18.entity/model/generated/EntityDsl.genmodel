@@ -10,22 +10,21 @@
       <genEnumLiterals ecoreEnumLiteral="EntityDsl.ecore#//HookType/FILTER"/>
       <genEnumLiterals ecoreEnumLiteral="EntityDsl.ecore#//HookType/ACTION"/>
     </genEnums>
-    <genClasses ecoreClass="EntityDsl.ecore#//Plugin">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/version"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/author"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/license"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/prefix"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/textDomain"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/activate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/deactivate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Plugin/uninstall"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/widgets"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/shortcodes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/customPostTypes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/settings"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Plugin/hooks"/>
+    <genClasses ecoreClass="EntityDsl.ecore#//PluginModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//PluginModel/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="EntityDsl.ecore#//Element"/>
+    <genClasses ecoreClass="EntityDsl.ecore#//Meta">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/license"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/prefix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/textDomain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/activate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/deactivate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Meta/uninstall"/>
     </genClasses>
     <genClasses ecoreClass="EntityDsl.ecore#//Widget">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Widget/widgetName"/>

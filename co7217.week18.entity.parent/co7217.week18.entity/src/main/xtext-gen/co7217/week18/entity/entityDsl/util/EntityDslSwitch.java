@@ -73,10 +73,25 @@ public class EntityDslSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case EntityDslPackage.PLUGIN:
+      case EntityDslPackage.PLUGIN_MODEL:
       {
-        Plugin plugin = (Plugin)theEObject;
-        T result = casePlugin(plugin);
+        PluginModel pluginModel = (PluginModel)theEObject;
+        T result = casePluginModel(pluginModel);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EntityDslPackage.ELEMENT:
+      {
+        Element element = (Element)theEObject;
+        T result = caseElement(element);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EntityDslPackage.META:
+      {
+        Meta meta = (Meta)theEObject;
+        T result = caseMeta(meta);
+        if (result == null) result = caseElement(meta);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -84,6 +99,7 @@ public class EntityDslSwitch<T> extends Switch<T>
       {
         Widget widget = (Widget)theEObject;
         T result = caseWidget(widget);
+        if (result == null) result = caseElement(widget);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -91,6 +107,7 @@ public class EntityDslSwitch<T> extends Switch<T>
       {
         Shortcode shortcode = (Shortcode)theEObject;
         T result = caseShortcode(shortcode);
+        if (result == null) result = caseElement(shortcode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -98,6 +115,7 @@ public class EntityDslSwitch<T> extends Switch<T>
       {
         CustomPostType customPostType = (CustomPostType)theEObject;
         T result = caseCustomPostType(customPostType);
+        if (result == null) result = caseElement(customPostType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -105,6 +123,7 @@ public class EntityDslSwitch<T> extends Switch<T>
       {
         Setting setting = (Setting)theEObject;
         T result = caseSetting(setting);
+        if (result == null) result = caseElement(setting);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -112,6 +131,7 @@ public class EntityDslSwitch<T> extends Switch<T>
       {
         Hook hook = (Hook)theEObject;
         T result = caseHook(hook);
+        if (result == null) result = caseElement(hook);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -127,17 +147,49 @@ public class EntityDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Plugin</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Plugin Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Plugin</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Plugin Model</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePlugin(Plugin object)
+  public T casePluginModel(PluginModel object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseElement(Element object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Meta</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Meta</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMeta(Meta object)
   {
     return null;
   }

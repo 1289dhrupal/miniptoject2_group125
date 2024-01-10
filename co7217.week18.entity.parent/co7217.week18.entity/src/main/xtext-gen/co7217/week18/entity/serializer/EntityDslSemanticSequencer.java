@@ -6,7 +6,8 @@ package co7217.week18.entity.serializer;
 import co7217.week18.entity.entityDsl.CustomPostType;
 import co7217.week18.entity.entityDsl.EntityDslPackage;
 import co7217.week18.entity.entityDsl.Hook;
-import co7217.week18.entity.entityDsl.Plugin;
+import co7217.week18.entity.entityDsl.Meta;
+import co7217.week18.entity.entityDsl.PluginModel;
 import co7217.week18.entity.entityDsl.Setting;
 import co7217.week18.entity.entityDsl.Shortcode;
 import co7217.week18.entity.entityDsl.StringList;
@@ -42,8 +43,11 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 			case EntityDslPackage.HOOK:
 				sequence_Hook(context, (Hook) semanticObject); 
 				return; 
-			case EntityDslPackage.PLUGIN:
-				sequence_Plugin(context, (Plugin) semanticObject); 
+			case EntityDslPackage.META:
+				sequence_Meta(context, (Meta) semanticObject); 
+				return; 
+			case EntityDslPackage.PLUGIN_MODEL:
+				sequence_PluginModel(context, (PluginModel) semanticObject); 
 				return; 
 			case EntityDslPackage.SETTING:
 				sequence_Setting(context, (Setting) semanticObject); 
@@ -65,6 +69,7 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Element returns CustomPostType
 	 *     CustomPostType returns CustomPostType
 	 *
 	 * Constraint:
@@ -79,6 +84,7 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Element returns Hook
 	 *     Hook returns Hook
 	 *
 	 * Constraint:
@@ -93,7 +99,8 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Plugin returns Plugin
+	 *     Element returns Meta
+	 *     Meta returns Meta
 	 *
 	 * Constraint:
 	 *     (
@@ -106,16 +113,11 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *         textDomain=STRING 
 	 *         activate=STRING? 
 	 *         deactivate=STRING? 
-	 *         uninstall=STRING? 
-	 *         widgets+=Widget* 
-	 *         shortcodes+=Shortcode* 
-	 *         customPostTypes+=CustomPostType* 
-	 *         settings+=Setting* 
-	 *         hooks+=Hook*
+	 *         uninstall=STRING?
 	 *     )
 	 * </pre>
 	 */
-	protected void sequence_Plugin(ISerializationContext context, Plugin semanticObject) {
+	protected void sequence_Meta(ISerializationContext context, Meta semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -123,6 +125,21 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     PluginModel returns PluginModel
+	 *
+	 * Constraint:
+	 *     elements+=Element+
+	 * </pre>
+	 */
+	protected void sequence_PluginModel(ISerializationContext context, PluginModel semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Element returns Setting
 	 *     Setting returns Setting
 	 *
 	 * Constraint:
@@ -137,6 +154,7 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Element returns Shortcode
 	 *     Shortcode returns Shortcode
 	 *
 	 * Constraint:
@@ -165,6 +183,7 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Element returns Widget
 	 *     Widget returns Widget
 	 *
 	 * Constraint:

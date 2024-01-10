@@ -5,8 +5,6 @@ package co7217.week18.entity.entityDsl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Widget</b></em>'.
@@ -25,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Widget extends EObject
+public interface Widget extends Element
 {
   /**
    * Returns the value of the '<em><b>Widget Name</b></em>' attribute.

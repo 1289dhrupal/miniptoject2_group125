@@ -1,0 +1,12 @@
+Meta {
+    name = "SamplePlugin"
+    version = "1.0.0"
+    description = "A sample plugin"
+    author = "John Doe"
+    license = "MIT"
+    prefix = "sp"
+    textDomain = "sample-plugin"
+    activate = "true"
+    deactivate = "true"
+    uninstall = "false"
+}

@@ -1,4 +1,4 @@
-Plugin {
+Meta {
     name = "MyCustomPlugin"
     version = "1.2.3"
     description = "A custom plugin for content management."
@@ -9,52 +9,53 @@ Plugin {
     activate = "true"
     deactivate = "true"
     uninstall = "true"
+}
 
-    Widget {
-        widgetName = "RecentPosts"
-        widgetDescription = "Displays recent posts with thumbnails."
-        Setting {
-            settingName = "NumberPosts"
-            settingType = "Integer"
-            defaultValue = "5"
-        }
-
-        Setting {
-            settingName = "DisplayThumbnails"
-            settingType = "Boolean"
-            defaultValue = "true"
-        }
+Widget {
+    widgetName = "RecentPosts"
+    widgetDescription = "Displays recent posts with thumbnails."
+    Setting {
+        settingName = "NumberPosts"
+        settingType = "Integer"
+        defaultValue = "5"
     }
 
-    Shortcode {
-        shortcodeName = "gallery"
-        Setting {
-            settingName = "Images"
-            settingType = "String"
-            defaultValue = ""
-        }
-    }
-
-    CustomPostType {
-        cptName = "Books"
-        cptSingularName = "Book"
-        cptSupports = "title", "editor", "thumbnail"
-        cptTaxonomies = "genre", "authors"
-    }
-    
-    Hook {
-        hookType = filter
-        hookName = "content_filter"
-        callback = "filter_content"
-        priority = 10
-        acceptedArgs = 2
-    }
-
-    Hook {
-        hookType = action
-        hookName = "save_post"
-        callback = "post_save_action"
-        priority = 5
-        acceptedArgs = 3
+    Setting {
+        settingName = "DisplayThumbnails"
+        settingType = "Boolean"
+        defaultValue = "true"
     }
 }
+
+Shortcode {
+    shortcodeName = "gallery"
+    Setting {
+        settingName = "Images"
+        settingType = "String"
+        defaultValue = ""
+    }
+}
+
+CustomPostType {
+    cptName = "Books"
+    cptSingularName = "Book"
+    cptSupports = "title", "editor", "thumbnail"
+    cptTaxonomies = "genre", "authors"
+}
+
+Hook {
+    hookType = filter
+    hookName = "content_filter"
+    callback = "filter_content"
+    priority = 10
+    acceptedArgs = 2
+}
+
+Hook {
+    hookType = action
+    hookName = "save_post"
+    callback = "post_save_action"
+    priority = 5
+    acceptedArgs = 3
+}
+

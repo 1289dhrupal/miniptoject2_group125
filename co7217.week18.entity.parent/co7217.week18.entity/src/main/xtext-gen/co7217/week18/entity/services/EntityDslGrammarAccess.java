@@ -24,10 +24,63 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGrammarElementFinder {
 	
-	public class PluginElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.Plugin");
+	public class PluginModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.PluginModel");
+		private final Assignment cElementsAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cElementsElementParserRuleCall_0 = (RuleCall)cElementsAssignment.eContents().get(0);
+		
+		//// Definition of the Plugin entity.
+		//PluginModel:
+		//    (elements+=Element)*
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(elements+=Element)*
+		public Assignment getElementsAssignment() { return cElementsAssignment; }
+		
+		//Element
+		public RuleCall getElementsElementParserRuleCall_0() { return cElementsElementParserRuleCall_0; }
+	}
+	public class ElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.Element");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cMetaParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cWidgetParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cShortcodeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cCustomPostTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cSettingParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cHookParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		
+		//Element:
+		//    Meta | Widget | Shortcode | CustomPostType | Setting | Hook
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Meta | Widget | Shortcode | CustomPostType | Setting | Hook
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//Meta
+		public RuleCall getMetaParserRuleCall_0() { return cMetaParserRuleCall_0; }
+		
+		//Widget
+		public RuleCall getWidgetParserRuleCall_1() { return cWidgetParserRuleCall_1; }
+		
+		//Shortcode
+		public RuleCall getShortcodeParserRuleCall_2() { return cShortcodeParserRuleCall_2; }
+		
+		//CustomPostType
+		public RuleCall getCustomPostTypeParserRuleCall_3() { return cCustomPostTypeParserRuleCall_3; }
+		
+		//Setting
+		public RuleCall getSettingParserRuleCall_4() { return cSettingParserRuleCall_4; }
+		
+		//Hook
+		public RuleCall getHookParserRuleCall_5() { return cHookParserRuleCall_5; }
+	}
+	public class MetaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.Meta");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPluginKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cMetaKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
@@ -69,22 +122,10 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Keyword cEqualsSignKeyword_30 = (Keyword)cGroup.eContents().get(30);
 		private final Assignment cUninstallAssignment_31 = (Assignment)cGroup.eContents().get(31);
 		private final RuleCall cUninstallSTRINGTerminalRuleCall_31_0 = (RuleCall)cUninstallAssignment_31.eContents().get(0);
-		private final Assignment cWidgetsAssignment_32 = (Assignment)cGroup.eContents().get(32);
-		private final RuleCall cWidgetsWidgetParserRuleCall_32_0 = (RuleCall)cWidgetsAssignment_32.eContents().get(0);
-		private final Assignment cShortcodesAssignment_33 = (Assignment)cGroup.eContents().get(33);
-		private final RuleCall cShortcodesShortcodeParserRuleCall_33_0 = (RuleCall)cShortcodesAssignment_33.eContents().get(0);
-		private final Assignment cCustomPostTypesAssignment_34 = (Assignment)cGroup.eContents().get(34);
-		private final RuleCall cCustomPostTypesCustomPostTypeParserRuleCall_34_0 = (RuleCall)cCustomPostTypesAssignment_34.eContents().get(0);
-		private final Assignment cSettingsAssignment_35 = (Assignment)cGroup.eContents().get(35);
-		private final RuleCall cSettingsSettingParserRuleCall_35_0 = (RuleCall)cSettingsAssignment_35.eContents().get(0);
-		private final Assignment cHooksAssignment_36 = (Assignment)cGroup.eContents().get(36);
-		private final RuleCall cHooksHookParserRuleCall_36_0 = (RuleCall)cHooksAssignment_36.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_37 = (Keyword)cGroup.eContents().get(37);
+		private final Keyword cRightCurlyBracketKeyword_32 = (Keyword)cGroup.eContents().get(32);
 		
-		//// Definition of the Plugin entity.
-		//Plugin:
-		//    // Plugin starts with the keyword 'Plugin' and is enclosed in curly braces.
-		//    'Plugin' '{'
+		//Meta:
+		//    'Meta' '{'
 		//        // Definition of various properties of the plugin.
 		//        // Each property follows the pattern: keyword '=' value
 		//        'name' '=' name=STRING
@@ -97,18 +138,11 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//        'activate' '=' activate=STRING?
 		//        'deactivate' '=' deactivate=STRING?
 		//        'uninstall' '=' uninstall=STRING?
-		//        // Plugin may contain multiple widgets, shortcodes, custom post types, settings, and hooks.
-		//        (widgets+=Widget)*
-		//        (shortcodes+=Shortcode)*
-		//        (customPostTypes+=CustomPostType)*
-		//        (settings+=Setting)*
-		//        (hooks+=Hook)*
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//// Plugin starts with the keyword 'Plugin' and is enclosed in curly braces.
-		//'Plugin' '{'
+		//'Meta' '{'
 		//    // Definition of various properties of the plugin.
 		//    // Each property follows the pattern: keyword '=' value
 		//    'name' '=' name=STRING
@@ -121,18 +155,11 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//    'activate' '=' activate=STRING?
 		//    'deactivate' '=' deactivate=STRING?
 		//    'uninstall' '=' uninstall=STRING?
-		//    // Plugin may contain multiple widgets, shortcodes, custom post types, settings, and hooks.
-		//    (widgets+=Widget)*
-		//    (shortcodes+=Shortcode)*
-		//    (customPostTypes+=CustomPostType)*
-		//    (settings+=Setting)*
-		//    (hooks+=Hook)*
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//// Plugin starts with the keyword 'Plugin' and is enclosed in curly braces.
-		//'Plugin'
-		public Keyword getPluginKeyword_0() { return cPluginKeyword_0; }
+		//'Meta'
+		public Keyword getMetaKeyword_0() { return cMetaKeyword_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
@@ -259,39 +286,8 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//STRING
 		public RuleCall getUninstallSTRINGTerminalRuleCall_31_0() { return cUninstallSTRINGTerminalRuleCall_31_0; }
 		
-		//// Plugin may contain multiple widgets, shortcodes, custom post types, settings, and hooks.
-		//(widgets+=Widget)*
-		public Assignment getWidgetsAssignment_32() { return cWidgetsAssignment_32; }
-		
-		//Widget
-		public RuleCall getWidgetsWidgetParserRuleCall_32_0() { return cWidgetsWidgetParserRuleCall_32_0; }
-		
-		//(shortcodes+=Shortcode)*
-		public Assignment getShortcodesAssignment_33() { return cShortcodesAssignment_33; }
-		
-		//Shortcode
-		public RuleCall getShortcodesShortcodeParserRuleCall_33_0() { return cShortcodesShortcodeParserRuleCall_33_0; }
-		
-		//(customPostTypes+=CustomPostType)*
-		public Assignment getCustomPostTypesAssignment_34() { return cCustomPostTypesAssignment_34; }
-		
-		//CustomPostType
-		public RuleCall getCustomPostTypesCustomPostTypeParserRuleCall_34_0() { return cCustomPostTypesCustomPostTypeParserRuleCall_34_0; }
-		
-		//(settings+=Setting)*
-		public Assignment getSettingsAssignment_35() { return cSettingsAssignment_35; }
-		
-		//Setting
-		public RuleCall getSettingsSettingParserRuleCall_35_0() { return cSettingsSettingParserRuleCall_35_0; }
-		
-		//(hooks+=Hook)*
-		public Assignment getHooksAssignment_36() { return cHooksAssignment_36; }
-		
-		//Hook
-		public RuleCall getHooksHookParserRuleCall_36_0() { return cHooksHookParserRuleCall_36_0; }
-		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_37() { return cRightCurlyBracketKeyword_37; }
+		public Keyword getRightCurlyBracketKeyword_32() { return cRightCurlyBracketKeyword_32; }
 	}
 	public class WidgetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.Widget");
@@ -735,7 +731,8 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final RuleCall cValuesSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cValuesAssignment_1_1.eContents().get(0);
 		
 		//StringList:
-		//    (values+=STRING) (',' values+=STRING)*;
+		//    (values+=STRING) (',' values+=STRING)*
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(values+=STRING) (',' values+=STRING)*
@@ -769,28 +766,30 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Keyword cACTIONActionKeyword_1_0 = (Keyword)cACTIONEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//// Enumeration for Hook Type
-		//enum HookType :
-		//    FILTER = 'filter' | ACTION = 'action'
+		//enum HookType:
+		//    FILTER='filter' | ACTION='action'
 		//;
 		public EnumRule getRule() { return rule; }
 		
-		//FILTER = 'filter' | ACTION = 'action'
+		//FILTER='filter' | ACTION='action'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//FILTER = 'filter'
+		//FILTER='filter'
 		public EnumLiteralDeclaration getFILTEREnumLiteralDeclaration_0() { return cFILTEREnumLiteralDeclaration_0; }
 		
 		//'filter'
 		public Keyword getFILTERFilterKeyword_0_0() { return cFILTERFilterKeyword_0_0; }
 		
-		//ACTION = 'action'
+		//ACTION='action'
 		public EnumLiteralDeclaration getACTIONEnumLiteralDeclaration_1() { return cACTIONEnumLiteralDeclaration_1; }
 		
 		//'action'
 		public Keyword getACTIONActionKeyword_1_0() { return cACTIONActionKeyword_1_0; }
 	}
 	
-	private final PluginElements pPlugin;
+	private final PluginModelElements pPluginModel;
+	private final ElementElements pElement;
+	private final MetaElements pMeta;
 	private final WidgetElements pWidget;
 	private final ShortcodeElements pShortcode;
 	private final CustomPostTypeElements pCustomPostType;
@@ -808,7 +807,9 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
-		this.pPlugin = new PluginElements();
+		this.pPluginModel = new PluginModelElements();
+		this.pElement = new ElementElements();
+		this.pMeta = new MetaElements();
 		this.pWidget = new WidgetElements();
 		this.pShortcode = new ShortcodeElements();
 		this.pCustomPostType = new CustomPostTypeElements();
@@ -846,9 +847,30 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 
 	
 	//// Definition of the Plugin entity.
-	//Plugin:
-	//    // Plugin starts with the keyword 'Plugin' and is enclosed in curly braces.
-	//    'Plugin' '{'
+	//PluginModel:
+	//    (elements+=Element)*
+	//;
+	public PluginModelElements getPluginModelAccess() {
+		return pPluginModel;
+	}
+	
+	public ParserRule getPluginModelRule() {
+		return getPluginModelAccess().getRule();
+	}
+	
+	//Element:
+	//    Meta | Widget | Shortcode | CustomPostType | Setting | Hook
+	//;
+	public ElementElements getElementAccess() {
+		return pElement;
+	}
+	
+	public ParserRule getElementRule() {
+		return getElementAccess().getRule();
+	}
+	
+	//Meta:
+	//    'Meta' '{'
 	//        // Definition of various properties of the plugin.
 	//        // Each property follows the pattern: keyword '=' value
 	//        'name' '=' name=STRING
@@ -861,20 +883,14 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//        'activate' '=' activate=STRING?
 	//        'deactivate' '=' deactivate=STRING?
 	//        'uninstall' '=' uninstall=STRING?
-	//        // Plugin may contain multiple widgets, shortcodes, custom post types, settings, and hooks.
-	//        (widgets+=Widget)*
-	//        (shortcodes+=Shortcode)*
-	//        (customPostTypes+=CustomPostType)*
-	//        (settings+=Setting)*
-	//        (hooks+=Hook)*
 	//    '}'
 	//;
-	public PluginElements getPluginAccess() {
-		return pPlugin;
+	public MetaElements getMetaAccess() {
+		return pMeta;
 	}
 	
-	public ParserRule getPluginRule() {
-		return getPluginAccess().getRule();
+	public ParserRule getMetaRule() {
+		return getMetaAccess().getRule();
 	}
 	
 	//// Definition of the Widget entity.
@@ -962,8 +978,8 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	}
 	
 	//// Enumeration for Hook Type
-	//enum HookType :
-	//    FILTER = 'filter' | ACTION = 'action'
+	//enum HookType:
+	//    FILTER='filter' | ACTION='action'
 	//;
 	public HookTypeElements getHookTypeAccess() {
 		return eHookType;
@@ -974,7 +990,8 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	}
 	
 	//StringList:
-	//    (values+=STRING) (',' values+=STRING)*;
+	//    (values+=STRING) (',' values+=STRING)*
+	//;
 	public StringListElements getStringListAccess() {
 		return pStringList;
 	}

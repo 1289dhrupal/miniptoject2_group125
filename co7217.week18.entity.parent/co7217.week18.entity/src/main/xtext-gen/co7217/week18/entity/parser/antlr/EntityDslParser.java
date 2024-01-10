@@ -27,7 +27,7 @@ public class EntityDslParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Plugin";
+		return "PluginModel";
 	}
 
 	public EntityDslGrammarAccess getGrammarAccess() {
