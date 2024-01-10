@@ -1,6 +1,7 @@
 package co7217.week18.entity.generator
 
 // Import statements for necessary libraries and classes.
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.resource.XtextResourceSet
@@ -13,6 +14,7 @@ import co7217.week18.entity.entityDsl.Hook
 import co7217.week18.entity.entityDsl.Plugin
 import co7217.week18.entity.entityDsl.Setting
 import co7217.week18.entity.entityDsl.Shortcode
+import co7217.week18.entity.entityDsl.StringList
 import co7217.week18.entity.entityDsl.Widget
 
 class EntityGenerator_ExplicitTraversal_JavaClasses {
@@ -28,7 +30,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 
         // Load a resource (model file) from the filesystem.
-        Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin2.dmodel"), true);
+        Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin.dmodel"), true);
 
         // Extract the root object (Plugin model) from the loaded resource.
         Plugin model = (Plugin) resource.getContents().get(0);
@@ -67,7 +69,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         }
 
         for (CustomPostType cpt: model.getCustomPostTypes()) {
-			println "Generating CustomPostType : " + cpt.getPostTypeName();
+			println "Generating CustomPostType : " + cpt.getCptSingularName();
             generateCustomPostTypeFile(cpt, model);
         }
 
@@ -220,7 +222,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         content += """        parent::__construct(\n"""
         content += """            '${widgetName}', // Base ID\n"""
         content += """            '${widget.getWidgetName()}', // Name\n"""
-        content += """            array( 'description' => __( '${widget.getWidgetDescription()}', '${getPluginPrefix(model)}' ) ) // Args\n"""
+        content += """            array( 'description' => __( '${widget.getWidgetDescription()}', '${model.getTextDomain()}' ) ) // Args\n"""
         content += """        );\n\n"""
         content += """        add_action( 'widgets_init',  function() {\n"""
         content += """            register_widget( '${getPluginPrefix(model)}_${widgetName}_widget' );\n"""
@@ -303,13 +305,36 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      * @param model The Plugin object associated with this custom post type.
      */
     def static void generateCustomPostTypeFile(CustomPostType cpt, Plugin model) {
-        String cptName = sanitizeFieldname(cpt.getPostTypeName());
+        String cptName = sanitizeFieldname(cpt.getCptSingularName());
 
-        String content = """<?php"""
-        content += """\n// Custom post type code for $cptName here\n""";
-
-        String filename = sanitizeFilename("custom-post-${cpt.getPostTypeName()}") + ".php";
-        writeFile(content, filename);
+        String content = """\n// Register Custom Post Type for '${cpt.getCptSingularName()}'\n"""
+		content += """function register_${model.getPrefix()}_${cptName}_post_type() {\n"""
+		content += """    // Set up labels for the '${cpt.getCptSingularName()}' post type\n"""
+		content += """\n"""
+		content += """    \$labels = array(\n"""
+		content += """        'name'          => __( '${cpt.getCptName()}', '${model.getTextDomain()}'),\n"""
+		content += """        'singular_name' => __( '${cpt.getCptSingularName()}', '${model.getTextDomain()}'),\n"""
+		content += """    );\n\n"""
+		content += """    // Set up the arguments for the '${cpt.getCptSingularName()}' post type\n"""
+		content += """    \$args = array(\n"""
+		content += """        'label'           => __( '${cpt.getCptName()}', '${model.getTextDomain()}'),\n"""
+		content += """        'description'     => __( '${cpt.getCptName()}', '${model.getTextDomain()}'),\n"""
+		content += """        'labels'          => \$labels,\n"""
+		content += """        'supports'        => array(${toStringList(cpt.getCptSupports())}),\n"""
+		content += """        'supports'        => array(${toStringList(cpt.getCptTaxonomies())}),\n"""
+		content += """        'show_ui'         => true,\n"""
+		content += """        'show_in_menu'    => true,\n"""
+		content += """        'capability_type' => 'post'\n"""
+		content += """    );\n\n"""
+		content += """    // Register the '${cpt.getCptSingularName()}' post type\n"""
+		content += """    register_post_type('${cptName}', \$args);\n\n"""
+		content += """}\n\n"""
+		content += """// Hook into the 'init' action\n"""
+		content += """add_action('init', 'register_${model.getPrefix()}_${cptName}_post_type', 0);\n\n"""
+		
+        // Writing the built content to the [plugin-name] PHP file.
+        String pluginName = sanitizeFilename(model.getName()) + ".php";
+        writeFile(content, pluginName, true);
     }
 
     /**
@@ -440,4 +465,23 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
 	def static String sanitizeFieldname(String fieldname) {
 		return fieldname.toLowerCase().replace(" ", "_").replaceAll("[^a-zA-Z0-9]+", "_").replaceAll("_\$", "");
 	}
+	
+/**
+ * Converts an EList of StringList objects to a single, comma-separated string.
+ * Each element in the resulting string is enclosed in single quotes.
+ *
+ * @param eList The EList containing StringList objects.
+ * @return A string representation of all values contained in the StringList objects,
+ *         formatted as a comma-separated list, with each item enclosed in single quotes.
+ */
+def static toStringList(EList<StringList> eList) {
+    // Initialize an empty list to hold all the strings.
+    def allStrings = []
+
+    // For each StringList, add all its values to the allStrings list.
+    eList.each { allStrings.addAll(it.values) }
+
+    // For example, if allStrings contains ['a', 'b', 'c'], the output will be "'a', 'b', 'c'".
+    return "'" + allStrings.join("', '") + "'"
+}
 }

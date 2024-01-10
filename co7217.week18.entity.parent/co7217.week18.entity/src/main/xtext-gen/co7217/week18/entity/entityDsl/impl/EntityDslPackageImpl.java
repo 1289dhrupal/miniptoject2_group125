@@ -11,6 +11,7 @@ import co7217.week18.entity.entityDsl.HookType;
 import co7217.week18.entity.entityDsl.Plugin;
 import co7217.week18.entity.entityDsl.Setting;
 import co7217.week18.entity.entityDsl.Shortcode;
+import co7217.week18.entity.entityDsl.StringList;
 import co7217.week18.entity.entityDsl.Widget;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -70,6 +71,13 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   private EClass hookEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringListEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -411,7 +419,7 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getCustomPostType_PostTypeName()
+  public EAttribute getCustomPostType_CptName()
   {
     return (EAttribute)customPostTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -422,7 +430,7 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getCustomPostType_Supports()
+  public EAttribute getCustomPostType_CptSingularName()
   {
     return (EAttribute)customPostTypeEClass.getEStructuralFeatures().get(1);
   }
@@ -433,9 +441,20 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
-  public EAttribute getCustomPostType_Taxonomies()
+  public EReference getCustomPostType_CptSupports()
   {
-    return (EAttribute)customPostTypeEClass.getEStructuralFeatures().get(2);
+    return (EReference)customPostTypeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCustomPostType_CptTaxonomies()
+  {
+    return (EReference)customPostTypeEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -554,6 +573,28 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
    * @generated
    */
   @Override
+  public EClass getStringList()
+  {
+    return stringListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStringList_Values()
+  {
+    return (EAttribute)stringListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EEnum getHookType()
   {
     return hookTypeEEnum;
@@ -617,9 +658,10 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     createEReference(shortcodeEClass, SHORTCODE__SETTINGS);
 
     customPostTypeEClass = createEClass(CUSTOM_POST_TYPE);
-    createEAttribute(customPostTypeEClass, CUSTOM_POST_TYPE__POST_TYPE_NAME);
-    createEAttribute(customPostTypeEClass, CUSTOM_POST_TYPE__SUPPORTS);
-    createEAttribute(customPostTypeEClass, CUSTOM_POST_TYPE__TAXONOMIES);
+    createEAttribute(customPostTypeEClass, CUSTOM_POST_TYPE__CPT_NAME);
+    createEAttribute(customPostTypeEClass, CUSTOM_POST_TYPE__CPT_SINGULAR_NAME);
+    createEReference(customPostTypeEClass, CUSTOM_POST_TYPE__CPT_SUPPORTS);
+    createEReference(customPostTypeEClass, CUSTOM_POST_TYPE__CPT_TAXONOMIES);
 
     settingEClass = createEClass(SETTING);
     createEAttribute(settingEClass, SETTING__SETTING_NAME);
@@ -632,6 +674,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     createEAttribute(hookEClass, HOOK__CALLBACK);
     createEAttribute(hookEClass, HOOK__PRIORITY);
     createEAttribute(hookEClass, HOOK__ACCEPTED_ARGS);
+
+    stringListEClass = createEClass(STRING_LIST);
+    createEAttribute(stringListEClass, STRING_LIST__VALUES);
 
     // Create enums
     hookTypeEEnum = createEEnum(HOOK_TYPE);
@@ -695,9 +740,10 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     initEReference(getShortcode_Settings(), this.getSetting(), null, "settings", null, 0, -1, Shortcode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(customPostTypeEClass, CustomPostType.class, "CustomPostType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCustomPostType_PostTypeName(), ecorePackage.getEString(), "postTypeName", null, 0, 1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCustomPostType_Supports(), ecorePackage.getEString(), "supports", null, 0, 1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCustomPostType_Taxonomies(), ecorePackage.getEString(), "taxonomies", null, 0, 1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCustomPostType_CptName(), ecorePackage.getEString(), "cptName", null, 0, 1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCustomPostType_CptSingularName(), ecorePackage.getEString(), "cptSingularName", null, 0, 1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCustomPostType_CptSupports(), this.getStringList(), null, "cptSupports", null, 0, -1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCustomPostType_CptTaxonomies(), this.getStringList(), null, "cptTaxonomies", null, 0, -1, CustomPostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(settingEClass, Setting.class, "Setting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSetting_SettingName(), ecorePackage.getEString(), "settingName", null, 0, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -710,6 +756,9 @@ public class EntityDslPackageImpl extends EPackageImpl implements EntityDslPacka
     initEAttribute(getHook_Callback(), ecorePackage.getEString(), "callback", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHook_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHook_AcceptedArgs(), ecorePackage.getEInt(), "acceptedArgs", null, 0, 1, Hook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringListEClass, StringList.class, "StringList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringList_Values(), ecorePackage.getEString(), "values", null, 0, -1, StringList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(hookTypeEEnum, HookType.class, "HookType");

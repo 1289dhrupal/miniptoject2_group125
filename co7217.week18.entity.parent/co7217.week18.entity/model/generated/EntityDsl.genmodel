@@ -37,9 +37,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//Shortcode/settings"/>
     </genClasses>
     <genClasses ecoreClass="EntityDsl.ecore#//CustomPostType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//CustomPostType/postTypeName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//CustomPostType/supports"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//CustomPostType/taxonomies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//CustomPostType/cptName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//CustomPostType/cptSingularName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//CustomPostType/cptSupports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EntityDsl.ecore#//CustomPostType/cptTaxonomies"/>
     </genClasses>
     <genClasses ecoreClass="EntityDsl.ecore#//Setting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Setting/settingName"/>
@@ -52,6 +53,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Hook/callback"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Hook/priority"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Hook/acceptedArgs"/>
+    </genClasses>
+    <genClasses ecoreClass="EntityDsl.ecore#//StringList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//StringList/values"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

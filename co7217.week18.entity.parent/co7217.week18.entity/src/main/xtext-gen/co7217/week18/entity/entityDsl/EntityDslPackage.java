@@ -306,31 +306,40 @@ public interface EntityDslPackage extends EPackage
   int CUSTOM_POST_TYPE = 3;
 
   /**
-   * The feature id for the '<em><b>Post Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Cpt Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_POST_TYPE__POST_TYPE_NAME = 0;
+  int CUSTOM_POST_TYPE__CPT_NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Supports</b></em>' attribute.
+   * The feature id for the '<em><b>Cpt Singular Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_POST_TYPE__SUPPORTS = 1;
+  int CUSTOM_POST_TYPE__CPT_SINGULAR_NAME = 1;
 
   /**
-   * The feature id for the '<em><b>Taxonomies</b></em>' attribute.
+   * The feature id for the '<em><b>Cpt Supports</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_POST_TYPE__TAXONOMIES = 2;
+  int CUSTOM_POST_TYPE__CPT_SUPPORTS = 2;
+
+  /**
+   * The feature id for the '<em><b>Cpt Taxonomies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_POST_TYPE__CPT_TAXONOMIES = 3;
 
   /**
    * The number of structural features of the '<em>Custom Post Type</em>' class.
@@ -339,7 +348,7 @@ public interface EntityDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_POST_TYPE_FEATURE_COUNT = 3;
+  int CUSTOM_POST_TYPE_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.SettingImpl <em>Setting</em>}' class.
@@ -452,6 +461,34 @@ public interface EntityDslPackage extends EPackage
   int HOOK_FEATURE_COUNT = 5;
 
   /**
+   * The meta object id for the '{@link co7217.week18.entity.entityDsl.impl.StringListImpl <em>String List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see co7217.week18.entity.entityDsl.impl.StringListImpl
+   * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getStringList()
+   * @generated
+   */
+  int STRING_LIST = 6;
+
+  /**
+   * The feature id for the '<em><b>Values</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LIST__VALUES = 0;
+
+  /**
+   * The number of structural features of the '<em>String List</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LIST_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link co7217.week18.entity.entityDsl.HookType <em>Hook Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -459,7 +496,7 @@ public interface EntityDslPackage extends EPackage
    * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getHookType()
    * @generated
    */
-  int HOOK_TYPE = 6;
+  int HOOK_TYPE = 7;
 
 
   /**
@@ -723,37 +760,48 @@ public interface EntityDslPackage extends EPackage
   EClass getCustomPostType();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.CustomPostType#getPostTypeName <em>Post Type Name</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.CustomPostType#getCptName <em>Cpt Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Post Type Name</em>'.
-   * @see co7217.week18.entity.entityDsl.CustomPostType#getPostTypeName()
+   * @return the meta object for the attribute '<em>Cpt Name</em>'.
+   * @see co7217.week18.entity.entityDsl.CustomPostType#getCptName()
    * @see #getCustomPostType()
    * @generated
    */
-  EAttribute getCustomPostType_PostTypeName();
+  EAttribute getCustomPostType_CptName();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.CustomPostType#getSupports <em>Supports</em>}'.
+   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.CustomPostType#getCptSingularName <em>Cpt Singular Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Supports</em>'.
-   * @see co7217.week18.entity.entityDsl.CustomPostType#getSupports()
+   * @return the meta object for the attribute '<em>Cpt Singular Name</em>'.
+   * @see co7217.week18.entity.entityDsl.CustomPostType#getCptSingularName()
    * @see #getCustomPostType()
    * @generated
    */
-  EAttribute getCustomPostType_Supports();
+  EAttribute getCustomPostType_CptSingularName();
 
   /**
-   * Returns the meta object for the attribute '{@link co7217.week18.entity.entityDsl.CustomPostType#getTaxonomies <em>Taxonomies</em>}'.
+   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.CustomPostType#getCptSupports <em>Cpt Supports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Taxonomies</em>'.
-   * @see co7217.week18.entity.entityDsl.CustomPostType#getTaxonomies()
+   * @return the meta object for the containment reference list '<em>Cpt Supports</em>'.
+   * @see co7217.week18.entity.entityDsl.CustomPostType#getCptSupports()
    * @see #getCustomPostType()
    * @generated
    */
-  EAttribute getCustomPostType_Taxonomies();
+  EReference getCustomPostType_CptSupports();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link co7217.week18.entity.entityDsl.CustomPostType#getCptTaxonomies <em>Cpt Taxonomies</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Cpt Taxonomies</em>'.
+   * @see co7217.week18.entity.entityDsl.CustomPostType#getCptTaxonomies()
+   * @see #getCustomPostType()
+   * @generated
+   */
+  EReference getCustomPostType_CptTaxonomies();
 
   /**
    * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.Setting <em>Setting</em>}'.
@@ -862,6 +910,27 @@ public interface EntityDslPackage extends EPackage
    * @generated
    */
   EAttribute getHook_AcceptedArgs();
+
+  /**
+   * Returns the meta object for class '{@link co7217.week18.entity.entityDsl.StringList <em>String List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String List</em>'.
+   * @see co7217.week18.entity.entityDsl.StringList
+   * @generated
+   */
+  EClass getStringList();
+
+  /**
+   * Returns the meta object for the attribute list '{@link co7217.week18.entity.entityDsl.StringList#getValues <em>Values</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Values</em>'.
+   * @see co7217.week18.entity.entityDsl.StringList#getValues()
+   * @see #getStringList()
+   * @generated
+   */
+  EAttribute getStringList_Values();
 
   /**
    * Returns the meta object for enum '{@link co7217.week18.entity.entityDsl.HookType <em>Hook Type</em>}'.
@@ -1097,28 +1166,36 @@ public interface EntityDslPackage extends EPackage
     EClass CUSTOM_POST_TYPE = eINSTANCE.getCustomPostType();
 
     /**
-     * The meta object literal for the '<em><b>Post Type Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cpt Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CUSTOM_POST_TYPE__POST_TYPE_NAME = eINSTANCE.getCustomPostType_PostTypeName();
+    EAttribute CUSTOM_POST_TYPE__CPT_NAME = eINSTANCE.getCustomPostType_CptName();
 
     /**
-     * The meta object literal for the '<em><b>Supports</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cpt Singular Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CUSTOM_POST_TYPE__SUPPORTS = eINSTANCE.getCustomPostType_Supports();
+    EAttribute CUSTOM_POST_TYPE__CPT_SINGULAR_NAME = eINSTANCE.getCustomPostType_CptSingularName();
 
     /**
-     * The meta object literal for the '<em><b>Taxonomies</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cpt Supports</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CUSTOM_POST_TYPE__TAXONOMIES = eINSTANCE.getCustomPostType_Taxonomies();
+    EReference CUSTOM_POST_TYPE__CPT_SUPPORTS = eINSTANCE.getCustomPostType_CptSupports();
+
+    /**
+     * The meta object literal for the '<em><b>Cpt Taxonomies</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CUSTOM_POST_TYPE__CPT_TAXONOMIES = eINSTANCE.getCustomPostType_CptTaxonomies();
 
     /**
      * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.SettingImpl <em>Setting</em>}' class.
@@ -1203,6 +1280,24 @@ public interface EntityDslPackage extends EPackage
      * @generated
      */
     EAttribute HOOK__ACCEPTED_ARGS = eINSTANCE.getHook_AcceptedArgs();
+
+    /**
+     * The meta object literal for the '{@link co7217.week18.entity.entityDsl.impl.StringListImpl <em>String List</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see co7217.week18.entity.entityDsl.impl.StringListImpl
+     * @see co7217.week18.entity.entityDsl.impl.EntityDslPackageImpl#getStringList()
+     * @generated
+     */
+    EClass STRING_LIST = eINSTANCE.getStringList();
+
+    /**
+     * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_LIST__VALUES = eINSTANCE.getStringList_Values();
 
     /**
      * The meta object literal for the '{@link co7217.week18.entity.entityDsl.HookType <em>Hook Type</em>}' enum.

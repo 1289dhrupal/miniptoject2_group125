@@ -8,7 +8,7 @@ class capi_example_1_widget extends WP_Widget {
         parent::__construct(
             'example_1', // Base ID
             'Example 1', // Name
-            array( 'description' => __( 'This is a sample widget', 'capi' ) ) // Args
+            array( 'description' => __( 'This is a sample widget', 'capi-domain' ) ) // Args
         );
 
         add_action( 'widgets_init',  function() {

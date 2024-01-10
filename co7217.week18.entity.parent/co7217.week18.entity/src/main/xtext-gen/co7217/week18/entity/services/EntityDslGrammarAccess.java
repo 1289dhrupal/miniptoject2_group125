@@ -89,11 +89,11 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//        // Each property follows the pattern: keyword '=' value
 		//        'name' '=' name=STRING
 		//        'version' '=' version=STRING
-		//        'description' '=' description=STRING?
-		//        'author' '=' author=STRING?
-		//        'license' '=' license=STRING?
-		//        'prefix' '=' prefix=STRING?
-		//        'textDomain' '=' textDomain=STRING?
+		//        'description' '=' description=STRING
+		//        'author' '=' author=STRING
+		//        'license' '=' license=STRING
+		//        'prefix' '=' prefix=STRING
+		//        'textDomain' '=' textDomain=STRING
 		//        'activate' '=' activate=STRING?
 		//        'deactivate' '=' deactivate=STRING?
 		//        'uninstall' '=' uninstall=STRING?
@@ -113,11 +113,11 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//    // Each property follows the pattern: keyword '=' value
 		//    'name' '=' name=STRING
 		//    'version' '=' version=STRING
-		//    'description' '=' description=STRING?
-		//    'author' '=' author=STRING?
-		//    'license' '=' license=STRING?
-		//    'prefix' '=' prefix=STRING?
-		//    'textDomain' '=' textDomain=STRING?
+		//    'description' '=' description=STRING
+		//    'author' '=' author=STRING
+		//    'license' '=' license=STRING
+		//    'prefix' '=' prefix=STRING
+		//    'textDomain' '=' textDomain=STRING
 		//    'activate' '=' activate=STRING?
 		//    'deactivate' '=' deactivate=STRING?
 		//    'uninstall' '=' uninstall=STRING?
@@ -169,7 +169,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'='
 		public Keyword getEqualsSignKeyword_9() { return cEqualsSignKeyword_9; }
 		
-		//description=STRING?
+		//description=STRING
 		public Assignment getDescriptionAssignment_10() { return cDescriptionAssignment_10; }
 		
 		//STRING
@@ -181,7 +181,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'='
 		public Keyword getEqualsSignKeyword_12() { return cEqualsSignKeyword_12; }
 		
-		//author=STRING?
+		//author=STRING
 		public Assignment getAuthorAssignment_13() { return cAuthorAssignment_13; }
 		
 		//STRING
@@ -193,7 +193,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'='
 		public Keyword getEqualsSignKeyword_15() { return cEqualsSignKeyword_15; }
 		
-		//license=STRING?
+		//license=STRING
 		public Assignment getLicenseAssignment_16() { return cLicenseAssignment_16; }
 		
 		//STRING
@@ -205,7 +205,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'='
 		public Keyword getEqualsSignKeyword_18() { return cEqualsSignKeyword_18; }
 		
-		//prefix=STRING?
+		//prefix=STRING
 		public Assignment getPrefixAssignment_19() { return cPrefixAssignment_19; }
 		
 		//STRING
@@ -217,7 +217,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'='
 		public Keyword getEqualsSignKeyword_21() { return cEqualsSignKeyword_21; }
 		
-		//textDomain=STRING?
+		//textDomain=STRING
 		public Assignment getTextDomainAssignment_22() { return cTextDomainAssignment_22; }
 		
 		//STRING
@@ -432,34 +432,40 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCustomPostTypeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cPostTypeNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cCptNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cPostTypeNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cPostTypeNameSTRINGTerminalRuleCall_4_0 = (RuleCall)cPostTypeNameAssignment_4.eContents().get(0);
-		private final Keyword cSupportsKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cCptNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCptNameSTRINGTerminalRuleCall_4_0 = (RuleCall)cCptNameAssignment_4.eContents().get(0);
+		private final Keyword cCptSingularNameKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cEqualsSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cSupportsAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cSupportsSTRINGTerminalRuleCall_7_0 = (RuleCall)cSupportsAssignment_7.eContents().get(0);
-		private final Keyword cTaxonomiesKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cCptSingularNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cCptSingularNameSTRINGTerminalRuleCall_7_0 = (RuleCall)cCptSingularNameAssignment_7.eContents().get(0);
+		private final Keyword cCptSupportsKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		private final Keyword cEqualsSignKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cTaxonomiesAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cTaxonomiesSTRINGTerminalRuleCall_10_0 = (RuleCall)cTaxonomiesAssignment_10.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cCptSupportsAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cCptSupportsStringListParserRuleCall_10_0 = (RuleCall)cCptSupportsAssignment_10.eContents().get(0);
+		private final Keyword cCptTaxonomiesKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Keyword cEqualsSignKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cCptTaxonomiesAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cCptTaxonomiesStringListParserRuleCall_13_0 = (RuleCall)cCptTaxonomiesAssignment_13.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_14 = (Keyword)cGroup.eContents().get(14);
 		
 		//// Definition of the CustomPostType entity.
 		//CustomPostType:
 		//    'CustomPostType' '{'
-		//        'postTypeName' '=' postTypeName=STRING
-		//        'supports' '=' supports=STRING?
-		//        'taxonomies' '=' taxonomies=STRING?
+		//        'cptName' '=' cptName=STRING
+		//        'cptSingularName' '=' cptSingularName=STRING
+		//        'cptSupports' '=' cptSupports+=StringList?
+		//        'cptTaxonomies' '=' cptTaxonomies+=StringList?
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'CustomPostType' '{'
-		//    'postTypeName' '=' postTypeName=STRING
-		//    'supports' '=' supports=STRING?
-		//    'taxonomies' '=' taxonomies=STRING?
+		//    'cptName' '=' cptName=STRING
+		//    'cptSingularName' '=' cptSingularName=STRING
+		//    'cptSupports' '=' cptSupports+=StringList?
+		//    'cptTaxonomies' '=' cptTaxonomies+=StringList?
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -469,44 +475,56 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//'postTypeName'
-		public Keyword getPostTypeNameKeyword_2() { return cPostTypeNameKeyword_2; }
+		//'cptName'
+		public Keyword getCptNameKeyword_2() { return cCptNameKeyword_2; }
 		
 		//'='
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 		
-		//postTypeName=STRING
-		public Assignment getPostTypeNameAssignment_4() { return cPostTypeNameAssignment_4; }
+		//cptName=STRING
+		public Assignment getCptNameAssignment_4() { return cCptNameAssignment_4; }
 		
 		//STRING
-		public RuleCall getPostTypeNameSTRINGTerminalRuleCall_4_0() { return cPostTypeNameSTRINGTerminalRuleCall_4_0; }
+		public RuleCall getCptNameSTRINGTerminalRuleCall_4_0() { return cCptNameSTRINGTerminalRuleCall_4_0; }
 		
-		//'supports'
-		public Keyword getSupportsKeyword_5() { return cSupportsKeyword_5; }
+		//'cptSingularName'
+		public Keyword getCptSingularNameKeyword_5() { return cCptSingularNameKeyword_5; }
 		
 		//'='
 		public Keyword getEqualsSignKeyword_6() { return cEqualsSignKeyword_6; }
 		
-		//supports=STRING?
-		public Assignment getSupportsAssignment_7() { return cSupportsAssignment_7; }
+		//cptSingularName=STRING
+		public Assignment getCptSingularNameAssignment_7() { return cCptSingularNameAssignment_7; }
 		
 		//STRING
-		public RuleCall getSupportsSTRINGTerminalRuleCall_7_0() { return cSupportsSTRINGTerminalRuleCall_7_0; }
+		public RuleCall getCptSingularNameSTRINGTerminalRuleCall_7_0() { return cCptSingularNameSTRINGTerminalRuleCall_7_0; }
 		
-		//'taxonomies'
-		public Keyword getTaxonomiesKeyword_8() { return cTaxonomiesKeyword_8; }
+		//'cptSupports'
+		public Keyword getCptSupportsKeyword_8() { return cCptSupportsKeyword_8; }
 		
 		//'='
 		public Keyword getEqualsSignKeyword_9() { return cEqualsSignKeyword_9; }
 		
-		//taxonomies=STRING?
-		public Assignment getTaxonomiesAssignment_10() { return cTaxonomiesAssignment_10; }
+		//cptSupports+=StringList?
+		public Assignment getCptSupportsAssignment_10() { return cCptSupportsAssignment_10; }
 		
-		//STRING
-		public RuleCall getTaxonomiesSTRINGTerminalRuleCall_10_0() { return cTaxonomiesSTRINGTerminalRuleCall_10_0; }
+		//StringList
+		public RuleCall getCptSupportsStringListParserRuleCall_10_0() { return cCptSupportsStringListParserRuleCall_10_0; }
+		
+		//'cptTaxonomies'
+		public Keyword getCptTaxonomiesKeyword_11() { return cCptTaxonomiesKeyword_11; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_12() { return cEqualsSignKeyword_12; }
+		
+		//cptTaxonomies+=StringList?
+		public Assignment getCptTaxonomiesAssignment_13() { return cCptTaxonomiesAssignment_13; }
+		
+		//StringList
+		public RuleCall getCptTaxonomiesStringListParserRuleCall_13_0() { return cCptTaxonomiesStringListParserRuleCall_13_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
+		public Keyword getRightCurlyBracketKeyword_14() { return cRightCurlyBracketKeyword_14; }
 	}
 	public class SettingElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.Setting");
@@ -706,6 +724,41 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_17() { return cRightCurlyBracketKeyword_17; }
 	}
+	public class StringListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.StringList");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cValuesAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cValuesSTRINGTerminalRuleCall_0_0 = (RuleCall)cValuesAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cValuesAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValuesSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cValuesAssignment_1_1.eContents().get(0);
+		
+		//StringList:
+		//    (values+=STRING) (',' values+=STRING)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(values+=STRING) (',' values+=STRING)*
+		public Group getGroup() { return cGroup; }
+		
+		//(values+=STRING)
+		public Assignment getValuesAssignment_0() { return cValuesAssignment_0; }
+		
+		//STRING
+		public RuleCall getValuesSTRINGTerminalRuleCall_0_0() { return cValuesSTRINGTerminalRuleCall_0_0; }
+		
+		//(',' values+=STRING)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//','
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+		
+		//values+=STRING
+		public Assignment getValuesAssignment_1_1() { return cValuesAssignment_1_1; }
+		
+		//STRING
+		public RuleCall getValuesSTRINGTerminalRuleCall_1_1_0() { return cValuesSTRINGTerminalRuleCall_1_1_0; }
+	}
 	
 	public class HookTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "co7217.week18.entity.EntityDsl.HookType");
@@ -744,6 +797,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	private final SettingElements pSetting;
 	private final HookElements pHook;
 	private final HookTypeElements eHookType;
+	private final StringListElements pStringList;
 	
 	private final Grammar grammar;
 	
@@ -761,6 +815,7 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 		this.pSetting = new SettingElements();
 		this.pHook = new HookElements();
 		this.eHookType = new HookTypeElements();
+		this.pStringList = new StringListElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -798,11 +853,11 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//        // Each property follows the pattern: keyword '=' value
 	//        'name' '=' name=STRING
 	//        'version' '=' version=STRING
-	//        'description' '=' description=STRING?
-	//        'author' '=' author=STRING?
-	//        'license' '=' license=STRING?
-	//        'prefix' '=' prefix=STRING?
-	//        'textDomain' '=' textDomain=STRING?
+	//        'description' '=' description=STRING
+	//        'author' '=' author=STRING
+	//        'license' '=' license=STRING
+	//        'prefix' '=' prefix=STRING
+	//        'textDomain' '=' textDomain=STRING
 	//        'activate' '=' activate=STRING?
 	//        'deactivate' '=' deactivate=STRING?
 	//        'uninstall' '=' uninstall=STRING?
@@ -858,9 +913,10 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//// Definition of the CustomPostType entity.
 	//CustomPostType:
 	//    'CustomPostType' '{'
-	//        'postTypeName' '=' postTypeName=STRING
-	//        'supports' '=' supports=STRING?
-	//        'taxonomies' '=' taxonomies=STRING?
+	//        'cptName' '=' cptName=STRING
+	//        'cptSingularName' '=' cptSingularName=STRING
+	//        'cptSupports' '=' cptSupports+=StringList?
+	//        'cptTaxonomies' '=' cptTaxonomies+=StringList?
 	//    '}'
 	//;
 	public CustomPostTypeElements getCustomPostTypeAccess() {
@@ -915,6 +971,16 @@ public class EntityDslGrammarAccess extends AbstractElementFinder.AbstractGramma
 	
 	public EnumRule getHookTypeRule() {
 		return getHookTypeAccess().getRule();
+	}
+	
+	//StringList:
+	//    (values+=STRING) (',' values+=STRING)*;
+	public StringListElements getStringListAccess() {
+		return pStringList;
+	}
+	
+	public ParserRule getStringListRule() {
+		return getStringListAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

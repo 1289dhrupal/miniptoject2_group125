@@ -36,9 +36,12 @@
         eType="#//Setting" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomPostType">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="postTypeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supports" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="taxonomies" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cptName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cptSingularName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cptSupports" upperBound="-1"
+        eType="#//StringList" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cptTaxonomies" upperBound="-1"
+        eType="#//StringList" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Setting">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="settingName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -55,5 +58,9 @@
   <eClassifiers xsi:type="ecore:EEnum" name="HookType">
     <eLiterals name="FILTER" literal="filter"/>
     <eLiterals name="ACTION" value="1" literal="action"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringList">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

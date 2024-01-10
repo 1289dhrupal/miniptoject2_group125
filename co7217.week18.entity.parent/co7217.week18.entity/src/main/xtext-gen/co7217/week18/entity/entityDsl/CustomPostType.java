@@ -3,6 +3,8 @@
  */
 package co7217.week18.entity.entityDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,9 +16,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getPostTypeName <em>Post Type Name</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getSupports <em>Supports</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getTaxonomies <em>Taxonomies</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getCptName <em>Cpt Name</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getCptSingularName <em>Cpt Singular Name</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getCptSupports <em>Cpt Supports</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.CustomPostType#getCptTaxonomies <em>Cpt Taxonomies</em>}</li>
  * </ul>
  *
  * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType()
@@ -26,69 +29,71 @@ import org.eclipse.emf.ecore.EObject;
 public interface CustomPostType extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Post Type Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Cpt Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Post Type Name</em>' attribute.
-   * @see #setPostTypeName(String)
-   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType_PostTypeName()
+   * @return the value of the '<em>Cpt Name</em>' attribute.
+   * @see #setCptName(String)
+   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType_CptName()
    * @model
    * @generated
    */
-  String getPostTypeName();
+  String getCptName();
 
   /**
-   * Sets the value of the '{@link co7217.week18.entity.entityDsl.CustomPostType#getPostTypeName <em>Post Type Name</em>}' attribute.
+   * Sets the value of the '{@link co7217.week18.entity.entityDsl.CustomPostType#getCptName <em>Cpt Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Post Type Name</em>' attribute.
-   * @see #getPostTypeName()
+   * @param value the new value of the '<em>Cpt Name</em>' attribute.
+   * @see #getCptName()
    * @generated
    */
-  void setPostTypeName(String value);
+  void setCptName(String value);
 
   /**
-   * Returns the value of the '<em><b>Supports</b></em>' attribute.
+   * Returns the value of the '<em><b>Cpt Singular Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Supports</em>' attribute.
-   * @see #setSupports(String)
-   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType_Supports()
+   * @return the value of the '<em>Cpt Singular Name</em>' attribute.
+   * @see #setCptSingularName(String)
+   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType_CptSingularName()
    * @model
    * @generated
    */
-  String getSupports();
+  String getCptSingularName();
 
   /**
-   * Sets the value of the '{@link co7217.week18.entity.entityDsl.CustomPostType#getSupports <em>Supports</em>}' attribute.
+   * Sets the value of the '{@link co7217.week18.entity.entityDsl.CustomPostType#getCptSingularName <em>Cpt Singular Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Supports</em>' attribute.
-   * @see #getSupports()
+   * @param value the new value of the '<em>Cpt Singular Name</em>' attribute.
+   * @see #getCptSingularName()
    * @generated
    */
-  void setSupports(String value);
+  void setCptSingularName(String value);
 
   /**
-   * Returns the value of the '<em><b>Taxonomies</b></em>' attribute.
+   * Returns the value of the '<em><b>Cpt Supports</b></em>' containment reference list.
+   * The list contents are of type {@link co7217.week18.entity.entityDsl.StringList}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Taxonomies</em>' attribute.
-   * @see #setTaxonomies(String)
-   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType_Taxonomies()
-   * @model
+   * @return the value of the '<em>Cpt Supports</em>' containment reference list.
+   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType_CptSupports()
+   * @model containment="true"
    * @generated
    */
-  String getTaxonomies();
+  EList<StringList> getCptSupports();
 
   /**
-   * Sets the value of the '{@link co7217.week18.entity.entityDsl.CustomPostType#getTaxonomies <em>Taxonomies</em>}' attribute.
+   * Returns the value of the '<em><b>Cpt Taxonomies</b></em>' containment reference list.
+   * The list contents are of type {@link co7217.week18.entity.entityDsl.StringList}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Taxonomies</em>' attribute.
-   * @see #getTaxonomies()
+   * @return the value of the '<em>Cpt Taxonomies</em>' containment reference list.
+   * @see co7217.week18.entity.entityDsl.EntityDslPackage#getCustomPostType_CptTaxonomies()
+   * @model containment="true"
    * @generated
    */
-  void setTaxonomies(String value);
+  EList<StringList> getCptTaxonomies();
 
 } // CustomPostType

@@ -12,11 +12,11 @@ Plugin:
         // Each property follows the pattern: keyword '=' value
         'name' '=' name=STRING
         'version' '=' version=STRING
-        'description' '=' description=STRING?
-        'author' '=' author=STRING?
-        'license' '=' license=STRING?
-        'prefix' '=' prefix=STRING?
-        'textDomain' '=' textDomain=STRING?
+        'description' '=' description=STRING
+        'author' '=' author=STRING
+        'license' '=' license=STRING
+        'prefix' '=' prefix=STRING
+        'textDomain' '=' textDomain=STRING
         'activate' '=' activate=STRING? 
         'deactivate' '=' deactivate=STRING? 
         'uninstall' '=' uninstall=STRING? 
@@ -51,9 +51,10 @@ Shortcode:
 // Definition of the CustomPostType entity.
 CustomPostType:
     'CustomPostType' '{'
-        'postTypeName' '=' postTypeName=STRING
-        'supports' '=' supports=STRING?
-        'taxonomies' '=' taxonomies=STRING?
+        'cptName' '=' cptName=STRING
+        'cptSingularName' '=' cptSingularName=STRING
+        'cptSupports' '=' cptSupports+=StringList?
+        'cptTaxonomies' '=' cptTaxonomies+=StringList?
     '}'
 ;
 
@@ -81,3 +82,6 @@ Hook:
 enum HookType :
     FILTER = 'filter' | ACTION = 'action'
 ;
+
+StringList:
+    (values+=STRING) (',' values+=STRING)*;

@@ -78,6 +78,15 @@ public interface EntityDslFactory extends EFactory
   Hook createHook();
 
   /**
+   * Returns a new object of class '<em>String List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String List</em>'.
+   * @generated
+   */
+  StringList createStringList();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

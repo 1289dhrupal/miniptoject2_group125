@@ -36,12 +36,19 @@ Plugin {
             defaultValue = "800"
         }
     }
+
+    CustomPostType {
+        cptName = "Coupons"
+        cptSingularName = "Coupon"
+        cptSupports = "title", "editor", "thumbnail"
+        cptTaxonomies = "store", "location"
+    }
     
     Hook {
-        hookType = "action"
+        hookType = action
         hookName = "save_post"
         callback = "save_post"
         priority = 10
         acceptedArgs = 2
-    }
+    }    
 }

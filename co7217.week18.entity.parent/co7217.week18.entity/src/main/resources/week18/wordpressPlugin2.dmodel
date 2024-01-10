@@ -6,9 +6,9 @@ Plugin {
     license = "GPL-3.0"
     prefix = "mcp"
     textDomain = "my-custom-plugin"
-    activate = "activateMyPlugin"
-    deactivate = "deactivateMyPlugin"
-    uninstall = "uninstallMyPlugin"
+    activate = "true"
+    deactivate = "true"
+    uninstall = "true"
 
     Widget {
         widgetName = "RecentPosts"
@@ -36,15 +36,16 @@ Plugin {
     }
 
     CustomPostType {
-        postTypeName = "book"
-        supports = "title, editor, thumbnail"
-        taxonomies = "genre, authors"
+        cptName = "Books"
+        cptSingularName = "Book"
+        cptSupports = "title", "editor", "thumbnail"
+        cptTaxonomies = "genre", "authors"
     }
     
     Hook {
         hookType = filter
         hookName = "content_filter"
-        callback = "filterContent"
+        callback = "filter_content"
         priority = 10
         acceptedArgs = 2
     }
@@ -52,7 +53,7 @@ Plugin {
     Hook {
         hookType = action
         hookName = "save_post"
-        callback = "postSaveAction"
+        callback = "post_save_action"
         priority = 5
         acceptedArgs = 3
     }

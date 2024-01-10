@@ -5,13 +5,23 @@ package co7217.week18.entity.entityDsl.impl;
 
 import co7217.week18.entity.entityDsl.CustomPostType;
 import co7217.week18.entity.entityDsl.EntityDslPackage;
+import co7217.week18.entity.entityDsl.StringList;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,9 +31,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getPostTypeName <em>Post Type Name</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getSupports <em>Supports</em>}</li>
- *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getTaxonomies <em>Taxonomies</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getCptName <em>Cpt Name</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getCptSingularName <em>Cpt Singular Name</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getCptSupports <em>Cpt Supports</em>}</li>
+ *   <li>{@link co7217.week18.entity.entityDsl.impl.CustomPostTypeImpl#getCptTaxonomies <em>Cpt Taxonomies</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,64 +42,64 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements CustomPostType
 {
   /**
-   * The default value of the '{@link #getPostTypeName() <em>Post Type Name</em>}' attribute.
+   * The default value of the '{@link #getCptName() <em>Cpt Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPostTypeName()
+   * @see #getCptName()
    * @generated
    * @ordered
    */
-  protected static final String POST_TYPE_NAME_EDEFAULT = null;
+  protected static final String CPT_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getPostTypeName() <em>Post Type Name</em>}' attribute.
+   * The cached value of the '{@link #getCptName() <em>Cpt Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPostTypeName()
+   * @see #getCptName()
    * @generated
    * @ordered
    */
-  protected String postTypeName = POST_TYPE_NAME_EDEFAULT;
+  protected String cptName = CPT_NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getSupports() <em>Supports</em>}' attribute.
+   * The default value of the '{@link #getCptSingularName() <em>Cpt Singular Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSupports()
+   * @see #getCptSingularName()
    * @generated
    * @ordered
    */
-  protected static final String SUPPORTS_EDEFAULT = null;
+  protected static final String CPT_SINGULAR_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getSupports() <em>Supports</em>}' attribute.
+   * The cached value of the '{@link #getCptSingularName() <em>Cpt Singular Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSupports()
+   * @see #getCptSingularName()
    * @generated
    * @ordered
    */
-  protected String supports = SUPPORTS_EDEFAULT;
+  protected String cptSingularName = CPT_SINGULAR_NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTaxonomies() <em>Taxonomies</em>}' attribute.
+   * The cached value of the '{@link #getCptSupports() <em>Cpt Supports</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTaxonomies()
+   * @see #getCptSupports()
    * @generated
    * @ordered
    */
-  protected static final String TAXONOMIES_EDEFAULT = null;
+  protected EList<StringList> cptSupports;
 
   /**
-   * The cached value of the '{@link #getTaxonomies() <em>Taxonomies</em>}' attribute.
+   * The cached value of the '{@link #getCptTaxonomies() <em>Cpt Taxonomies</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTaxonomies()
+   * @see #getCptTaxonomies()
    * @generated
    * @ordered
    */
-  protected String taxonomies = TAXONOMIES_EDEFAULT;
+  protected EList<StringList> cptTaxonomies;
 
   /**
    * <!-- begin-user-doc -->
@@ -117,9 +128,9 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public String getPostTypeName()
+  public String getCptName()
   {
-    return postTypeName;
+    return cptName;
   }
 
   /**
@@ -128,12 +139,12 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public void setPostTypeName(String newPostTypeName)
+  public void setCptName(String newCptName)
   {
-    String oldPostTypeName = postTypeName;
-    postTypeName = newPostTypeName;
+    String oldCptName = cptName;
+    cptName = newCptName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.CUSTOM_POST_TYPE__POST_TYPE_NAME, oldPostTypeName, postTypeName));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.CUSTOM_POST_TYPE__CPT_NAME, oldCptName, cptName));
   }
 
   /**
@@ -142,9 +153,9 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public String getSupports()
+  public String getCptSingularName()
   {
-    return supports;
+    return cptSingularName;
   }
 
   /**
@@ -153,12 +164,12 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public void setSupports(String newSupports)
+  public void setCptSingularName(String newCptSingularName)
   {
-    String oldSupports = supports;
-    supports = newSupports;
+    String oldCptSingularName = cptSingularName;
+    cptSingularName = newCptSingularName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.CUSTOM_POST_TYPE__SUPPORTS, oldSupports, supports));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.CUSTOM_POST_TYPE__CPT_SINGULAR_NAME, oldCptSingularName, cptSingularName));
   }
 
   /**
@@ -167,9 +178,13 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public String getTaxonomies()
+  public EList<StringList> getCptSupports()
   {
-    return taxonomies;
+    if (cptSupports == null)
+    {
+      cptSupports = new EObjectContainmentEList<StringList>(StringList.class, this, EntityDslPackage.CUSTOM_POST_TYPE__CPT_SUPPORTS);
+    }
+    return cptSupports;
   }
 
   /**
@@ -178,12 +193,31 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
-  public void setTaxonomies(String newTaxonomies)
+  public EList<StringList> getCptTaxonomies()
   {
-    String oldTaxonomies = taxonomies;
-    taxonomies = newTaxonomies;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDslPackage.CUSTOM_POST_TYPE__TAXONOMIES, oldTaxonomies, taxonomies));
+    if (cptTaxonomies == null)
+    {
+      cptTaxonomies = new EObjectContainmentEList<StringList>(StringList.class, this, EntityDslPackage.CUSTOM_POST_TYPE__CPT_TAXONOMIES);
+    }
+    return cptTaxonomies;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_SUPPORTS:
+        return ((InternalEList<?>)getCptSupports()).basicRemove(otherEnd, msgs);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_TAXONOMIES:
+        return ((InternalEList<?>)getCptTaxonomies()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -196,12 +230,14 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case EntityDslPackage.CUSTOM_POST_TYPE__POST_TYPE_NAME:
-        return getPostTypeName();
-      case EntityDslPackage.CUSTOM_POST_TYPE__SUPPORTS:
-        return getSupports();
-      case EntityDslPackage.CUSTOM_POST_TYPE__TAXONOMIES:
-        return getTaxonomies();
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_NAME:
+        return getCptName();
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_SINGULAR_NAME:
+        return getCptSingularName();
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_SUPPORTS:
+        return getCptSupports();
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_TAXONOMIES:
+        return getCptTaxonomies();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -211,19 +247,25 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case EntityDslPackage.CUSTOM_POST_TYPE__POST_TYPE_NAME:
-        setPostTypeName((String)newValue);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_NAME:
+        setCptName((String)newValue);
         return;
-      case EntityDslPackage.CUSTOM_POST_TYPE__SUPPORTS:
-        setSupports((String)newValue);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_SINGULAR_NAME:
+        setCptSingularName((String)newValue);
         return;
-      case EntityDslPackage.CUSTOM_POST_TYPE__TAXONOMIES:
-        setTaxonomies((String)newValue);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_SUPPORTS:
+        getCptSupports().clear();
+        getCptSupports().addAll((Collection<? extends StringList>)newValue);
+        return;
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_TAXONOMIES:
+        getCptTaxonomies().clear();
+        getCptTaxonomies().addAll((Collection<? extends StringList>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -239,14 +281,17 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case EntityDslPackage.CUSTOM_POST_TYPE__POST_TYPE_NAME:
-        setPostTypeName(POST_TYPE_NAME_EDEFAULT);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_NAME:
+        setCptName(CPT_NAME_EDEFAULT);
         return;
-      case EntityDslPackage.CUSTOM_POST_TYPE__SUPPORTS:
-        setSupports(SUPPORTS_EDEFAULT);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_SINGULAR_NAME:
+        setCptSingularName(CPT_SINGULAR_NAME_EDEFAULT);
         return;
-      case EntityDslPackage.CUSTOM_POST_TYPE__TAXONOMIES:
-        setTaxonomies(TAXONOMIES_EDEFAULT);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_SUPPORTS:
+        getCptSupports().clear();
+        return;
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_TAXONOMIES:
+        getCptTaxonomies().clear();
         return;
     }
     super.eUnset(featureID);
@@ -262,12 +307,14 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case EntityDslPackage.CUSTOM_POST_TYPE__POST_TYPE_NAME:
-        return POST_TYPE_NAME_EDEFAULT == null ? postTypeName != null : !POST_TYPE_NAME_EDEFAULT.equals(postTypeName);
-      case EntityDslPackage.CUSTOM_POST_TYPE__SUPPORTS:
-        return SUPPORTS_EDEFAULT == null ? supports != null : !SUPPORTS_EDEFAULT.equals(supports);
-      case EntityDslPackage.CUSTOM_POST_TYPE__TAXONOMIES:
-        return TAXONOMIES_EDEFAULT == null ? taxonomies != null : !TAXONOMIES_EDEFAULT.equals(taxonomies);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_NAME:
+        return CPT_NAME_EDEFAULT == null ? cptName != null : !CPT_NAME_EDEFAULT.equals(cptName);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_SINGULAR_NAME:
+        return CPT_SINGULAR_NAME_EDEFAULT == null ? cptSingularName != null : !CPT_SINGULAR_NAME_EDEFAULT.equals(cptSingularName);
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_SUPPORTS:
+        return cptSupports != null && !cptSupports.isEmpty();
+      case EntityDslPackage.CUSTOM_POST_TYPE__CPT_TAXONOMIES:
+        return cptTaxonomies != null && !cptTaxonomies.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -283,12 +330,10 @@ public class CustomPostTypeImpl extends MinimalEObjectImpl.Container implements 
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (postTypeName: ");
-    result.append(postTypeName);
-    result.append(", supports: ");
-    result.append(supports);
-    result.append(", taxonomies: ");
-    result.append(taxonomies);
+    result.append(" (cptName: ");
+    result.append(cptName);
+    result.append(", cptSingularName: ");
+    result.append(cptSingularName);
     result.append(')');
     return result.toString();
   }

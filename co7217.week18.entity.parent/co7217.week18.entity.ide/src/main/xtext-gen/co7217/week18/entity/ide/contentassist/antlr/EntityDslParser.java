@@ -38,6 +38,8 @@ public class EntityDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCustomPostTypeAccess().getGroup(), "rule__CustomPostType__Group__0");
 			builder.put(grammarAccess.getSettingAccess().getGroup(), "rule__Setting__Group__0");
 			builder.put(grammarAccess.getHookAccess().getGroup(), "rule__Hook__Group__0");
+			builder.put(grammarAccess.getStringListAccess().getGroup(), "rule__StringList__Group__0");
+			builder.put(grammarAccess.getStringListAccess().getGroup_1(), "rule__StringList__Group_1__0");
 			builder.put(grammarAccess.getPluginAccess().getNameAssignment_4(), "rule__Plugin__NameAssignment_4");
 			builder.put(grammarAccess.getPluginAccess().getVersionAssignment_7(), "rule__Plugin__VersionAssignment_7");
 			builder.put(grammarAccess.getPluginAccess().getDescriptionAssignment_10(), "rule__Plugin__DescriptionAssignment_10");
@@ -58,9 +60,10 @@ public class EntityDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getWidgetAccess().getSettingsAssignment_8(), "rule__Widget__SettingsAssignment_8");
 			builder.put(grammarAccess.getShortcodeAccess().getShortcodeNameAssignment_4(), "rule__Shortcode__ShortcodeNameAssignment_4");
 			builder.put(grammarAccess.getShortcodeAccess().getSettingsAssignment_5(), "rule__Shortcode__SettingsAssignment_5");
-			builder.put(grammarAccess.getCustomPostTypeAccess().getPostTypeNameAssignment_4(), "rule__CustomPostType__PostTypeNameAssignment_4");
-			builder.put(grammarAccess.getCustomPostTypeAccess().getSupportsAssignment_7(), "rule__CustomPostType__SupportsAssignment_7");
-			builder.put(grammarAccess.getCustomPostTypeAccess().getTaxonomiesAssignment_10(), "rule__CustomPostType__TaxonomiesAssignment_10");
+			builder.put(grammarAccess.getCustomPostTypeAccess().getCptNameAssignment_4(), "rule__CustomPostType__CptNameAssignment_4");
+			builder.put(grammarAccess.getCustomPostTypeAccess().getCptSingularNameAssignment_7(), "rule__CustomPostType__CptSingularNameAssignment_7");
+			builder.put(grammarAccess.getCustomPostTypeAccess().getCptSupportsAssignment_10(), "rule__CustomPostType__CptSupportsAssignment_10");
+			builder.put(grammarAccess.getCustomPostTypeAccess().getCptTaxonomiesAssignment_13(), "rule__CustomPostType__CptTaxonomiesAssignment_13");
 			builder.put(grammarAccess.getSettingAccess().getSettingNameAssignment_4(), "rule__Setting__SettingNameAssignment_4");
 			builder.put(grammarAccess.getSettingAccess().getSettingTypeAssignment_7(), "rule__Setting__SettingTypeAssignment_7");
 			builder.put(grammarAccess.getSettingAccess().getDefaultValueAssignment_10(), "rule__Setting__DefaultValueAssignment_10");
@@ -69,6 +72,8 @@ public class EntityDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getHookAccess().getCallbackAssignment_10(), "rule__Hook__CallbackAssignment_10");
 			builder.put(grammarAccess.getHookAccess().getPriorityAssignment_13(), "rule__Hook__PriorityAssignment_13");
 			builder.put(grammarAccess.getHookAccess().getAcceptedArgsAssignment_16(), "rule__Hook__AcceptedArgsAssignment_16");
+			builder.put(grammarAccess.getStringListAccess().getValuesAssignment_0(), "rule__StringList__ValuesAssignment_0");
+			builder.put(grammarAccess.getStringListAccess().getValuesAssignment_1_1(), "rule__StringList__ValuesAssignment_1_1");
 		}
 	}
 	

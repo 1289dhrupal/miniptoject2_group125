@@ -115,6 +115,13 @@ public class EntityDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case EntityDslPackage.STRING_LIST:
+      {
+        StringList stringList = (StringList)theEObject;
+        T result = caseStringList(stringList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -211,6 +218,22 @@ public class EntityDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseHook(Hook object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringList(StringList object)
   {
     return null;
   }

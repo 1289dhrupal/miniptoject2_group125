@@ -8,7 +8,7 @@ class mcp_recentposts_widget extends WP_Widget {
         parent::__construct(
             'recentposts', // Base ID
             'RecentPosts', // Name
-            array( 'description' => __( 'Displays recent posts with thumbnails.', 'mcp' ) ) // Args
+            array( 'description' => __( 'Displays recent posts with thumbnails.', 'my-custom-plugin' ) ) // Args
         );
 
         add_action( 'widgets_init',  function() {

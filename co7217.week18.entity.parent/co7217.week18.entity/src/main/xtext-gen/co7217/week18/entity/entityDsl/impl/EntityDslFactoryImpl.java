@@ -72,6 +72,7 @@ public class EntityDslFactoryImpl extends EFactoryImpl implements EntityDslFacto
       case EntityDslPackage.CUSTOM_POST_TYPE: return createCustomPostType();
       case EntityDslPackage.SETTING: return createSetting();
       case EntityDslPackage.HOOK: return createHook();
+      case EntityDslPackage.STRING_LIST: return createStringList();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -181,6 +182,18 @@ public class EntityDslFactoryImpl extends EFactoryImpl implements EntityDslFacto
   {
     HookImpl hook = new HookImpl();
     return hook;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StringList createStringList()
+  {
+    StringListImpl stringList = new StringListImpl();
+    return stringList;
   }
 
   /**

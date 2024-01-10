@@ -162,7 +162,7 @@ rulePlugin returns [EObject current=null]
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
-		)?
+		)
 		otherlv_11='author'
 		{
 			newLeafNode(otherlv_11, grammarAccess.getPluginAccess().getAuthorKeyword_11());
@@ -188,7 +188,7 @@ rulePlugin returns [EObject current=null]
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
-		)?
+		)
 		otherlv_14='license'
 		{
 			newLeafNode(otherlv_14, grammarAccess.getPluginAccess().getLicenseKeyword_14());
@@ -214,7 +214,7 @@ rulePlugin returns [EObject current=null]
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
-		)?
+		)
 		otherlv_17='prefix'
 		{
 			newLeafNode(otherlv_17, grammarAccess.getPluginAccess().getPrefixKeyword_17());
@@ -240,7 +240,7 @@ rulePlugin returns [EObject current=null]
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
-		)?
+		)
 		otherlv_20='textDomain'
 		{
 			newLeafNode(otherlv_20, grammarAccess.getPluginAccess().getTextDomainKeyword_20());
@@ -266,7 +266,7 @@ rulePlugin returns [EObject current=null]
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
-		)?
+		)
 		otherlv_23='activate'
 		{
 			newLeafNode(otherlv_23, grammarAccess.getPluginAccess().getActivateKeyword_23());
@@ -649,9 +649,9 @@ ruleCustomPostType returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getCustomPostTypeAccess().getLeftCurlyBracketKeyword_1());
 		}
-		otherlv_2='postTypeName'
+		otherlv_2='cptName'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getCustomPostTypeAccess().getPostTypeNameKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getCustomPostTypeAccess().getCptNameKeyword_2());
 		}
 		otherlv_3='='
 		{
@@ -659,9 +659,9 @@ ruleCustomPostType returns [EObject current=null]
 		}
 		(
 			(
-				lv_postTypeName_4_0=RULE_STRING
+				lv_cptName_4_0=RULE_STRING
 				{
-					newLeafNode(lv_postTypeName_4_0, grammarAccess.getCustomPostTypeAccess().getPostTypeNameSTRINGTerminalRuleCall_4_0());
+					newLeafNode(lv_cptName_4_0, grammarAccess.getCustomPostTypeAccess().getCptNameSTRINGTerminalRuleCall_4_0());
 				}
 				{
 					if ($current==null) {
@@ -669,15 +669,15 @@ ruleCustomPostType returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"postTypeName",
-						lv_postTypeName_4_0,
+						"cptName",
+						lv_cptName_4_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_5='supports'
+		otherlv_5='cptSingularName'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getCustomPostTypeAccess().getSupportsKeyword_5());
+			newLeafNode(otherlv_5, grammarAccess.getCustomPostTypeAccess().getCptSingularNameKeyword_5());
 		}
 		otherlv_6='='
 		{
@@ -685,9 +685,9 @@ ruleCustomPostType returns [EObject current=null]
 		}
 		(
 			(
-				lv_supports_7_0=RULE_STRING
+				lv_cptSingularName_7_0=RULE_STRING
 				{
-					newLeafNode(lv_supports_7_0, grammarAccess.getCustomPostTypeAccess().getSupportsSTRINGTerminalRuleCall_7_0());
+					newLeafNode(lv_cptSingularName_7_0, grammarAccess.getCustomPostTypeAccess().getCptSingularNameSTRINGTerminalRuleCall_7_0());
 				}
 				{
 					if ($current==null) {
@@ -695,15 +695,15 @@ ruleCustomPostType returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"supports",
-						lv_supports_7_0,
+						"cptSingularName",
+						lv_cptSingularName_7_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
-		)?
-		otherlv_8='taxonomies'
+		)
+		otherlv_8='cptSupports'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getCustomPostTypeAccess().getTaxonomiesKeyword_8());
+			newLeafNode(otherlv_8, grammarAccess.getCustomPostTypeAccess().getCptSupportsKeyword_8());
 		}
 		otherlv_9='='
 		{
@@ -711,25 +711,53 @@ ruleCustomPostType returns [EObject current=null]
 		}
 		(
 			(
-				lv_taxonomies_10_0=RULE_STRING
 				{
-					newLeafNode(lv_taxonomies_10_0, grammarAccess.getCustomPostTypeAccess().getTaxonomiesSTRINGTerminalRuleCall_10_0());
+					newCompositeNode(grammarAccess.getCustomPostTypeAccess().getCptSupportsStringListParserRuleCall_10_0());
 				}
+				lv_cptSupports_10_0=ruleStringList
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getCustomPostTypeRule());
+						$current = createModelElementForParent(grammarAccess.getCustomPostTypeRule());
 					}
-					setWithLastConsumed(
+					add(
 						$current,
-						"taxonomies",
-						lv_taxonomies_10_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"cptSupports",
+						lv_cptSupports_10_0,
+						"co7217.week18.entity.EntityDsl.StringList");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)?
-		otherlv_11='}'
+		otherlv_11='cptTaxonomies'
 		{
-			newLeafNode(otherlv_11, grammarAccess.getCustomPostTypeAccess().getRightCurlyBracketKeyword_11());
+			newLeafNode(otherlv_11, grammarAccess.getCustomPostTypeAccess().getCptTaxonomiesKeyword_11());
+		}
+		otherlv_12='='
+		{
+			newLeafNode(otherlv_12, grammarAccess.getCustomPostTypeAccess().getEqualsSignKeyword_12());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCustomPostTypeAccess().getCptTaxonomiesStringListParserRuleCall_13_0());
+				}
+				lv_cptTaxonomies_13_0=ruleStringList
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCustomPostTypeRule());
+					}
+					add(
+						$current,
+						"cptTaxonomies",
+						lv_cptTaxonomies_13_0,
+						"co7217.week18.entity.EntityDsl.StringList");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		otherlv_14='}'
+		{
+			newLeafNode(otherlv_14, grammarAccess.getCustomPostTypeAccess().getRightCurlyBracketKeyword_14());
 		}
 	)
 ;
@@ -1002,6 +1030,67 @@ ruleHook returns [EObject current=null]
 		{
 			newLeafNode(otherlv_17, grammarAccess.getHookAccess().getRightCurlyBracketKeyword_17());
 		}
+	)
+;
+
+// Entry rule entryRuleStringList
+entryRuleStringList returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getStringListRule()); }
+	iv_ruleStringList=ruleStringList
+	{ $current=$iv_ruleStringList.current; }
+	EOF;
+
+// Rule StringList
+ruleStringList returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_values_0_0=RULE_STRING
+				{
+					newLeafNode(lv_values_0_0, grammarAccess.getStringListAccess().getValuesSTRINGTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getStringListRule());
+					}
+					addWithLastConsumed(
+						$current,
+						"values",
+						lv_values_0_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		(
+			otherlv_1=','
+			{
+				newLeafNode(otherlv_1, grammarAccess.getStringListAccess().getCommaKeyword_1_0());
+			}
+			(
+				(
+					lv_values_2_0=RULE_STRING
+					{
+						newLeafNode(lv_values_2_0, grammarAccess.getStringListAccess().getValuesSTRINGTerminalRuleCall_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getStringListRule());
+						}
+						addWithLastConsumed(
+							$current,
+							"values",
+							lv_values_2_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+		)*
 	)
 ;
 

@@ -106,6 +106,11 @@ public class EntityDslAdapterFactory extends AdapterFactoryImpl
         return createHookAdapter();
       }
       @Override
+      public Adapter caseStringList(StringList object)
+      {
+        return createStringListAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -213,6 +218,21 @@ public class EntityDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createHookAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link co7217.week18.entity.entityDsl.StringList <em>String List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see co7217.week18.entity.entityDsl.StringList
+   * @generated
+   */
+  public Adapter createStringListAdapter()
   {
     return null;
   }

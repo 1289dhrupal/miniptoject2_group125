@@ -9,6 +9,7 @@ import co7217.week18.entity.entityDsl.Hook;
 import co7217.week18.entity.entityDsl.Plugin;
 import co7217.week18.entity.entityDsl.Setting;
 import co7217.week18.entity.entityDsl.Shortcode;
+import co7217.week18.entity.entityDsl.StringList;
 import co7217.week18.entity.entityDsl.Widget;
 import co7217.week18.entity.services.EntityDslGrammarAccess;
 import com.google.inject.Inject;
@@ -50,6 +51,9 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 			case EntityDslPackage.SHORTCODE:
 				sequence_Shortcode(context, (Shortcode) semanticObject); 
 				return; 
+			case EntityDslPackage.STRING_LIST:
+				sequence_StringList(context, (StringList) semanticObject); 
+				return; 
 			case EntityDslPackage.WIDGET:
 				sequence_Widget(context, (Widget) semanticObject); 
 				return; 
@@ -64,7 +68,7 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     CustomPostType returns CustomPostType
 	 *
 	 * Constraint:
-	 *     (postTypeName=STRING supports=STRING? taxonomies=STRING?)
+	 *     (cptName=STRING cptSingularName=STRING cptSupports+=StringList? cptTaxonomies+=StringList?)
 	 * </pre>
 	 */
 	protected void sequence_CustomPostType(ISerializationContext context, CustomPostType semanticObject) {
@@ -95,11 +99,11 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     (
 	 *         name=STRING 
 	 *         version=STRING 
-	 *         description=STRING? 
-	 *         author=STRING? 
-	 *         license=STRING? 
-	 *         prefix=STRING? 
-	 *         textDomain=STRING? 
+	 *         description=STRING 
+	 *         author=STRING 
+	 *         license=STRING 
+	 *         prefix=STRING 
+	 *         textDomain=STRING 
 	 *         activate=STRING? 
 	 *         deactivate=STRING? 
 	 *         uninstall=STRING? 
@@ -140,6 +144,20 @@ public class EntityDslSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 * </pre>
 	 */
 	protected void sequence_Shortcode(ISerializationContext context, Shortcode semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     StringList returns StringList
+	 *
+	 * Constraint:
+	 *     (values+=STRING values+=STRING*)
+	 * </pre>
+	 */
+	protected void sequence_StringList(ISerializationContext context, StringList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
