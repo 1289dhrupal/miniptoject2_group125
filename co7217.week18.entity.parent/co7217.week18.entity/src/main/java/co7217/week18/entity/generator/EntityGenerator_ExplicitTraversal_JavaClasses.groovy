@@ -30,7 +30,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 
         // Load a resource (model file) from the filesystem.
-        Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin3.dmodel"), true);
+        Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin.dmodel"), true);
 
         // Extract the root object (Plugin model) from the loaded resource.
         PluginModel model = (PluginModel) resource.getContents().get(0);        
