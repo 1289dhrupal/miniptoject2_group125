@@ -1,205 +1,71 @@
-<link rel='stylesheet' href='web/swiss.css'/>
 
-# Code Generation with Groovy
+# Domain-Specific Language for WordPress Plugin Scaffolding
 
-The **goal** of this tutorial is to use Groovy to generate code from models that are parsed with xText. This worksheet provides the code of the examples used in the taught units 2 and 3 and in there you will find a code walkthrough.
+## Description
 
-The metamodel of the DSL is included below for helping in doing the exercises:
+This project focuses on creating a Domain-Specific Language (DSL) for the effortless generation of WordPress plugin scaffolding code. The DSL simplifies plugin development by specifying key plugin attributes such as name, author details, and operational views (admin, public, or both). By integrating the DSL with the WordPress Boilerplate Project, we aim to automate the initial setup process, catering to both novice and experienced WordPress developers. This approach streamlines the plugin creation process, reducing manual coding errors.
 
-![](metamodel.png)
+### Aim
 
-This worksheet can also be found in `co7217.mu6.entity.parent/readme.md`.
+Our aim is to provide an easy-to-use framework for WordPress plugin development that can significantly reduce time and effort in the initial stages of plugin creation. It's designed to handle common patterns in WordPress plugin development, ensuring comprehensive coverage of essential aspects like menu and settings configuration.
 
-## Download the project from Blackboard
+### Methodology
 
-* Import the project `co7217.mu6.entity.parent` using Gradle. This Xtext project corresponds to the domain modelling DSL being used in the taught units.
-* The grammar of the EntityDsl can be found at `co7217.mu6.entity/src/main/java/co7217.xtext.entity/EntityDsl.xtext`
-* Sample code generators can be found in the folder `co7217.mu6.entity/src/main/java/`
-  * `co7217.mu6.entity.generator.EntityGenerator_ExplicitTraversal_JavaClasses` is the code of the example used in taught unit 2 (M2T with Groovy (1)) and generates Java code in separate files using an explicit traversal strategy.
-  * `co7217.mu6.entity.generator.EntityGenerator_Visitor_Serialization` is the code of the example used in taught unit 3 (M2T with Groovy (2)) and serializes models using the concrete syntax of the DSL.
+The project progresses through iterative stages, including requirement gathering, DSL design, model compiler development, and testing with real-world WordPress setups. We continuously incorporate feedback at each stage for improvement. Our methodology involves analyzing a variety of plugin examples to understand diverse requirements, ensuring that our DSL is robust and versatile.
 
+### Technologies Used
 
+- **Xtext**: Used for defining the DSL grammar.
+- **Groovy**: Employs dynamic language features for scripting and tooling.
+- **EMF (Eclipse Modeling Framework)**: Provides the data model for the DSL and tooling support.
 
-## Exercise 1: Serialization with explicit traversal
+## Usage
 
-**Goal:** Develop a code generator for the DSL that serializes models for the DSL.
+### Generating the Model
 
-Under the folder `co7217.mu6.entity/src/main/java/`, the file `co7217.mu6.entity.generator.EntityGenerator_ExplicitTraversal_Serialization` provides an skeleton of the model compiler. The output code should be stored in one single file.
-
-Create your model to text transformation logic in the method `processElement(AbstractElement el)`. Feel free to use all the facilities of the Groovy language.
-
-To find examples for your generator, create new models with the web editor of the DSL (using the Gradle task `jettyRun` as shown in the previous module unit on Xtext). 
-
-## Exercise 2 
-
-**Goal:** Develop a model compiler for the DSL generating Java code from models using the adaptation of the visitor pattern explained in taught unit 3.
-
-Under the folder `co7217.mu6.entity/src/main/java/`, the file `co7217.mu6.entity.generator.submission_exercise.groovy` provides an skeleton of the model compiler. The output code should be returned in a string, there is no need to persist in files.
-
-The tasks to be done are marked with tags `TODO`:
-* Update the username for running the SubmissionHelper.
-* Complete the traversal strategy in the method `traverse(EObject)`.
-* Complete the code generation part in the method `generate(EObject)`.
-
-**Hints:** reuse parts of transformation logic available in the other examples provided. Watch taught units 2 and 3. 
-
-The examples below should be implemented.
-
-
-#### Example 1: 
-
-The code in file `example1.domain`:
-
-```datatype String
-
-package RentACar {
-
-	entity Car {
-		drivingPlate : String
-	}
-
-}
-```
-
-should be compiled to 
-
-```java
-package RentACar;
-
-public class Car  {
-	
-	private String drivingPlate;
-	
-	public String getDrivingPlate() {
-		return drivingPlate;
-	}
-	
-	public void setDrivingPlate(String drivingPlate) {
-		this.drivingPlate = drivingPlate;
-	}
-
-}
-```
-
-#### Example 2: 
-
-The code in file `examples2.domain`
+To generate the model, run the following file as "Generate XText Artifacts":
 
 ```
-datatype String
-
-entity Blog {
-   title: String
-   many posts: Post
-}
-
-entity HasAuthor {
-   author: String
-}
-
-entity Post extends HasAuthor {
-   title: String
-   content: String
-   many comments: Comment
-}
-
-entity Comment extends HasAuthor {
-   content: String
-}
+co7217.week18.entity.parent/co7217.week18.entity/src/main/java/co7217/week18/entity/generator/EntityGenerator_ExplicitTraversal_JavaClasses.groovy
 ```
 
-should be compiled to
+### Location of `.dmodel` files
 
-```java
-public class Blog  {
-	
-	private String title;
-	
-	public String getTitle() {
-		return title;
-	}
-	
-	public void setTitle(String title) {
-		this.title = title;
-	}
+The `.dmodel` files are placed at:
 
-	private Post posts;
-	
-	public Post getPosts() {
-		return posts;
-	}
-	
-	public void setPosts(Post posts) {
-		this.posts = posts;
-	}
-
-}
-
-public class HasAuthor  {
-	
-	private String author;
-	
-	public String getAuthor() {
-		return author;
-	}
-	
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-}
-
-public class Post extends HasAuthor {
-	
-	private String title;
-	
-	public String getTitle() {
-		return title;
-	}
-	
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	private String content;
-	
-	public String getContent() {
-		return content;
-	}
-	
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	private Comment comments;
-	
-	public Comment getComments() {
-		return comments;
-	}
-	
-	public void setComments(Comment comments) {
-		this.comments = comments;
-	}
-
-}
-
-public class Comment extends HasAuthor {
-	
-	private String content;
-	
-	public String getContent() {
-		return content;
-	}
-	
-	public void setContent(String content) {
-		this.content = content;
-	}
-}
+```
+co7217.week18.entity.parent/co7217.week18.entity/src/main/resources/week18
 ```
 
-## Additional resources
+This directory already contains three sample `.dmodel` files.
 
-This worksheet builds on the resources used in previous taught units on Groovy, EMF and Xtext. Revise the documentation provided for the corresponding module units.
+### Output Location
 
-***
-&copy; Artur Boronat, 2023
+The generated WordPress plugin files are located at:
+
+```
+co7217.week18.entity.parent/co7217.week18.entity/src/main/resources/week18/generated
+```
+
+### Generating WordPress Plugin Files
+
+To generate the WordPress plugin files, run the following file as "Run as Java":
+
+```
+co7217.week18.entity.parent/co7217.week18.entity/src/main/java/co7217/week18/entity/generator/EntityGenerator_ExplicitTraversal_JavaClasses.groovy
+```
+
+### Project Zip Folder Structure
+
+The zip folder for the project includes:
+- Project folder
+- Presentation slides
+- `README.md` file
+
+## Contributing
+
+Contributions to this project are welcome. Please read the `CONTRIBUTING.md` for guidelines on how to submit pull requests and contribute to the project.
+
+## License
+
+This project is licensed under the [Your License Here] - see the `LICENSE.md` file for details.
