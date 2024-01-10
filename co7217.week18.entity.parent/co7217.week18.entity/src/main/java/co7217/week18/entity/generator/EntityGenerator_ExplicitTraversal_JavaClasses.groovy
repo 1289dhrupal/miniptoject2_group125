@@ -16,8 +16,10 @@ import co7217.week18.entity.entityDsl.Shortcode
 import co7217.week18.entity.entityDsl.Widget
 
 class EntityGenerator_ExplicitTraversal_JavaClasses {
+	
+	private static String mPluginFileName = null;
 
-    // Main method to execute the code.
+	    // Main method to execute the code.
     def static void main(String[] args) {
         // Initialize the injector for the domain-specific language (DSL)
         Injector injector = new EntityDslStandaloneSetup().createInjectorAndDoEMFRegistration();
@@ -26,44 +28,52 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 
         // Load a resource (model file) from the filesystem.
-        Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin.dmodel"), true);
+        Resource resource = resourceSet.getResource(URI.createFileURI("src/main/resources/week18/wordpressPlugin2.dmodel"), true);
 
         // Extract the root object (Plugin model) from the loaded resource.
         Plugin model = (Plugin) resource.getContents().get(0);
 
+		mPluginFileName = sanitizeFilename(model.getName());
+
         // Generate the main file for the plugin.
+		println "Generating Plugin File."
         generatePluginMainFile(model);
 
-        String pluginName = model.getName().toLowerCase().replace(" ", "-");
-
         // Handling activation, deactivation, and uninstall logic for the plugin.
-        if (model.getActivate().toLowerCase().equals("true")) {
+        if ("true".equalsIgnoreCase(model.getActivate())) {
+			println "Generating Activate File."
             generateActivationFile(model);
         }
 
-        if (model.getDeactivate().toLowerCase().equals("true")) {
+        if ("true".equalsIgnoreCase(model.getDeactivate())) {
+			println "Generating Deactivate File."
             generateDeactivationFile(model);
         }
 
-        if (model.getUninstall().toLowerCase().equals("true")) {
+        if ("true".equalsIgnoreCase(model.getUninstall())) {
+			println "Generating Uninstall File."
             generateUninstallFile(model);
         }
 
         // Generate files for widgets, shortcodes, and custom post types.
         for (Widget widget: model.getWidgets()) {
+        	println "Generating Widget : " + widget.getWidgetName();
             generateWidgetFile(widget, model);
         }
 
         for (Shortcode shortcode: model.getShortcodes()) {
+			println "Generating Shortcode : " + shortcode.getShortcodeName();
             generateShortcodeFile(shortcode, model);
         }
 
         for (CustomPostType cpt: model.getCustomPostTypes()) {
+			println "Generating CustomPostType : " + cpt.getPostTypeName();
             generateCustomPostTypeFile(cpt, model);
         }
 
         // Add hooks as specified in the plugin file.
         for (Hook hook: model.getHooks()) {
+        	println "Generating Hook : " + hook.getHookName();
             generateHooks(hook, model);
         }
     }
@@ -94,8 +104,8 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
 
         // Converting the plugin name to lowercase and replacing spaces with hyphens.
         // This is typically done for file naming conventions.
-        String fileName = model.getName().toLowerCase().replace(" ", "-");
-        writeFile(content, fileName + ".php");
+        String fileName = sanitizeFilename(model.getName()) + ".php";
+        writeFile(content, fileName);
     }
 
     /**
@@ -119,7 +129,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         content += """register_activation_hook(__FILE__, '${getPluginPrefix(model)}_activate');\n"""
 
         // Writing the built content to the activation PHP file.
-        String fileName = "activate.php";
+        String fileName = sanitizeFilename("activate") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created activation file in the main plugin file.
@@ -147,7 +157,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         content += """register_deactivation_hook(__FILE__, '${getPluginPrefix(model)}_deactivate');\n"""
 
         // Writing the built content to the deactivation PHP file.
-        String fileName = "deactivate.php";
+        String fileName = sanitizeFilename("deactivate") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created deactivation file in the main plugin file.
@@ -175,7 +185,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
 		content += """register_uninstall_hook(__FILE__, '${getPluginPrefix(model)}_uninstall');\n"""
 
         // Writing the built content to the uninstallation PHP file.
-        String fileName = "uninstall.php";
+        String fileName = sanitizeFilename("uninstall") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created uninstallation file in the main plugin file.
@@ -191,7 +201,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      */
     def static void generateWidgetFile(Widget widget, Plugin model) {
         // Preparing the widget name by converting it to lowercase and replacing spaces with underscores.
-        String widgetName = widget.getWidgetName().toLowerCase().replace(" ", "_");
+        String widgetName = sanitizeFieldname(widget.getWidgetName());
         String widgetDescription = widget.getWidgetDescription();
         
         // Iterating over each setting of the widget and appending the setting update logic.
@@ -237,7 +247,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         content += """\$${getPluginPrefix(model)}_${widgetName} = new ${getPluginPrefix(model)}_${widgetName}();\n""";
 
         // Writing the built content to the widget-[widget-name] PHP file.
-        String fileName = "widget-" + widget.getWidgetName().toLowerCase().replace(" ", "-") + ".php";
+        String fileName = sanitizeFilename("widget-${widget.getWidgetName()}") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created widget file in the main plugin file.
@@ -253,7 +263,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      */
     def static void generateShortcodeFile(Shortcode shortcode, Plugin model) {
         // Preparing the shortcode name by converting it to lowercase and replacing spaces with underscores.
-        String shortcodeName = shortcode.getShortcodeName().toLowerCase().replace(" ", "_");
+        String shortcodeName = sanitizeFieldname(shortcode.getShortcodeName());
     
         // Iterating over each setting of the shortcode and appending the logic to extract settings.
         String extractSettings = ''
@@ -279,7 +289,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         content += """add_shortcode('${getPluginPrefix(model)}_${shortcodeName}', '${getPluginPrefix(model)}_${shortcodeName}_shortcode');\n"""
 
         // Writing the built content to the shortcode-[shortcode-name] PHP file.
-        String fileName = "shortcode-" + shortcode.getShortcodeName().toLowerCase().replace(" ", "-") + ".php";
+        String fileName = sanitizeFilename("shortcode-${shortcode.getShortcodeName()}") + ".php";
         writeFile(content, fileName);
 
         // Including the newly created shortcode file in the main plugin file.
@@ -293,13 +303,13 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      * @param model The Plugin object associated with this custom post type.
      */
     def static void generateCustomPostTypeFile(CustomPostType cpt, Plugin model) {
-        String cptName = cpt.getPostTypeName().toLowerCase().replace(" ", "-");
+        String cptName = sanitizeFieldname(cpt.getPostTypeName());
 
         String content = """<?php"""
         content += """\n// Custom post type code for $cptName here\n""";
-        cptName = cpt.toLowerCase().replace(" ", "-");
 
-        writeFile(content, "custom-post-" + cptName + ".php");
+        String filename = sanitizeFilename("custom-post-${cpt.getPostTypeName()}") + ".php";
+        writeFile(content, filename);
     }
 
     /**
@@ -313,7 +323,7 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         // Extracting necessary information from the hook object.
         String hookType = hook.getHookType(); // The type of the hook (e.g., action or filter).
         String hookName = hook.getHookName();
-        String callback = hook.getCallback().toLowerCase().replace(" ", "_");
+        String callback = sanitizeFieldname(hook.getCallback());
 
         // Handling the priority of the hook. If it's not specified, it defaults to an empty string.
         String priority = hook.getPriority() ? """, ${hook.getPriority()}""" : "";
@@ -342,37 +352,58 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
         content += """add_${hookType}('${hookName}', '${getPluginPrefix(model)}_${callback}'${priority}${acceptedArgs});\n"""
 
         // Writing the built content to the [plugin-name] PHP file.
-        String pluginName = model.getName().toLowerCase().replace(" ", "-");
-        writeFile(content, pluginName + ".php", true);
+        String pluginName = sanitizeFilename(model.getName()) + ".php";
+        writeFile(content, pluginName, true);
     }
 
-    /**
-     * Writes content to a file.
-     * 
-     * @param content The content to be written to the file.
-     * @param fileName The name of the file to write to.
-     * @param append A boolean flag indicating whether to append to the file 
-     *               (true) or overwrite it (false).
-     */
-    def static void writeFile(String content, String fileName, boolean append = false) {
-        try {
-            // Creating a new File object with the specified file path.
-            File file = new File("src/main/resources/week18/generated/" + fileName);
-
-
-            // Creating a FileWriter object. If 'append' is true, the FileWriter 
-            // will append the content to the file; otherwise, it will overwrite the existing content.
-            FileWriter writer = new FileWriter(file, append);
-   
-            // Writing the provided content to the file.
-            writer.write(content);
-    
-            // Closing the FileWriter to release system resources.
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	/**
+	 * Writes content to a specified file. If the file doesn't exist, it's created.
+	 * If the folder path doesn't exist, it's also created.
+	 * 
+	 * @param content The content to be written to the file.
+	 * @param fileName The name of the file to write to.
+	 * @param append A boolean flag indicating whether to append to the file 
+	 *               (true) or overwrite it (false).
+	 * @throws IOException If there is an issue in creating the folder or writing to the file.
+	 * @throws IllegalArgumentException If the plugin name is invalid.
+	 */
+	def static void writeFile(String content, String fileName, boolean append = false) {
+	    try {
+	        // Check if the plugin name is valid
+	        if (!mPluginFileName) {
+	            throw new IllegalArgumentException("Invalid plugin name");
+	        }
+	
+	        // Define the folder path based on the plugin name
+	        String folderPath = "src/main/resources/week18/generated/${mPluginFileName}/"
+	        
+	        // Create a File object representing the folder
+	        File folder = new File(folderPath)
+	
+	        // Check if the folder exists, and create it if it doesn't
+	        if (!folder.exists()) {
+	            if(!folder.mkdirs()) {
+	                throw new IOException("Failed to create the folder: ${folderPath}")
+	            }
+	        }
+	            
+	        // Create a File object for the specific file to be written
+	        File file = new File(folderPath + fileName);
+	
+	        // Create a FileWriter object for writing to the file
+	        // Set it to append mode if 'append' is true
+	        FileWriter writer = new FileWriter(file, append);
+	
+	        // Write the provided content to the file
+	        writer.write(content);
+	
+	        // Close the FileWriter to release system resources
+	        writer.close();
+	    } catch (IOException e) {
+	        // Print the stack trace if an IOException occurs
+	        e.printStackTrace();
+	    }
+	}
 
     /**
      * Retrieves the prefix of the plugin.
@@ -392,16 +423,21 @@ class EntityGenerator_ExplicitTraversal_JavaClasses {
      * @param model The Plugin object containing the plugin's details.
      */
     def static void include(String fileName, Plugin model) {
-        // Getting the plugin's name, converting it to lowercase and replacing spaces with hyphens.
-        // This formatted name is used for the main plugin file.
-        String pluginName = model.getName().toLowerCase().replace(" ", "-");
-
         // Preparing the content to be written to the plugin's main file. 
         // It adds a 'require_once' statement for the given fileName.
         String content = """require_once plugin_dir_path(__FILE__) . ('${fileName}');\n"""
 
         // Writing the 'require_once' statement to the plugin's main PHP file.
         // The 'true' parameter in writeFile indicates that the content should be appended to the file.
-        writeFile(content, pluginName + ".php", true);
+		String pluginName = sanitizeFilename(model.getName()) + ".php";
+        writeFile(content, pluginName, true);
     }
+	
+	def static String sanitizeFilename(String filename) {
+		return filename.toLowerCase().replaceAll("[^a-zA-Z0-9]+", "-").replaceAll("-\$", "");
+	}
+	
+	def static String sanitizeFieldname(String fieldname) {
+		return fieldname.toLowerCase().replace(" ", "_").replaceAll("[^a-zA-Z0-9]+", "_").replaceAll("_\$", "");
+	}
 }

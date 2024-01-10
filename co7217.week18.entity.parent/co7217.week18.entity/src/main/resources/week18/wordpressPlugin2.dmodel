@@ -1,0 +1,59 @@
+Plugin {
+    name = "MyCustomPlugin"
+    version = "1.2.3"
+    description = "A custom plugin for content management."
+    author = "Jane Smith"
+    license = "GPL-3.0"
+    prefix = "mcp"
+    textDomain = "my-custom-plugin"
+    activate = "activateMyPlugin"
+    deactivate = "deactivateMyPlugin"
+    uninstall = "uninstallMyPlugin"
+
+    Widget {
+        widgetName = "RecentPosts"
+        widgetDescription = "Displays recent posts with thumbnails."
+        Setting {
+            settingName = "NumberPosts"
+            settingType = "Integer"
+            defaultValue = "5"
+        }
+
+        Setting {
+            settingName = "DisplayThumbnails"
+            settingType = "Boolean"
+            defaultValue = "true"
+        }
+    }
+
+    Shortcode {
+        shortcodeName = "gallery"
+        Setting {
+            settingName = "Images"
+            settingType = "String"
+            defaultValue = ""
+        }
+    }
+
+    CustomPostType {
+        postTypeName = "book"
+        supports = "title, editor, thumbnail"
+        taxonomies = "genre, authors"
+    }
+    
+    Hook {
+        hookType = filter
+        hookName = "content_filter"
+        callback = "filterContent"
+        priority = 10
+        acceptedArgs = 2
+    }
+
+    Hook {
+        hookType = action
+        hookName = "save_post"
+        callback = "postSaveAction"
+        priority = 5
+        acceptedArgs = 3
+    }
+}

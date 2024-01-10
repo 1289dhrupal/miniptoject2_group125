@@ -36,4 +36,12 @@ Plugin {
             defaultValue = "800"
         }
     }
+    
+    Hook {
+        hookType = "action"
+        hookName = "save_post"
+        callback = "save_post"
+        priority = 10
+        acceptedArgs = 2
+    }
 }
